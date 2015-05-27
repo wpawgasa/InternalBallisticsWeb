@@ -19,6 +19,8 @@
         <script src="KendoUI/js/jquery.min.js"></script>
         <script src="js/svg.min.js"></script>
         <script src="KendoUI/js/kendo.all.min.js"></script>
+        <script src="js/Utilities.js"></script>
+        <script src="js/jsObjects.js"></script>
     </head>
     <body>
         <div id="example">
@@ -87,7 +89,9 @@
                                 </div>
                             </div>
                             <div class="pane-content">
+                                
                                 <div id="graphicTab">
+                                    <div><span id="elm_selected_indicator">No element is selected</span></div>
                                     <div id="svgDrawing">
 
                                     </div>
@@ -190,6 +194,8 @@
                     var innerDiameterValue = 0;
                     var section;
                     var innerPort;
+                    var motor = new motorObj();
+                    var selectedSection = null;
                     var SVGdraw = SVG('svgDrawing').size(500, 800);
                     $("#menu").kendoMenu({
                         select: onSelectMenu
@@ -320,12 +326,20 @@
                     }).data("kendoSlider");
                     var addSectionWindow = $("#addSectionWindow");
                     var loadConfigWindow = $("#loadConfigWindow");
+                    
                     $("#propellantPropertiesGrid").kendoGrid({
                         dataSource: {
-                            type: "odata",
-                            transport: {
-                                read: "http://demos.telerik.com/kendo-ui/service/Northwind.svc/Customers"
+                            data: [],
+                            schema: {
+                                model: {
+                                    fields: {
+                                        layerId: { type: "number" },
+                                        layerName: { type: "string" },
+                                        layerMaterial: { type: "string" }
+                                    }
+                                }
                             },
+                            pageSize: 10
                         },
                         height: 280,
                         pageable: {
@@ -343,7 +357,8 @@
                             }, {
                                 field: "Material",
                                 title: "Material"
-                            }]
+                            }],
+                        editable: true
                     });
                     function onSpinnerChange(obj) {
                         var objId = obj.sender.element[0].id.split("_");
@@ -424,9 +439,42 @@
                         sectionLengthValue = $("#sectionLength_Spinner").data("kendoNumericTextBox").value();
                         innerPortDiameterValue = $("#innerPortDiameter_Spinner").data("kendoNumericTextBox").value();
                         console.log(sectionDiameterValue);
-                        section = SVGdraw.rect(sectionLengthValue, sectionDiameterValue).fill({color: 'pink', opacity: 0.6}).stroke({width: 1.2}).move(rocketX, rockety + 0.5 * Math.abs(rocketDiameterValue - sectionDiameterValue));
-                        innerPort = SVGdraw.rect(sectionLengthValue, innerPortDiameterValue).fill({color: 'orange', opacity: 0.6}).stroke({width: 1.2}).move(rocketX, rockety + 0.5 * Math.abs(rocketDiameterValue - innerPortDiameterValue));
+                        section = SVGdraw.rect(sectionLengthValue, sectionDiameterValue).fill({color: getRandomColor(), opacity: 0.6}).stroke({width: 1.2}).move(rocketX, rockety + 0.5 * Math.abs(rocketDiameterValue - sectionDiameterValue)).click(onSectionClicked);
+                        innerPort = SVGdraw.rect(sectionLengthValue, innerPortDiameterValue).fill({color: getRandomColor(), opacity: 0.6}).stroke({width: 1.2}).move(rocketX, rockety + 0.5 * Math.abs(rocketDiameterValue - innerPortDiameterValue));
+                        var newSection = new sectionObj();
+                        newSection.sectionId = guid();
+                        selectedSection = newSection.sectionId;
+                        //motor.addSection(newSection);
+                        var sectionLayers = new Array();
+                        var sectionLayer = new layerObj();
+                        //sectionLayers.push({Layer:1,Name:'Not set',Material:'Not set'});
+                        sectionLayer.setId(1);
+                        sectionLayer.setName('Not Set');
+                        sectionLayer.setMaterial('Not Set');
+                        sectionLayers.push(sectionLayer);
+                        
+                        var sectionLayer = new layerObj();
+                        //sectionLayers.push({Layer:1,Name:'Not set',Material:'Not set'});
+                        sectionLayer.setId(2);
+                        sectionLayer.setName('Not Set');
+                        sectionLayer.setMaterial('Not Set');
+                        sectionLayers.push(sectionLayer);
+                        
+                        newSection.setLayers(sectionLayers);
+                        console.log(newSection);
+                        console.log(Array.prototype.slice.call(sectionLayer));
+                        var grid = $("#propellantPropertiesGrid").data("kendoGrid");
+                        grid.setDataSource(new kendo.data.DataSource({
+                            data: Array.prototype.slice.call(sectionLayer)
+                        }));
+                        motor.addSection(newSection);
+                        console.log(motor);
                         addSectionWindow.data("kendoWindow").close();
+                    }
+                    
+                    function onSectionClicked() {
+                        $("#elm_selected_indicator").text('Section 1 selected');
+                        alert('Section 1 clicked');
                     }
 
                     function onSelectMenu(e) {
@@ -518,6 +566,7 @@
                         click: onCloseNewSectionWindowClick
                     });
                     $("#addPropellantPropertiesButton").kendoButton({
+                        click: onAddPropellantClick
                     });
                     $("#removePropellantPropertiesButton").kendoButton({
                     });
@@ -546,6 +595,18 @@
                         visible: false
 
                     });
+                    
+                    function onAddPropellantClick() {
+                        if(selectedSection!=null) {
+                        console.log('Add layer');
+                            var grid = $("#propellantPropertiesGrid").data('kendoGrid');
+                            var count = grid.dataSource.total();
+                            grid.dataSource.add({Layer:count+1,Name:'Not Set',Material:'Not Set'});
+                            
+                        } else {
+                            alert('No section is selected!');
+                        }
+                    }
                 });
             </script>
         </div>

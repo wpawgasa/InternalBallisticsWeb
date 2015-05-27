@@ -16,7 +16,7 @@
     </head>
     <body>
            <div id="example">
-            <div class="centeredImage"><img src="styles/dtiLogo .png" width="150" height="150" ></div>
+            <div class="centeredImage"><img src="styles/dtiLogo.png" width="150" height="150" ></div>
 
             
             <div id="window">
@@ -91,16 +91,13 @@
                            height: "200px",
                            title: "Please Log In",
                            resizable: false,
-                           pinned: true,
-                           draggable: false,
-                           position :{
-                                top: 175,
-                                left: 350
-                           }
+                           pinned: false,
+                           draggable: false
                           
                         });
                         var dialog = loginWindow.data("kendoWindow");
                         dialog.center();
+                        dialog.wrapper.css({top: 175})
                     }
                     var loginForm = $('#loginForm');
                     kendo.init(loginForm);

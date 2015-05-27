@@ -55,7 +55,7 @@ public class AuthenticationServlet extends HttpServlet {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             connection = DriverManager.getConnection(host, dbuser, dbpass);
             //out.println("Connected database successfully...");
-            String sql = "SELECT * FROM users where username = ? AND password = ?";
+            String sql = "SELECT * FROM Users where user_name = ? AND user_pwd = ?";
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, user);
             stmt.setString(2,pass);
