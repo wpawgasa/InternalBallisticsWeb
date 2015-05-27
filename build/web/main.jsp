@@ -120,13 +120,13 @@
                                     <div class="weather">
                                         <div class="vertical-propellant-properties">
                                             
-                                                <h4>Outer Diameter <input id="outerDiameter_Spinner" type="number" value="0" min="0" max="500" style="width: 100px"/> mm</h4>
+                                                <h4>Outer Diameter <input id="outerDiameter_Spinner" type="number" value="0" min="0" max="500" style="width: 80px"/> mm</h4>
                                                 <input id="outerDiameter_Slider" class="balShortSlider" />
 
-                                                <h4>Inner Diameter<input id="innerDiameter_Spinner" type="number" value="0" min="0" max="500" style="width: 100px" /> mm</h4>
+                                                <h4>Inner Diameter<input id="innerDiameter_Spinner" type="number" value="0" min="0" max="500" style="width: 80px" /> mm</h4>
                                                 <input id="innerDiameter_Slider" class="balShortSlider" />
 
-                                                <h4>Length <input id="length_Spinner" type="number" value="0" min="0" max="500" style="width: 100px" /> mm</h4>
+                                                <h4>Length <input id="length_Spinner" type="number" value="0" min="0" max="500" style="width: 80px" /> mm</h4>
                                                 <input id="length_Slider" class="balShortSlider" />
 
                                         </div>
