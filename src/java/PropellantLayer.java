@@ -226,6 +226,7 @@ public class PropellantLayer {
 
     public void setGasFrac(double gasFrac) {
         this.gasFrac = gasFrac;
+        
     }
 
 }
