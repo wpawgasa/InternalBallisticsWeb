@@ -89,7 +89,6 @@
                                 </div>
                             </div>
                             <div class="pane-content">
-                                
 
                                 <div id="graphicTab">
                                     <div><span id="elm_selected_indicator">No element is selected</span></div>
