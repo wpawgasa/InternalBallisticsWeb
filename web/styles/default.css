@@ -129,12 +129,12 @@ span.k-tooltip {
     width: 400px;
 
 }
-#splitter{
+/*#splitter{
     position: fixed;
     width:100%;
     height:100%;
 
-}
+}*/
 
 #grid .k-grid-toolbar
 {
@@ -205,8 +205,15 @@ span.k-tooltip {
 }
 
 .weather {
-    width: 100%;
+    width: 800px;
     height: 580px;
+    padding: 0 0 0 0;
+    float: left;
+
+}
+.innerweather {
+    width: 100%;
+    height: 100%;
     padding: 0 0 0 0;
     float: left;
 
@@ -242,10 +249,10 @@ span.k-tooltip {
 
 }
 #splitter{
-position: fixed;
-width:100%;
-height:600px;
-padding: 5px;
+    position: fixed;
+    width:100%;
+    height:600px;
+    padding: 5px;
 }
 #wrapper {
     width: 100%;
@@ -273,5 +280,13 @@ div.eqSlider {
 
 .k-ie7 div.eqSlider {display:inline;zoom:1;}
 .k-primary {
-                    min-width: 150px;
-                }     
+    min-width: 150px;
+}     
+
+#propellantTab {
+    width: 93%;
+}
+
+#menu.k-menu {
+    border-radius: 0px;
+}

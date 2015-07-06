@@ -13,8 +13,6 @@
         <link href="KendoUI/styles/kendo.common.min.css" rel="stylesheet"/>
         <link href="KendoUI/styles/kendo.bootstrap.min.css" rel="stylesheet"/>
 
-        <link href="KendoUI/styles/kendo.dataviz.min.css" rel="stylesheet"/>
-        <link href="KendoUI/styles/kendo.dataviz.default.min.css" rel="stylesheet"/>
         <link href="styles/default.css" rel="stylesheet"/>
         <script src="KendoUI/js/jquery.min.js"></script>
         <script src="js/svg.min.js"></script>
@@ -77,11 +75,12 @@
                                         <input id="igniterBurnTime_Slider" class="balSlider" />
 
                                     </div>
-
+                                    <!--
                                     <div class="vertical-main">
                                         <a id="addSectionButton" class="k-primary">Add Section</a> 
                                         <a id="removeSectionButton" class="k-primary">Remove Section</a> 
                                     </div>
+                                    -->
                                 </div>
 
                                 <div> 
@@ -91,6 +90,7 @@
                             <div class="pane-content">
 
                                 <div id="graphicTab">
+                                    <div id="sectionTB"></div>
                                     <div><span id="elm_selected_indicator">No element is selected</span></div>
                                     <div id="svgDrawing">
 
@@ -110,15 +110,16 @@
                                             Burning Distance
                                         </li>
                                     </ul>
-                                    <div class="weather">
+                                    <div>
                                         <div id="propellantPropertiesGrid"></div>
                                         <div class="vertical-propellant-properties">
                                             <button type="button" id="addPropellantPropertiesButton">Add</button>
+                                            <button type="button" id="editPropellantPropertiesButton">Edit</button>
                                             <button type="button" id="removePropellantPropertiesButton">Remove</button>
 
                                         </div>
                                     </div>
-                                    <div class="weather">
+                                    <div>
                                         <div id="geometryTab">
                                             <ul>
                                                 <li class="k-state-active">
@@ -129,6 +130,7 @@
                                                 </li>
                                             </ul>
                                             <div>
+                                                <!--
                                             <div class="vertical-propellant-properties">
                                                 <table>
                                                     <tr>
@@ -151,6 +153,7 @@
                                                     </tr>
                                                 </table>
                                             </div>
+                                                -->
                                             <div class="vertical-propellant-properties">
                                                 <button type="button" id="circleToggleButton"></button>
                                                 <button type="button" id="eightStarToggleButton"></button>
@@ -162,7 +165,9 @@
                                             <div id="shapeDrawing"></div>
                                         </div>
                                             <div>
-                                                <div id="geometryGrid"></div>
+                                                <div id="loadGeom">
+                                                    <input type="file" name="propellantGEOMFiles" id="propellantGEOMFiles" />
+                                                </div>
                                             </div>
                                         </div>
                                         </div>
@@ -188,6 +193,12 @@
 
                     </div>
                     <div id="addSectionWindow">
+                        
+                    </div>
+                    <div id="loadConfigWindow">
+                        <input name="files" id="files" type="file" itemtype=".txt" />
+                    </div>
+                    <div id="addNewSectionWindow">
                         <div class="pane-content">
                             <div>
                                 <h4>Diameter <input id="sectionDiameter_Spinner" type="number" value="0" min="0" max="500"  /> mm</h4>
@@ -214,12 +225,109 @@
 
                         </div>
                     </div>
-                    <div id="loadConfigWindow">
-                        <input name="files" id="files" type="file" itemtype=".txt" />
+                    
+                    <div id="editSectionWindow">
+                        <div class="pane-content">
+                            <div>
+                                <h4>Diameter <input id="sectionDiameter_Spinner_edit" type="number" value="0" min="0" max="500"  /> mm</h4>
+                                <input id="sectionDiameter_Slider_edit" class="balSlider" />
+
+                            </div>
+                            <div>
+                                <h4>Length <input id="sectionLength_Spinner_edit" type="number" value="0" min="0" max="500" /> mm</h4>
+                                <input id="sectionLength_Slider_edit" class="balSlider" />
+
+                            </div>
+                            <div>
+                                <h4>Inner Port Diameter <input id="innerPortDiameter_Spinner_edit" type="number" value="0" min="0" max="500" /> mm</h4>
+                                <input id="innerPortDiameter_Slider_edit" class="balSlider" />
+
+                            </div>
+                        </div>
+                        <div class="vertical-content">
+
+                            <a id="okEditSectionButton" class="k-primary">OK</a> 
+
+
+                            <a id="cancelEditSectionButton" class="k-primary">Cancel</a> 
+
+                        </div>
                     </div>
+                    <div id="propellantPropertiesWindow">
+                        <div class="pane-content" style="width: 250px;">
+                            <div>
+                                <h4>Burning Rate <input id="propBurnRate" type="number" value="11" min="0" max="100" style="width: 70px;"  /> mm/s</h4>
+                                
+                            </div>
+                            <div>
+                                <h4>Pressure Exponent <input id="propPE" type="number" value="0.48" min="0" max="5" style="width: 70px;" /> </h4>
+                                
+                            </div>
+                            <div>
+                                <h4>Density <input id="propDensity" type="number" value="1.795" min="0" max="500" style="width: 70px;" /> *1000 kg/m^3</h4>
+                                
+                            </div>
+                            <div>
+                                <h4>Alpha Erosive Burning Const. <input id="propAlpha" type="number" value="60" min="0" max="100" /> /10^7</h4>
+                                
+                            </div>
+                            <div>
+                                <h4>Gas Temp. <input id="gasTemp" type="number" value="3500" min="0" max="10000" style="width: 70px;" /> K</h4>
+                                
+                            </div>
+                            <div>
+                                <h4>Gas Const. <input id="gasConst" type="number" value="308" min="0" max="1000" style="width: 70px;" /> J/(kg*K)</h4>
+                                
+                            </div>
+                            <div>
+                                <h4>Heat Capacity Ratio <input id="heatCap" type="number" value="1.2" min="0" max="5" style="width: 70px;" /> </h4>
+                                
+                            </div>
+                        </div>
+                        <div class="vertical-content">
+
+                            <a id="okEditLayerButton" class="k-primary">OK</a> 
+
+
+                            
+
+                        </div>
+                    </div>
+                    
                 </div>
+                <script id="fileTemplate" type="text/x-kendo-template">
+                    <span class='k-progress'></span>
+                    <div class='file-wrapper'>
+                        <span class='file-icon #=addExtensionClass(files[0].extension)#'></span>
+                        <h4 class='file-heading file-name-heading'>Name: #=name#</h4>
+                        <h4 class='file-heading file-size-heading'>Size: #=size# bytes</h4>
+                        <button type='button' class='k-upload-action'></button>
+                    </div>
+                </script>
                 <script>
+                    function adjustScreen() {
+                        //alert(window.innerHeight);
+                        $(".weather").css("height",window.innerHeight-100+'px');
+                        $(".weather").css("width",window.innerWidth-35+'px');
+                        $("#splitter").css("height",window.innerHeight-110+'px');
+                        $("#splitter").css("width",window.innerWidth-45+'px');
+                        
+                    }
+                    var waitForFinalEvent = (function () {
+                        var timers = {};
+                        return function (callback, ms, uniqueId) {
+                          if (!uniqueId) {
+                            uniqueId = "Don't call this twice without a uniqueId";
+                          }
+                          if (timers[uniqueId]) {
+                            clearTimeout (timers[uniqueId]);
+                          }
+                          timers[uniqueId] = setTimeout(callback, ms);
+                        };
+                      })();
                     $(document).ready(function () {
+                        adjustScreen();
+                        $(window).on('resize', adjustScreen);
                         var rocketDiameterValue = 50;
                         var rocketLengthValue = 100;
                         var throatDiameterValue = 50;
@@ -236,7 +344,7 @@
                         var section;
                         var innerPort;
                         var motor = new motorObj();
-                        var selectedSection = null;
+                        var selectedSection = new sectionObj();
                         var SVGdraw = SVG('svgDrawing').size(500, 800);
                         var shapeDraw = SVG('shapeDrawing').size(500, 400);
                         $("#menu").kendoMenu({
@@ -249,6 +357,7 @@
                                 }
                             }
                         });
+                       
                         $("#propellantTab").kendoTabStrip({
                             animation: {
                                 open: {
@@ -263,6 +372,14 @@
                                 }
                             }
                         });
+                        $("#sectionTB").kendoToolBar({
+                        items: [
+                            { type: "button", text: "Add Section", click: onAddSectionClick },
+                            { type: "button", text: "Edit Section" },
+                            { type: "button", text: "Remove Section" },
+                            { type: "separator" }
+                        ]
+                    });
                         var rocketDiameterSlider = $("#rocketDiameter_Slider").kendoSlider({
                             increaseButtonTitle: "Right",
                             decreaseButtonTitle: "Left",
@@ -373,8 +490,39 @@
                             change: onSliderChange,
                             value: innerDiameterValue
                         }).data("kendoSlider");
-                        var addSectionWindow = $("#addSectionWindow");
+                        var addSectionWindow = $("#addNewSectionWindow");
                         var loadConfigWindow = $("#loadConfigWindow");
+                        var propPropertiesWindow = $("#propellantPropertiesWindow");
+                        
+                        addSectionWindow.kendoWindow({
+                            width: "450px",
+                            height: "400px",
+                            title: "New Section",
+                            actions: ["Pin", "Refresh", "Maximize", "Close"],
+                            modal: true,
+                            visible: false
+
+                        });
+                        
+                        loadConfigWindow.kendoWindow({
+                            width: "450px",
+                            height: "180px",
+                            title: "Load Configuration",
+                            actions: ["Pin", "Refresh", "Maximize", "Close"],
+                            modal: true,
+                            visible: false
+
+                        });
+                        
+                        propPropertiesWindow.kendoWindow({
+                            width: "450px",
+                            height: "400px",
+                            title: "Edit Propellant Properties",
+                            actions: ["Pin", "Refresh", "Maximize", "Close"],
+                            modal: true,
+                            visible: false
+
+                        });
 
                         $("#propellantPropertiesGrid").kendoGrid({
                             dataSource: {
@@ -390,6 +538,7 @@
                                 },
                                 pageSize: 10
                             },
+                            selectable: "row",
                             height: 280,
                             pageable: {
                                 refresh: true,
@@ -442,6 +591,14 @@
                                 }],
                             editable: true
                         });
+                        
+                        $("#propellantGEOMFiles").kendoUpload({
+                            async: {
+                                saveUrl: "save",
+                                removeUrl: "remove"
+                            }
+                        });
+    
                         function onSpinnerChange(obj) {
                             var objId = obj.sender.element[0].id.split("_");
                             var firstPartId = objId[0];
@@ -511,59 +668,176 @@
 
                         }
 
-                        function onAddSectionClick(e) {
-                            //kendoConsole.log("event :: click (" + $(e.event.target).closest(".k-button").attr("id") + ")" );
-                            addSectionWindow.data("kendoWindow").open();
-                            addSectionWindow.data("kendoWindow").center();
-                        }
-
+                        
                         function onCloseNewSectionWindowClick(e) {
                             //kendoConsole.log("event :: click (" + $(e.event.target).closest(".k-button").attr("id") + ")" );
                             addSectionWindow.data("kendoWindow").close();
                         }
-                        function onOKNewSectionWindowClick(e) {
-                            sectionDiameterValue = $("#sectionDiameter_Spinner").data("kendoNumericTextBox").value();
-                            sectionLengthValue = $("#sectionLength_Spinner").data("kendoNumericTextBox").value();
-                            innerPortDiameterValue = $("#innerPortDiameter_Spinner").data("kendoNumericTextBox").value();
-                            console.log(sectionDiameterValue);
-                            section = SVGdraw.rect(sectionLengthValue, sectionDiameterValue).fill({color: getRandomColor(), opacity: 0.6}).stroke({width: 1.2}).move(rocketX, rockety + 0.5 * Math.abs(rocketDiameterValue - sectionDiameterValue)).click(onSectionClicked);
-                            innerPort = SVGdraw.rect(sectionLengthValue, innerPortDiameterValue).fill({color: getRandomColor(), opacity: 0.6}).stroke({width: 1.2}).move(rocketX, rockety + 0.5 * Math.abs(rocketDiameterValue - innerPortDiameterValue));
-                            var newSection = new sectionObj();
-                            newSection.sectionId = guid();
-                            selectedSection = newSection.sectionId;
-                            //motor.addSection(newSection);
-                            var sectionLayers = new Array();
-                            var sectionLayer = new layerObj();
-                            //sectionLayers.push({Layer:1,Name:'Not set',Material:'Not set'});
-                            sectionLayer.setId(1);
-                            sectionLayer.setName('Not Set');
-                            sectionLayer.setMaterial('Not Set');
-                            sectionLayers.push(sectionLayer);
+//                        function onOKNewSectionWindowClick(e) {
+//                            sectionDiameterValue = $("#sectionDiameter_Spinner").data("kendoNumericTextBox").value();
+//                            sectionLengthValue = $("#sectionLength_Spinner").data("kendoNumericTextBox").value();
+//                            innerPortDiameterValue = $("#innerPortDiameter_Spinner").data("kendoNumericTextBox").value();
+//                            console.log(sectionDiameterValue);
+//                            section = SVGdraw.rect(sectionLengthValue, sectionDiameterValue).fill({color: getRandomColor(), opacity: 0.6}).stroke({width: 1.2}).move(rocketX, rockety + 0.5 * Math.abs(rocketDiameterValue - sectionDiameterValue)).click(onSectionClicked);
+//                            innerPort = SVGdraw.rect(sectionLengthValue, innerPortDiameterValue).fill({color: getRandomColor(), opacity: 0.6}).stroke({width: 1.2}).move(rocketX, rockety + 0.5 * Math.abs(rocketDiameterValue - innerPortDiameterValue));
+//                            var newSection = new sectionObj();
+//                            newSection.sectionId = guid();
+//                            selectedSection = newSection.sectionId;
+//                            //motor.addSection(newSection);
+//                            var sectionLayers = new Array();
+//                            var sectionLayer = new layerObj();
+//                            //sectionLayers.push({Layer:1,Name:'Not set',Material:'Not set'});
+//                            sectionLayer.setId(1);
+//                            sectionLayer.setName('Not Set');
+//                            sectionLayer.setMaterial('Not Set');
+//                            sectionLayers.push(sectionLayer);
+//
+//                            var sectionLayer = new layerObj();
+//                            //sectionLayers.push({Layer:1,Name:'Not set',Material:'Not set'});
+//                            sectionLayer.setId(2);
+//                            sectionLayer.setName('Not Set');
+//                            sectionLayer.setMaterial('Not Set');
+//                            sectionLayers.push(sectionLayer);
+//
+//                            newSection.setLayers(sectionLayers);
+//                            console.log(newSection);
+//                            console.log(Array.prototype.slice.call(sectionLayer));
+//                            var grid = $("#propellantPropertiesGrid").data("kendoGrid");
+//                            grid.setDataSource(new kendo.data.DataSource({
+//                                data: Array.prototype.slice.call(sectionLayer)
+//                            }));
+//                            motor.addSection(newSection);
+//                            console.log(motor);
+//                            addSectionWindow.data("kendoWindow").close();
+//                        }
 
-                            var sectionLayer = new layerObj();
-                            //sectionLayers.push({Layer:1,Name:'Not set',Material:'Not set'});
-                            sectionLayer.setId(2);
-                            sectionLayer.setName('Not Set');
-                            sectionLayer.setMaterial('Not Set');
-                            sectionLayers.push(sectionLayer);
 
-                            newSection.setLayers(sectionLayers);
-                            console.log(newSection);
-                            console.log(Array.prototype.slice.call(sectionLayer));
-                            var grid = $("#propellantPropertiesGrid").data("kendoGrid");
-                            grid.setDataSource(new kendo.data.DataSource({
-                                data: Array.prototype.slice.call(sectionLayer)
-                            }));
-                            motor.addSection(newSection);
-                            console.log(motor);
-                            addSectionWindow.data("kendoWindow").close();
+//                        function onSectionClicked() {
+//                            $("#elm_selected_indicator").text('Section 1 selected');
+//                            alert('Section 1 clicked');
+//
+//                    }
+
+                    function onAddSectionClick(e) {
+                        //kendoConsole.log("event :: click (" + $(e.event.target).closest(".k-button").attr("id") + ")" );
+                        
+                        addSectionWindow.data("kendoWindow").open();
+                        addSectionWindow.data("kendoWindow").center();
+                    }
+
+//                    function onCloseNewSectionWindowClick(e) {
+//                        //kendoConsole.log("event :: click (" + $(e.event.target).closest(".k-button").attr("id") + ")" );
+//                        addSectionWindow.data("kendoWindow").close();
+//                    }
+                    function onOKNewSectionWindowClick(e) {
+                        sectionDiameterValue = $("#sectionDiameter_Spinner").data("kendoNumericTextBox").value();
+                        sectionLengthValue = $("#sectionLength_Spinner").data("kendoNumericTextBox").value();
+                        innerPortDiameterValue = $("#innerPortDiameter_Spinner").data("kendoNumericTextBox").value();
+                        console.log(sectionDiameterValue);
+                        var newSection = new sectionObj();
+                        newSection.sectionId = guid();
+                        
+                        section = SVGdraw.rect(sectionLengthValue, sectionDiameterValue).fill({color: getRandomColor(), opacity: 0.6}).stroke({width: 1.2}).move(rocketX, rockety + 0.5 * Math.abs(rocketDiameterValue - sectionDiameterValue));
+                        innerPort = SVGdraw.rect(sectionLengthValue, innerPortDiameterValue).fill({color: getRandomColor(), opacity: 0.6}).stroke({width: 1.2}).move(rocketX, rockety + 0.5 * Math.abs(rocketDiameterValue - innerPortDiameterValue));
+                        newSection.sectionGraphicObj = section;
+                        newSection.innerPortGraphicObj = innerPort;
+                        //motor.addSection(newSection);
+                        var sectionLayers = new Array();
+                        var sectionLayer = new layerObj();
+                        //sectionLayers.push({Layer:1,Name:'Not set',Material:'Not set'});
+                        sectionLayer.setId(1);
+                        sectionLayer.setName('Not Set');
+                        sectionLayer.setMaterial('Not Set');
+                        sectionLayers.push(sectionLayer);
+                        
+                        newSection.setLayers(sectionLayers);
+                        console.log(newSection);
+                        
+                        selectedSection = newSection;
+                        var grid = $("#propellantPropertiesGrid").data("kendoGrid");
+                        grid.setDataSource(new kendo.data.DataSource({
+                            data: Array.prototype.slice.call(sectionLayer)
+                        }));
+                        motor.addSection(newSection);
+                        console.log(motor);
+                        addSectionWindow.data("kendoWindow").close();
+                        newSection.sectionGraphicObj.click(onSectionClicked(newSection));
+                    }
+                    
+                    function onSectionClicked(section) {
+                        $("#elm_selected_indicator").text('Section '+section.sectionId+' selected');
+                        alert('Section '+section.sectionId+' clicked');
+                        var svgSection = section.sectionGraphicObj;
+                        svgSection.stroke({color: 'blue', width:2});
+                        var layerGrid = $("#propellantPropertiesGrid").data("kendoGrid");
+                        
+                    }
+
+                    function onAddPropellantClick() {
+                        //console.log(selectedSection);
+                            if (selectedSection.getId() != null && selectedSection.getId() != "") {
+                                
+                                console.log('Add layer');
+                                var grid = $("#propellantPropertiesGrid").data('kendoGrid');
+                                var count = grid.dataSource.total();
+                                grid.dataSource.add({Layer: count + 1, Name: 'Not Set', Material: 'Not Set'});
+                                var sectionLayer = new layerObj();
+                                sectionLayer.setId(count+1);
+                                sectionLayer.setName('Not Set');
+                                sectionLayer.setMaterial('Not Set');
+                                selectedSection.getLayers().push(sectionLayer);
+                            } else {
+                                alert('No section is selected!');
+                            }
                         }
-
-                        function onSectionClicked() {
-                            $("#elm_selected_indicator").text('Section 1 selected');
-                            alert('Section 1 clicked');
+                        
+                        function onEditPropellantClick() {
+                            if (selectedSection != null) {
+                                //console.log('Add layer');
+                                var grid = $("#propellantPropertiesGrid").data('kendoGrid');
+                                var selectedItem = grid.dataItem(grid.select());
+                                
+                                var selectedLayer = selectedSection.getLayer(selectedItem.Layer);
+                                console.log(selectedSection);
+                                console.log(selectedItem);
+                                console.log(selectedLayer);
+                                $("#propBurnRate").val(selectedLayer.layerBurningRate);
+                                $("#propPE").val(selectedLayer.layerPressureExponent);
+                                $("#propDensity").val(selectedLayer.layerDensity);
+                                $("#propAlpha").val(selectedLayer.layerAlpErosive);
+                                $("#gasTemp").val(selectedLayer.layerGasTemp);
+                                $("#gasConst").val(selectedLayer.layerGasConst);
+                                $("#heatCap").val(selectedLayer.layerHeatCapacity);
+                                propPropertiesWindow.data("kendoWindow").open();
+                            } else {
+                                alert('No section is selected!');
+                            }
                         }
-
+                        
+                        function onOKEditLayerClick() {
+                            if (selectedSection != null) {
+                                //console.log('Add layer');
+                                var grid = $("#propellantPropertiesGrid").data('kendoGrid');
+                                var selectedItem = grid.dataItem(grid.select());
+                                
+                                var selectedLayer = selectedSection.getLayer(selectedItem.Layer);
+                                //console.log(selectedSection);
+                                //console.log(selectedItem);
+                                selectedLayer.layerBurningRate = $("#propBurnRate").val();
+                                selectedLayer.layerPressureExponent = $("#propPE").val();
+                                selectedLayer.layerDensity = $("#propDensity").val();
+                                selectedLayer.layerAlpErosive = $("#propAlpha").val();
+                                selectedLayer.layerGasTemp = $("#gasTemp").val();
+                                selectedLayer.layerGasConst = $("#gasConst").val();
+                                selectedLayer.layerHeatCapacity = $("#heatCap").val();
+    
+                                console.log(selectedLayer);
+                                propPropertiesWindow.data("kendoWindow").close();
+                            } else {
+                                alert('No section is selected!');
+                            }
+                        }
+                    
                         function onSelectMenu(e) {
 
                             var files = e.files;
@@ -584,7 +858,8 @@
                         }
                         $("#splitter").kendoSplitter({
                             orientation: "horizontal",
-                            panes: [{size: "23%", max: "280px", min: "100px", collapsible: true}, {size: "40%"}, {max: "280px", min: "100px", collapsible: true}]
+                            panes: [{size: "25%", max: "280px", min: "100px", collapsible: true}, 
+                                {size: "400px"}, {size: "35%",max: "500px", min: "300px", collapsible: true}]
                         });
                         $("#rocketDiameter_Spinner").kendoNumericTextBox({
                             change: onSpinnerChange,
@@ -655,6 +930,12 @@
                         $("#addPropellantPropertiesButton").kendoButton({
                             click: onAddPropellantClick
                         });
+                        $("#editPropellantPropertiesButton").kendoButton({
+                            click: onEditPropellantClick
+                        });
+                        $("#okEditLayerButton").kendoButton({
+                            click: onOKEditLayerClick
+                        });
                         $("#removePropellantPropertiesButton").kendoButton({
                         });
 
@@ -665,7 +946,7 @@
                             click: onCircleButtonClick
                         });
                         $("#eightStarToggleButton").kendoButton({
-                            imageUrl: "/styles/icon/DTIEightStarIcon.png"
+                            imageUrl: "/InternalBallisticsWeb/styles/icon/DTIEightStarIcon.png"
                         });
                         $("#hexagonToggleButton").kendoButton({
                             imageUrl: "/InternalBallisticsWeb/styles/icon/DTIHexagonIcon.png"
@@ -685,36 +966,9 @@
                         var nozzle = SVGdraw.polygon('30,30').fill('none').stroke({width: 1.2});
                         nozzle.plot([[rocketX + rocketLengthValue, rockety], [rocketX + rocketLengthValue + 50, rockety - 30], [rocketX + rocketLengthValue + 50, rockety + 30 + rocketDiameterValue], [rocketX + rocketLengthValue, rockety + rocketDiameterValue]]);
 
-                        addSectionWindow.kendoWindow({
-                            width: "450px",
-                            height: "400px",
-                            title: "New Section",
-                            actions: ["Pin", "Refresh", "Maximize", "Close"],
-                            modal: true,
-                            visible: false
+                        
 
-                        });
-                        loadConfigWindow.kendoWindow({
-                            width: "450px",
-                            height: "180px",
-                            title: "Load Configuration",
-                            actions: ["Pin", "Refresh", "Maximize", "Close"],
-                            modal: true,
-                            visible: false
-
-                        });
-
-                        function onAddPropellantClick() {
-                            if (selectedSection != null) {
-                                console.log('Add layer');
-                                var grid = $("#propellantPropertiesGrid").data('kendoGrid');
-                                var count = grid.dataSource.total();
-                                grid.dataSource.add({Layer: count + 1, Name: 'Not Set', Material: 'Not Set'});
-
-                            } else {
-                                alert('No section is selected!');
-                            }
-                        }
+                        
                     });
                 </script>
             </div>

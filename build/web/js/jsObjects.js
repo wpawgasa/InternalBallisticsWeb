@@ -67,6 +67,8 @@ var sectionObj = function sectionObj(){
     this.sectionInnerDiameter = 10;
     this.sectionLayers = new Array();
     this.sectionPortShapeId = 0; 
+    this.sectionGraphicObj = null;
+    this.innerPortGraphicObj = null;
 };
 
 sectionObj.prototype.getId = function() {
@@ -109,7 +111,13 @@ sectionObj.prototype.setInnerDiameter = function(name) {
     return;
 }
 
-
+sectionObj.prototype.getInnerDiameter = function() {
+    return this.sectionLength;
+}
+sectionObj.prototype.setInnerDiameter = function(name) {
+    this.sectionLength = name;
+    return;
+}
 
 sectionObj.prototype.getLayers = function() {
     return this.sectionLayers;
@@ -118,11 +126,12 @@ sectionObj.prototype.setLayers = function(sections) {
     this.sectionLayers = sections;
 }
 sectionObj.prototype.getLayer = function(id) {
+    //console.log(id);
     var layers = this.getLayers();
-    
+    //console.log(layers);
     for(var i=0;i < layers.length;i++) {
         var ilayer = layers[i];
-        if(ilayer.getId===id) {
+        if(ilayer.layerId===id) {
             return ilayer;
         }
     }
@@ -169,8 +178,8 @@ var layerObj = function layerObj(){
     this.layerMaterial = '';
     this.layerBurningRate = 11.0;
     this.layerPressureExponent = 0.48;
-    this.layerDensity = 1795;
-    this.layerAlpErosive = 60*Math.pow(10,7);
+    this.layerDensity = 1.795;
+    this.layerAlpErosive = 60;
     this.layerGasTemp = 3500;
     this.layerGasConst = 308;
     this.layerHeatCapacity = 1.2;

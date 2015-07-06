@@ -21,6 +21,10 @@
         <servlet-name>AuthenticationServlet</servlet-name>
         <servlet-class>AuthenticationServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CalculateThrust</servlet-name>
+        <servlet-class>CalculateThrust</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>action</servlet-name>
         <url-pattern>*.do</url-pattern>
@@ -28,6 +32,10 @@
     <servlet-mapping>
         <servlet-name>AuthenticationServlet</servlet-name>
         <url-pattern>/AuthenticationServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CalculateThrust</servlet-name>
+        <url-pattern>/CalculateThrust</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -37,4 +45,11 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+    <context-param> 
+        <description>Location to store uploaded file</description> 
+        <param-name>propellantGEOMFiles</param-name> 
+        <param-value>
+            /Users/wpawgasa/github/InternalBallisticsWeb/upload/
+        </param-value> 
+    </context-param>
 </web-app>
