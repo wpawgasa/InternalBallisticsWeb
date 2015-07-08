@@ -290,3 +290,18 @@ div.eqSlider {
 #menu.k-menu {
     border-radius: 0px;
 }
+
+.k-filename {
+    max-width: 10em;
+}
+
+.file-icon
+{
+    display: inline-block;
+    width: 16px;
+    height: 20px;
+}
+
+.ul-form {
+    list-style: none;
+}

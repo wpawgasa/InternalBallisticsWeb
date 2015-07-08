@@ -1,3 +1,7 @@
+
+import java.util.ArrayList;
+import java.util.List;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -32,7 +36,7 @@ public class PropellantLayer {
     private double a_factor; //pre-exponent factor
     private double gas;
     private double gasFrac;
-
+    
     public PropellantLayer() {
     }
 
@@ -228,5 +232,9 @@ public class PropellantLayer {
         this.gasFrac = gasFrac;
         
     }
+
+    
+    
+    
 
 }

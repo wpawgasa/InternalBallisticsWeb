@@ -69,6 +69,7 @@ var sectionObj = function sectionObj(){
     this.sectionPortShapeId = 0; 
     this.sectionGraphicObj = null;
     this.innerPortGraphicObj = null;
+    this.generatedGeom = null;
 };
 
 sectionObj.prototype.getId = function() {

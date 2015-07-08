@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -18,7 +19,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import flexjson.JSONSerializer;
+
 /**
  *
  * @author roongtawan
@@ -43,7 +44,8 @@ public class AuthenticationServlet extends HttpServlet {
         String pass = request.getParameter("pwd");
         String error = "";
         JSONResult result = new JSONResult();
-        JSONSerializer serializer = new JSONSerializer();
+        ObjectMapper mapper = new ObjectMapper();
+        //JSONSerializer serializer = new JSONSerializer();
         //out.println(user);
         try {
             //out.println("1");
@@ -77,14 +79,14 @@ public class AuthenticationServlet extends HttpServlet {
             result.setResult(null);
             result.setSuccess(true);
             result.setErrMsg("");
-            out.println(serializer.serialize(result));
+            out.println(mapper.writeValueAsString(result));
         } catch (Exception e) {
             //out.println("Cannot connect the database!"+e.getMessage());
             error = e.getMessage();
             result.setResult(null);
             result.setSuccess(false);
             result.setErrMsg(error);
-            out.println(serializer.serialize(result));
+            out.println(mapper.writeValueAsString(result));
             
         } finally {
             System.out.println("Closing the connection.");
