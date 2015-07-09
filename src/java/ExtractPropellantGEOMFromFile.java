@@ -106,7 +106,8 @@ public class ExtractPropellantGEOMFromFile extends HttpServlet {
             //section.getLayers().add(layer1);
             //section.getLayers().add(layer2);
             if (request.getParameter("computed") == "true") {
-
+                double step = Double.parseDouble(request.getParameter("step"));
+                generateBurningDistance(step);
             }
 
             msg.setMsg_name("File Extraction Result " + lineCnt);
@@ -120,6 +121,44 @@ public class ExtractPropellantGEOMFromFile extends HttpServlet {
     }
 
     private void generateBurningDistance(double step) {
+        double cur_distance = 0;
+        double cur_portArea = 0;
+        double cur_perimeter = 0;
+        //int index = 0;
+        int end_index = section.getGeom().size()-1;
+        double end_distance = section.getGeom().get(end_index).getDistance();
+        while (cur_distance <= end_distance) {
+            int index;
+            PropellantGeom pgH;
+            PropellantGeom pgT;
+            for (index = 0; index < end_index; index++) {
+                pgH = section.getGeom().get(index);
+                pgT = section.getGeom().get(index + 1);
+                if (cur_distance >= pgH.getDistance() && cur_distance <= pgT.getDistance()) {
+                    cur_portArea = pgH.getPort_area()+Math.abs(pgT.getPort_area()-pgH.getPort_area())/(pgT.getDistance()-pgH.getDistance())*(cur_distance-pgH.getDistance());
+                    cur_perimeter = pgH.getPerimeter()+Math.abs(pgT.getPerimeter()-pgH.getPerimeter())/(pgT.getDistance()-pgH.getDistance())*(cur_distance-pgH.getDistance());
+                    
+                    break;
+                } 
+            }
+            if(index==end_index) {
+                pgT = section.getGeom().get(index);
+                cur_portArea = pgT.getPort_area();
+                cur_perimeter = pgT.getPerimeter();
+                    
+            }
+            
+            PropellantGeom pg = new PropellantGeom();
+            pg.setDistance(cur_distance);
+            pg.setPort_area(cur_portArea);
+            pg.setPerimeter(cur_perimeter);
+            section.getGenGeom().add(pg);
+            cur_distance = cur_distance + step;
+            
+            
+
+        }
+
         
     }
 

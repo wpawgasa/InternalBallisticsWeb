@@ -1139,14 +1139,18 @@ $(document).ready(function () {
             }
         }
     });
+    
+    function onExtractAndGenerateGeomSuccess(data) {
+        console.log(data);
+    }
 
     function onExtractGeomSuccess(data) {
-        console.log(data);
+        //console.log(data);
         var window = $("#viewPropellantGeomWindow").data("kendoWindow");
         var grid = $("#propellantGEOMGrid").data("kendoGrid");
         var dataObj = JSON.parse(data.msg_content);
         var dataSource = new kendo.data.DataSource({
-            data: dataObj.layers[0].geom,
+            data: dataObj.geom,
             schema: {
                 model: {
                     fields: {
