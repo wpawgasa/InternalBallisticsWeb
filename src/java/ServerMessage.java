@@ -12,6 +12,7 @@ public class ServerMessage {
     public String msg_name;
     public Boolean msg_status;
     public String msg_content;
+    public String msg_debug;
 
     public ServerMessage() {
     }
@@ -40,6 +41,14 @@ public class ServerMessage {
 
     public void setMsg_content(String msg_content) {
         this.msg_content = msg_content;
+    }
+
+    public String getMsg_debug() {
+        return msg_debug;
+    }
+
+    public void setMsg_debug(String msg_debug) {
+        this.msg_debug = msg_debug;
     }
     
     

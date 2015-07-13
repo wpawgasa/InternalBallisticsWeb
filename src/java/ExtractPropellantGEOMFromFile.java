@@ -29,11 +29,11 @@ import javax.servlet.http.HttpSession;
 @WebServlet(urlPatterns = {"/ExtractPropellantGEOMFromFile"})
 public class ExtractPropellantGEOMFromFile extends HttpServlet {
 
-    //private String filePath = "/Users/wpawgasa/github/InternalBallisticsWeb/upload/";
-    private String filePath = "/Users/roongtawan/NetbeansProjects/InternalBallisticsWeb/upload/";
+    private String filePath = "/Users/wpawgasa/github/InternalBallisticsWeb/upload/";
+    //private String filePath = "/Users/roongtawan/NetbeansProjects/InternalBallisticsWeb/upload/";
     private File file;
     private PrintWriter out;
-    private ServerMessage msg;
+    private ServerMessage msg = new ServerMessage();
     private SectionInfo section;
 
     /**
@@ -49,7 +49,7 @@ public class ExtractPropellantGEOMFromFile extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/plain;charset=UTF-8");
         out = response.getWriter();
-        msg = new ServerMessage();
+        //msg = new ServerMessage();
         ObjectMapper mapper = new ObjectMapper();
         HttpSession session = request.getSession(false);
         String targetFolder = "Default";
@@ -87,6 +87,7 @@ public class ExtractPropellantGEOMFromFile extends HttpServlet {
                     pg2.setPerimeter(periphery2_A);
 
                     section.getGeom().add(pg1);
+                    //section.getGenGeom().add(pg1);
                     //layer2.getGeom().add(pg2);
 
                 } else if (parts.length == 3) {
@@ -99,6 +100,8 @@ public class ExtractPropellantGEOMFromFile extends HttpServlet {
                     pg1.setPort_area(portArea1_A);
                     pg1.setPerimeter(periphery1_A);
                     section.getGeom().add(pg1);
+                    //section.getGenGeom().add(pg1);
+                    //System.out.println("add");
                 }
 
                 lineCnt++;
@@ -106,28 +109,35 @@ public class ExtractPropellantGEOMFromFile extends HttpServlet {
             }
             //section.getLayers().add(layer1);
             //section.getLayers().add(layer2);
-            if (request.getParameter("computed") == "true") {
+            msg.setMsg_debug("ignore computing burning distance "+request.getParameter("computed"));
+            if (request.getParameter("computed")!=null) {
+                msg.setMsg_debug("computing burning distance");
                 double step = Double.parseDouble(request.getParameter("step"));
                 generateBurningDistance(step);
             }
 
-            msg.setMsg_name("File Extraction Result " + lineCnt);
+            msg.setMsg_name("File Extraction Result " + section.getGeom().size());
             msg.setMsg_status(true);
             msg.setMsg_content(mapper.writeValueAsString(section));
             out.println(mapper.writeValueAsString(msg));
-
-        } finally {
             out.close();
-        }
+        } catch(Exception e) {
+            msg.setMsg_name("File Extraction Result ");
+            msg.setMsg_status(false);
+            msg.setMsg_content(e.getMessage());
+            out.println(mapper.writeValueAsString(msg));
+            out.close();
+        } 
     }
 
-    private void generateBurningDistance(double step) {
+    public void generateBurningDistance(double step) {
         double cur_distance = 0;
         double cur_portArea = 0;
         double cur_perimeter = 0;
         //int index = 0;
         int end_index = section.getGeom().size()-1;
         double end_distance = section.getGeom().get(end_index).getDistance();
+        msg.setMsg_debug("cur_dist: "+cur_distance+", end_dist: "+end_distance);
         while (cur_distance <= end_distance) {
             int index;
             PropellantGeom pgH;
