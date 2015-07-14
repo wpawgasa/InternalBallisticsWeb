@@ -383,11 +383,182 @@
                         var SVGdraw = SVG('svgDrawing').size(500, 800);
                         //var shapeDraw = SVG('shapeDrawing').size(500, 400);
                         var shapeDraw = Snap("#shapeDrawing");
-                        
+                        var upButton = shapeDraw.circle(50, 25, 17);
+                        upButton.attr({
+                            fill: "#FFFFFF",
+                            stroke: "#000",
+                            strokeWidth: 2
+                        });
 
+                        var leftButton = shapeDraw.circle(20, 60, 17);
+                        leftButton.attr({
+                            fill: "#FFFFFF",
+                            stroke: "#000",
+                            strokeWidth: 2
+                        });
+
+                        var rightButton = shapeDraw.circle(81, 60, 17);
+                        rightButton.attr({
+                            fill: "#FFFFFF",
+                            stroke: "#000",
+                            strokeWidth: 2
+                        });
+
+                        var downButton = shapeDraw.circle(50, 95, 17);
+                        downButton.attr({
+                            fill: "#FFFFFF",
+                            stroke: "#000",
+                            strokeWidth: 2
+                        });
+
+                        var triangleUp = shapeDraw.polygon(50, 8, 64.722, 33.5, 35.278, 33.5).attr({fill: "black"});
+                        var triangleLeft = triangleUp.clone();
+                        triangleLeft.transform("t-30 35 R270 20 60");
+                        var triangleRight = triangleLeft.clone();
+                        triangleRight.transform("t31 35 R90 81 60");
+                        var triangleDown = triangleLeft.clone();
+                        triangleDown.transform("t0 70 R180 50 95");
+                        
+                        var zoominButton = shapeDraw.circle(480, 25, 17);
+                        zoominButton.attr({
+                            fill: "#FFFFFF",
+                            stroke: "#000",
+                            strokeWidth: 2
+                        });
+
+                        var zoomoutButton = shapeDraw.circle(480, 70, 17);
+                        zoomoutButton.attr({
+                            fill: "#FFFFFF",
+                            stroke: "#000",
+                            strokeWidth: 2
+                        });
+                        var zoominText = shapeDraw.text(467, 37, "+");
+                        zoominText.attr({
+                            "font-size": "45px"
+                        });
+                        
+                        var zoomoutText = shapeDraw.text(471, 86, "-");
+                        zoomoutText.attr({
+                            "font-size": "56px"
+                        });
+                        
+                        var moveUpBtn = shapeDraw.group(upButton,triangleUp);
+                        var moveDownBtn = shapeDraw.group(downButton,triangleDown);
+                        var moveLeftBtn = shapeDraw.group(leftButton,triangleLeft);
+                        var moveRightBtn = shapeDraw.group(rightButton,triangleRight);
+                        var moveZoominBtn = shapeDraw.group(zoominButton,zoominText);
+                        var moveZoomoutBtn = shapeDraw.group(zoomoutButton,zoomoutText);
+                        
+                        moveUpBtn.attr({opacity: 0});
+                        moveDownBtn.attr({opacity: 0});
+                        moveLeftBtn.attr({opacity: 0});
+                        moveRightBtn.attr({opacity: 0});
+                        moveZoominBtn.attr({opacity: 0});
+                        moveZoomoutBtn.attr({opacity: 0});
+                        
+                        moveUpBtn.mouseover(function() {
+                            
+                            triangleUp.attr({fill: "#2E9AFE"});
+                            upButton.attr({stroke: "#2E9AFE"});
+                            $("#shapeDrawing").css({'cursor':'pointer'});
+                        });
+                        moveUpBtn.mouseout(function() {
+                            
+                            triangleUp.attr({fill: "#000"});
+                            upButton.attr({stroke: "#000"});
+                            $("#shapeDrawing").css({'cursor':'auto'});
+                        });
+                        
+                        moveDownBtn.mouseover(function() {
+                            
+                            triangleDown.attr({fill: "#2E9AFE"});
+                            downButton.attr({stroke: "#2E9AFE"});
+                            $("#shapeDrawing").css({'cursor':'pointer'});
+                        });
+                        moveDownBtn.mouseout(function() {
+                            
+                            triangleDown.attr({fill: "#000"});
+                            downButton.attr({stroke: "#000"});
+                            $("#shapeDrawing").css({'cursor':'auto'});
+                        });
+                        
+                        moveLeftBtn.mouseover(function() {
+                            
+                            triangleLeft.attr({fill: "#2E9AFE"});
+                            leftButton.attr({stroke: "#2E9AFE"});
+                            $("#shapeDrawing").css({'cursor':'pointer'});
+                        });
+                        moveLeftBtn.mouseout(function() {
+                            
+                            triangleLeft.attr({fill: "#000"});
+                            leftButton.attr({stroke: "#000"});
+                            $("#shapeDrawing").css({'cursor':'auto'});
+                        });
+                        
+                        moveRightBtn.mouseover(function() {
+                            
+                            triangleRight.attr({fill: "#2E9AFE"});
+                            rightButton.attr({stroke: "#2E9AFE"});
+                            $("#shapeDrawing").css({'cursor':'pointer'});
+                        });
+                        moveRightBtn.mouseout(function() {
+                            
+                            triangleRight.attr({fill: "#000"});
+                            rightButton.attr({stroke: "#000"});
+                            $("#shapeDrawing").css({'cursor':'auto'});
+                        });
+                        
+                         moveZoominBtn.mouseover(function() {
+                            
+                            zoominText.attr({fill: "#2E9AFE"});
+                            zoominButton.attr({stroke: "#2E9AFE"});
+                            $("#shapeDrawing").css({'cursor':'zoom-in'});
+                        });
+                        moveZoominBtn.mouseout(function() {
+                            
+                            zoominText.attr({fill: "#000"});
+                            zoominButton.attr({stroke: "#000"});
+                            $("#shapeDrawing").css({'cursor':'auto'});
+                        });
+                        
+                        moveZoomoutBtn.mouseover(function() {
+                            
+                            zoomoutText.attr({fill: "#2E9AFE"});
+                            zoomoutButton.attr({stroke: "#2E9AFE"});
+                            $("#shapeDrawing").css({'cursor':'zoom-out'});
+                        });
+                        moveZoomoutBtn.mouseout(function() {
+                            
+                            zoomoutText.attr({fill: "#000"});
+                            zoomoutButton.attr({stroke: "#000"});
+                            $("#shapeDrawing").css({'cursor':'auto'});
+                        });
+                        
+                        $("#shapeDrawing").mouseover(function() {
+                            //console.log("abc");
+                            moveUpBtn.animate({opacity: 1},500);
+                            moveDownBtn.animate({opacity: 1},500);
+                            moveLeftBtn.animate({opacity: 1},500);
+                            moveRightBtn.animate({opacity: 1},500);
+                            moveZoominBtn.animate({opacity: 1},500);
+                            moveZoomoutBtn.animate({opacity: 1},500);
+                        });
+                        $("#shapeDrawing").mouseout(function() {
+                            //console.log("abc");
+                            moveUpBtn.animate({opacity: 0},500);
+                            moveDownBtn.animate({opacity: 0},500);
+                            moveLeftBtn.animate({opacity: 0},500);
+                            moveRightBtn.animate({opacity: 0},500);
+                            moveZoominBtn.animate({opacity: 0},500);
+                            moveZoomoutBtn.animate({opacity: 0},500);
+                        });
+
+                       
+                        
                         $("#menu").kendoMenu({
                             select: onSelectMenu
                         });
+                        //shapeDraw.add(tr)
                         $("#mainTab").kendoTabStrip({
                             animation: {
                                 open: {
@@ -823,35 +994,69 @@
                                 rocketMotor.animate().size(rocketLengthValue, rocketDiameterValue).move(rocketX, rockety);
                             }
                         }
+
                         function onCircleButtonClick(e) {
                             //var circlePropellant = shapeDraw.circle(30).fill('none').stroke({width: 1.2}).move(50, 50);
 
-                            
+
 
                             Snap.load("svg_templates/DTICircle.svg", function (f) {
                                 // Note that we traversre and change attr before SVG
                                 // is even added to the page
                                 //f.select("g[id='ID_0']");
                                 var s = shapeDraw.select("g[id='draft']");
-                                if(s!=null) {
+                                if (s != null) {
                                     s.remove();
                                 }
                                 var g = f.select("g[id='draft']");
-
+                                
+                                
                                 var outer_circle = g.select("circle[id='ID_8E0']");
                                 var posX = outer_circle.attr("cx");
                                 var posY = outer_circle.attr("cy");
                                 var r = outer_circle.attr("r");
-                                var translateX = posX * 143.95/r - 250;
-                                var translateY = 200 - posY * 143.95/r;
-                                g.transform("matrix("+143.95/r+" 0 0 "+143.95/r+" " + (-1) * translateX  + " " + translateY + ")");
-                                g.attr("strokeWidth", 1);
+                                
+                                var translateX = posX * 143.95 / r - 250;
+                                var translateY = 200 - (-1) * posY * 143.95 / r;
+                                g.transform("matrix(" + (1) * 143.95 / r + " 0 0 " + (-1) * 143.95 / r + " " + (-1) * translateX + " " + translateY + ")");
+                                g.attr("strokeWidth", 1.5);
                                 shapeDraw.append(g);
+                                
+                                outer_circle.mouseover(function(){
+                                    outer_circle.attr({stroke:"#2E9AFE",strokeWidth:2});
+                                    $("#shapeDrawing").css({'cursor':'pointer'});
+                                });
+                                outer_circle.mouseout(function(){
+                                    outer_circle.attr({stroke:"#000",strokeWidth:1});
+                                    $("#shapeDrawing").css({'cursor':'auto'});
+                                });
+                                outer_circle.mousedown(function(e){
+                                    $("#shapeDrawing").css({'cursor':'nwse-resize'});
+                                    //console.log(e);
+                                    //var pt = shapeDraw.line(e.clientX,e.clientY,e.clientX,e.clientY).attr({opacity:1,stroke:"#2E9AFE",strokeWidth:3});
+                                    var pt = shapeDraw.paper.node.createSVGPoint();
+                                    pt.x = e.clientX; pt.y = e.clientY;
+                                    console.log(pt);
+                                    pt.matrixTransform(shapeDraw.paper.node.getCTM().inverse());
+                                    console.log(pt);
+                                    var line = g.line(posX,posY,pt.x*(1) * 143.95 / r + (-1) * translateX,pt.y * (-1) * 143.95 / r + translateY).attr({id:"radiusLine",stroke:"#2E9AFE",strokeWidth:2,strokeDasharray:"10 10",opacity:1});
+                                    
+                                });
+                                outer_circle.mouseup(function(){
+                                    $("#shapeDrawing").css({'cursor':'auto'});
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    line.remove();
+                                });
+                                
+                                
                                 // Making croc draggable. Go ahead drag it around!
                                 //g.drag();
                                 // Obviously drag could take event handlers too
-                                // Looks like our croc is made from more than one polygon...
+                                // Looks like our croc is made from more than one polygon...\
+
                             });
+
+
 
                         }
 
@@ -865,7 +1070,7 @@
                                 // is even added to the page
                                 //f.select("g[id='ID_0']");
                                 var s = shapeDraw.select("g[id='draft']");
-                                if(s!=null) {
+                                if (s != null) {
                                     s.remove();
                                 }
                                 var g = f.select("g[id='draft']");
@@ -874,9 +1079,9 @@
                                 var posX = outer_circle.attr("cx");
                                 var posY = outer_circle.attr("cy");
                                 var r = outer_circle.attr("r");
-                                var translateX = posX * 143.95/r - 250;
-                                var translateY = 200 - posY * 143.95/r;
-                                g.transform("matrix("+143.95/r+" 0 0 "+143.95/r+" " + (-1) * translateX  + " " + translateY + ")");
+                                var translateX = posX * 143.95 / r - 250;
+                                var translateY = 200 - (-1) * posY * 143.95 / r;
+                                g.transform("matrix(" + (1) * 143.95 / r + " 0 0 " + (-1) * 143.95 / r + " " + (-1) * translateX + " " + translateY + ")");
                                 g.attr("strokeWidth", 1);
                                 shapeDraw.append(g);
                                 // Making croc draggable. Go ahead drag it around!
@@ -897,7 +1102,7 @@
                                 // is even added to the page
                                 //f.select("g[id='ID_0']");
                                 var s = shapeDraw.select("g[id='draft']");
-                                if(s!=null) {
+                                if (s != null) {
                                     s.remove();
                                 }
                                 var g = f.select("g[id='draft']");
@@ -906,9 +1111,9 @@
                                 var posX = outer_circle.attr("cx");
                                 var posY = outer_circle.attr("cy");
                                 var r = outer_circle.attr("r");
-                                var translateX = posX * 143.95/r - 250;
-                                var translateY = 200 - posY * 143.95/r;
-                                g.transform("matrix("+143.95/r+" 0 0 "+143.95/r+" " + (-1) * translateX  + " " + translateY + ")");
+                                var translateX = posX * 143.95 / r - 250;
+                                var translateY = 200 - (-1) * posY * 143.95 / r;
+                                g.transform("matrix(" + (1) * 143.95 / r + " 0 0 " + (-1) * 143.95 / r + " " + (-1) * translateX + " " + translateY + ")");
                                 g.attr("strokeWidth", 1);
                                 shapeDraw.append(g);
                                 // Making croc draggable. Go ahead drag it around!
@@ -929,7 +1134,7 @@
                                 // is even added to the page
                                 //f.select("g[id='ID_0']");
                                 var s = shapeDraw.select("g[id='draft']");
-                                if(s!=null) {
+                                if (s != null) {
                                     s.remove();
                                 }
                                 var g = f.select("g[id='draft']");
@@ -938,9 +1143,9 @@
                                 var posX = outer_circle.attr("cx");
                                 var posY = outer_circle.attr("cy");
                                 var r = outer_circle.attr("r");
-                                var translateX = posX * 143.95/r - 250;
-                                var translateY = 200 - posY * 143.95/r;
-                                g.transform("matrix("+143.95/r+" 0 0 "+143.95/r+" " + (-1) * translateX  + " " + translateY + ")");
+                                var translateX = posX * 143.95 / r - 250;
+                                var translateY = 200 - (-1) * posY * 143.95 / r;
+                                g.transform("matrix(" + (1) * 143.95 / r + " 0 0 " + (-1) * 143.95 / r + " " + (-1) * translateX + " " + translateY + ")");
                                 g.attr("strokeWidth", 1);
                                 shapeDraw.append(g);
                                 // Making croc draggable. Go ahead drag it around!
@@ -950,30 +1155,31 @@
                             });
 
                         }
-                        
+
                         function onStarButtonClick(e) {
                             //var circlePropellant = shapeDraw.circle(30).fill('none').stroke({width: 1.2}).move(50, 50);
-                            
-                            
-                            
+
+
+
                             Snap.load("svg_templates/DTIStar.svg", function (f) {
                                 // Note that we traversre and change attr before SVG
                                 // is even added to the page
                                 //f.select("g[id='ID_0']");
                                 var s = shapeDraw.select("g[id='draft']");
-                                if(s!=null) {
+                                if (s != null) {
                                     s.remove();
                                 }
                                 var g = f.select("g[id='draft']");
-                                
+
                                 var outer_circle = g.select("circle[id='ID_8E0']");
                                 var posX = outer_circle.attr("cx");
                                 var posY = outer_circle.attr("cy");
                                 var r = outer_circle.attr("r");
-                                var translateX = posX * 143.95/r - 250;
-                                var translateY = 200 - posY * 143.95/r;
-                                g.transform("matrix("+143.95/r+" 0 0 "+143.95/r+" " + (-1) * translateX  + " " + translateY + ")");
-                                g.attr("strokeWidth",1);
+                                var translateX = posX * 143.95 / r - 250;
+                                var translateY = 200 - (-1) * posY * 143.95 / r;
+                                g.transform("matrix(" + (1) * 143.95 / r + " 0 0 " + (-1) * 143.95 / r + " " + (-1) * translateX + " " + translateY + ")");
+                                //g.transform("r180");
+                                g.attr("strokeWidth", 1);
                                 shapeDraw.append(g);
                                 // Making croc draggable. Go ahead drag it around!
                                 //g.drag();
@@ -982,30 +1188,30 @@
                             });
 
                         }
-                        
+
                         function onWheelButtonClick(e) {
                             //var circlePropellant = shapeDraw.circle(30).fill('none').stroke({width: 1.2}).move(50, 50);
-                            
-                            
-                            
+
+
+
                             Snap.load("svg_templates/DTIWheel.svg", function (f) {
                                 // Note that we traversre and change attr before SVG
                                 // is even added to the page
                                 //f.select("g[id='ID_0']");
                                 var s = shapeDraw.select("g[id='draft']");
-                                if(s!=null) {
+                                if (s != null) {
                                     s.remove();
                                 }
                                 var g = f.select("g[id='draft']");
-                                
+
                                 var outer_circle = g.select("circle[id='ID_8E0']");
                                 var posX = outer_circle.attr("cx");
                                 var posY = outer_circle.attr("cy");
                                 var r = outer_circle.attr("r");
-                                var translateX = posX * 143.95/r - 250;
-                                var translateY = 200 - posY * 143.95/r;
-                                g.transform("matrix("+143.95/r+" 0 0 "+143.95/r+" " + (-1) * translateX  + " " + translateY + ")");
-                                g.attr("strokeWidth",1);
+                                var translateX = posX * 143.95 / r - 250;
+                                var translateY = 200 - (-1) * posY * 143.95 / r;
+                                g.transform("matrix(" + (1) * 143.95 / r + " 0 0 " + (-1) * 143.95 / r + " " + (-1) * translateX + " " + translateY + ")");
+                                g.attr("strokeWidth", 1);
                                 shapeDraw.append(g);
                                 // Making croc draggable. Go ahead drag it around!
                                 //g.drag();
