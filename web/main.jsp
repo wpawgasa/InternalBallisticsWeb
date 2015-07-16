@@ -2603,6 +2603,7 @@
 //
 //                    }
 
+
                         function onAddSectionClick(e) {
                             //kendoConsole.log("event :: click (" + $(e.event.target).closest(".k-button").attr("id") + ")" );
 
@@ -2618,6 +2619,21 @@
                             sectionDiameterValue = $("#sectionDiameter_Spinner").data("kendoNumericTextBox").value();
                             sectionLengthValue = $("#sectionLength_Spinner").data("kendoNumericTextBox").value();
                             innerPortDiameterValue = $("#innerPortDiameter_Spinner").data("kendoNumericTextBox").value();
+                            
+                            if(sectionDiameterValue != 0 && sectionLengthValue != 0 && innerPortDiameterValue != 0 && innerPortDiameterValue<sectionDiameterValue){
+                               var circleBtn = $("#circleToggleButton").data("kendoButton");
+                            circleBtn.enable(true);
+                            var eightStarBtn = $("#eightStarToggleButton").data("kendoButton");
+                            eightStarBtn.enable(true);
+                            var hexagonBtn = $("#hexagonToggleButton").data("kendoButton");
+                            hexagonBtn.enable(true);
+                            var pentagonBtn = $("#pentagonToggleButton").data("kendoButton");
+                            pentagonBtn.enable(true);
+                            var starBtn = $("#starToggleButton").data("kendoButton");
+                            starBtn.enable(true);
+                            var wheelBtn = $("#wheelToggleButton").data("kendoButton");
+                            wheelBtn.enable(true); 
+                            
                             console.log(sectionDiameterValue);
                             var newSection = new sectionObj();
                             newSection.sectionId = guid();
@@ -2647,6 +2663,12 @@
                             console.log(motor);
                             addSectionWindow.data("kendoWindow").close();
                             newSection.sectionGraphicObj.click(onSectionClicked(newSection));
+                            
+        }
+                            
+
+
+
                         }
 
                         function onSectionClicked(section) {
@@ -2828,27 +2850,33 @@
 
                         $("#circleToggleButton").kendoButton({
                             imageUrl: "/InternalBallisticsWeb/styles/icon/DTICircleIcon.png",
-                            click: onCircleButtonClick
+                            click: onCircleButtonClick,
+                            enable: false
                         });
                         $("#eightStarToggleButton").kendoButton({
                             imageUrl: "/InternalBallisticsWeb/styles/icon/DTIEightStarIcon.png",
-                            click: onEightStarButtonClick
+                            click: onEightStarButtonClick,
+                            enable: false
                         });
                         $("#hexagonToggleButton").kendoButton({
                             imageUrl: "/InternalBallisticsWeb/styles/icon/DTIHexagonIcon.png",
-                            click: onHexagonButtonClick
+                            click: onHexagonButtonClick,
+                            enable: false
                         });
                         $("#pentagonToggleButton").kendoButton({
                             imageUrl: "/InternalBallisticsWeb/styles/icon/DTIPentagonIcon.png",
-                            click: onPentagonButtonClick
+                            click: onPentagonButtonClick,
+                            enable: false
                         });
                         $("#starToggleButton").kendoButton({
                             imageUrl: "/InternalBallisticsWeb/styles/icon/DTIStarIcon.png",
-                            click: onStarButtonClick
+                            click: onStarButtonClick,
+                            enable: false
                         });
                         $("#wheelToggleButton").kendoButton({
                             imageUrl: "/InternalBallisticsWeb/styles/icon/DTIWheelIcon.png",
-                            click: onWheelButtonClick
+                            click: onWheelButtonClick,
+                            enable: false
                         });
                         $("#viewPropellantGEOMFileContent").kendoButton({
                             click: function () {
