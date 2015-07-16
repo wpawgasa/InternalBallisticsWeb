@@ -385,35 +385,35 @@
                         var shapeDraw = Snap("#shapeDrawing");
                         var curMouseEvent;
                         var view = shapeDraw.attr("viewBox");
-                        var upButton = shapeDraw.circle(view.x+50, view.y+25, 17);
+                        var upButton = shapeDraw.circle(view.x + 50, view.y + 25, 17);
                         upButton.attr({
                             fill: "#FFFFFF",
                             stroke: "#000",
                             strokeWidth: 2
                         });
 
-                        var leftButton = shapeDraw.circle(view.x+20, view.y+60, 17);
+                        var leftButton = shapeDraw.circle(view.x + 20, view.y + 60, 17);
                         leftButton.attr({
                             fill: "#FFFFFF",
                             stroke: "#000",
                             strokeWidth: 2
                         });
 
-                        var rightButton = shapeDraw.circle(view.x+81, view.y+60, 17);
+                        var rightButton = shapeDraw.circle(view.x + 81, view.y + 60, 17);
                         rightButton.attr({
                             fill: "#FFFFFF",
                             stroke: "#000",
                             strokeWidth: 2
                         });
 
-                        var downButton = shapeDraw.circle(view.x+50, view.y+95, 17);
+                        var downButton = shapeDraw.circle(view.x + 50, view.y + 95, 17);
                         downButton.attr({
                             fill: "#FFFFFF",
                             stroke: "#000",
                             strokeWidth: 2
                         });
 
-                        var triangleUp = shapeDraw.polygon(view.x+50, view.y+8, view.x+64.722, view.y+33.5, view.x+35.278, view.y+33.5).attr({fill: "black"});
+                        var triangleUp = shapeDraw.polygon(view.x + 50, view.y + 8, view.x + 64.722, view.y + 33.5, view.x + 35.278, view.y + 33.5).attr({fill: "black"});
                         var triangleLeft = triangleUp.clone();
                         triangleLeft.transform("t-30 35 R270 20 60");
                         var triangleRight = triangleLeft.clone();
@@ -457,12 +457,12 @@
                         moveRightBtn.attr({opacity: 0});
                         moveZoominBtn.attr({opacity: 0});
                         moveZoomoutBtn.attr({opacity: 0});
-                        
+
                         var verticalPanStep = 0;
                         var horizontalPanStep = 0;
                         var viewScale = 1;
-                        
-                        
+
+
                         moveUpBtn.mouseover(function () {
 
                             triangleUp.attr({fill: "#2E9AFE"});
@@ -475,29 +475,29 @@
                             upButton.attr({stroke: "#000"});
                             $("#shapeDrawing").css({'cursor': 'auto'});
                         });
-                        moveUpBtn.click(function() {
+                        moveUpBtn.click(function () {
                             var w = shapeDraw.attr("width");
                             var h = shapeDraw.attr("height");
                             var vb = shapeDraw.attr("viewBox");
                             //console.log(w+","+h);
                             //console.log(vb);
                             shapeDraw.attr({
-                                viewBox: vb.x+' '+(vb.y-1)+' '+vb.w+' '+vb.h
+                                viewBox: vb.x + ' ' + (vb.y - 1) + ' ' + vb.w + ' ' + vb.h
                             });
                             //console.log(moveUpBtn);
-                            verticalPanStep = verticalPanStep-1;
+                            verticalPanStep = verticalPanStep - 1;
                             var matrix = new Snap.Matrix();
-                            matrix.translate(horizontalPanStep,verticalPanStep);
+                            matrix.translate(horizontalPanStep, verticalPanStep);
                             matrix.scale(viewScale);
                             //console.log(matrix.toTransformString());
-                            moveUpBtn.attr({transform:matrix});
-                            moveDownBtn.attr({transform:matrix});
-                            moveLeftBtn.attr({transform:matrix});
-                            moveRightBtn.attr({transform:matrix});
-                            moveZoominBtn.attr({transform:matrix});
-                            moveZoomoutBtn.attr({transform:matrix});
-                            outRText.attr({transform:matrix});
-                            inRText.attr({transform:matrix});
+                            moveUpBtn.attr({transform: matrix});
+                            moveDownBtn.attr({transform: matrix});
+                            moveLeftBtn.attr({transform: matrix});
+                            moveRightBtn.attr({transform: matrix});
+                            moveZoominBtn.attr({transform: matrix});
+                            moveZoomoutBtn.attr({transform: matrix});
+                            outRText.attr({transform: matrix});
+                            inRText.attr({transform: matrix});
                         });
 
                         moveDownBtn.mouseover(function () {
@@ -512,29 +512,29 @@
                             downButton.attr({stroke: "#000"});
                             $("#shapeDrawing").css({'cursor': 'auto'});
                         });
-                        moveDownBtn.click(function() {
+                        moveDownBtn.click(function () {
                             var w = shapeDraw.attr("width");
                             var h = shapeDraw.attr("height");
                             var vb = shapeDraw.attr("viewBox");
                             //console.log(w+","+h);
                             //console.log(vb);
                             shapeDraw.attr({
-                                viewBox: vb.x+' '+(vb.y+1)+' '+vb.w+' '+vb.h
+                                viewBox: vb.x + ' ' + (vb.y + 1) + ' ' + vb.w + ' ' + vb.h
                             });
                             //console.log(moveUpBtn);
-                            verticalPanStep = verticalPanStep+1;
+                            verticalPanStep = verticalPanStep + 1;
                             var matrix = new Snap.Matrix();
-                            matrix.translate(horizontalPanStep,verticalPanStep);
+                            matrix.translate(horizontalPanStep, verticalPanStep);
                             matrix.scale(viewScale);
                             //console.log(matrix.toTransformString());
-                            moveUpBtn.attr({transform:matrix});
-                            moveDownBtn.attr({transform:matrix});
-                            moveLeftBtn.attr({transform:matrix});
-                            moveRightBtn.attr({transform:matrix});
-                            moveZoominBtn.attr({transform:matrix});
-                            moveZoomoutBtn.attr({transform:matrix});
-                            outRText.attr({transform:matrix});
-                            inRText.attr({transform:matrix});
+                            moveUpBtn.attr({transform: matrix});
+                            moveDownBtn.attr({transform: matrix});
+                            moveLeftBtn.attr({transform: matrix});
+                            moveRightBtn.attr({transform: matrix});
+                            moveZoominBtn.attr({transform: matrix});
+                            moveZoomoutBtn.attr({transform: matrix});
+                            outRText.attr({transform: matrix});
+                            inRText.attr({transform: matrix});
                         });
 
                         moveLeftBtn.mouseover(function () {
@@ -549,29 +549,29 @@
                             leftButton.attr({stroke: "#000"});
                             $("#shapeDrawing").css({'cursor': 'auto'});
                         });
-                        moveLeftBtn.click(function() {
+                        moveLeftBtn.click(function () {
                             var w = shapeDraw.attr("width");
                             var h = shapeDraw.attr("height");
                             var vb = shapeDraw.attr("viewBox");
                             //console.log(w+","+h);
                             //console.log(vb);
                             shapeDraw.attr({
-                                viewBox: (vb.x-1)+' '+vb.y+' '+vb.w+' '+vb.h
+                                viewBox: (vb.x - 1) + ' ' + vb.y + ' ' + vb.w + ' ' + vb.h
                             });
                             //console.log(moveUpBtn);
-                            horizontalPanStep = horizontalPanStep-1;
+                            horizontalPanStep = horizontalPanStep - 1;
                             var matrix = new Snap.Matrix();
-                            matrix.translate(horizontalPanStep,verticalPanStep);
+                            matrix.translate(horizontalPanStep, verticalPanStep);
                             matrix.scale(viewScale);
                             //console.log(matrix.toTransformString());
-                            moveUpBtn.attr({transform:matrix});
-                            moveDownBtn.attr({transform:matrix});
-                            moveLeftBtn.attr({transform:matrix});
-                            moveRightBtn.attr({transform:matrix});
-                            moveZoominBtn.attr({transform:matrix});
-                            moveZoomoutBtn.attr({transform:matrix});
-                            outRText.attr({transform:matrix});
-                            inRText.attr({transform:matrix});
+                            moveUpBtn.attr({transform: matrix});
+                            moveDownBtn.attr({transform: matrix});
+                            moveLeftBtn.attr({transform: matrix});
+                            moveRightBtn.attr({transform: matrix});
+                            moveZoominBtn.attr({transform: matrix});
+                            moveZoomoutBtn.attr({transform: matrix});
+                            outRText.attr({transform: matrix});
+                            inRText.attr({transform: matrix});
                         });
 
                         moveRightBtn.mouseover(function () {
@@ -587,29 +587,29 @@
                             $("#shapeDrawing").css({'cursor': 'auto'});
                         });
 
-                        moveRightBtn.click(function() {
+                        moveRightBtn.click(function () {
                             var w = shapeDraw.attr("width");
                             var h = shapeDraw.attr("height");
                             var vb = shapeDraw.attr("viewBox");
                             //console.log(w+","+h);
                             //console.log(vb);
                             shapeDraw.attr({
-                                viewBox: (vb.x+1)+' '+vb.y+' '+vb.w+' '+vb.h
+                                viewBox: (vb.x + 1) + ' ' + vb.y + ' ' + vb.w + ' ' + vb.h
                             });
                             //console.log(moveUpBtn);
-                            horizontalPanStep = horizontalPanStep+1;
+                            horizontalPanStep = horizontalPanStep + 1;
                             var matrix = new Snap.Matrix();
-                            matrix.translate(horizontalPanStep,verticalPanStep);
+                            matrix.translate(horizontalPanStep, verticalPanStep);
                             matrix.scale(viewScale);
                             //console.log(matrix.toTransformString());
-                            moveUpBtn.attr({transform:matrix});
-                            moveDownBtn.attr({transform:matrix});
-                            moveLeftBtn.attr({transform:matrix});
-                            moveRightBtn.attr({transform:matrix});
-                            moveZoominBtn.attr({transform:matrix});
-                            moveZoomoutBtn.attr({transform:matrix});
-                            outRText.attr({transform:matrix});
-                            inRText.attr({transform:matrix});
+                            moveUpBtn.attr({transform: matrix});
+                            moveDownBtn.attr({transform: matrix});
+                            moveLeftBtn.attr({transform: matrix});
+                            moveRightBtn.attr({transform: matrix});
+                            moveZoominBtn.attr({transform: matrix});
+                            moveZoomoutBtn.attr({transform: matrix});
+                            outRText.attr({transform: matrix});
+                            inRText.attr({transform: matrix});
                         });
 
                         moveZoominBtn.mouseover(function () {
@@ -624,29 +624,29 @@
                             zoominButton.attr({stroke: "#000"});
                             $("#shapeDrawing").css({'cursor': 'auto'});
                         });
-                        moveZoominBtn.click(function() {
+                        moveZoominBtn.click(function () {
                             var w = shapeDraw.attr("width");
                             var h = shapeDraw.attr("height");
                             var vb = shapeDraw.attr("viewBox");
                             //console.log(w+","+h);
                             //console.log(vb);
                             shapeDraw.attr({
-                                viewBox: vb.x+' '+vb.y+' '+vb.w*0.99+' '+vb.h*0.99
+                                viewBox: vb.x + ' ' + vb.y + ' ' + vb.w * 0.99 + ' ' + vb.h * 0.99
                             });
-                            viewScale = viewScale*0.99;
+                            viewScale = viewScale * 0.99;
                             var matrix = new Snap.Matrix();
-                            matrix.translate(horizontalPanStep,verticalPanStep);
+                            matrix.translate(horizontalPanStep, verticalPanStep);
                             matrix.scale(viewScale);
                             //console.log(matrix.toTransformString());
-                            moveUpBtn.attr({transform:matrix});
-                            moveDownBtn.attr({transform:matrix});
-                            moveLeftBtn.attr({transform:matrix});
-                            moveRightBtn.attr({transform:matrix});
-                            moveZoominBtn.attr({transform:matrix});
-                            moveZoomoutBtn.attr({transform:matrix});
-                            outRText.attr({transform:matrix});
-                            inRText.attr({transform:matrix});
-                            
+                            moveUpBtn.attr({transform: matrix});
+                            moveDownBtn.attr({transform: matrix});
+                            moveLeftBtn.attr({transform: matrix});
+                            moveRightBtn.attr({transform: matrix});
+                            moveZoominBtn.attr({transform: matrix});
+                            moveZoomoutBtn.attr({transform: matrix});
+                            outRText.attr({transform: matrix});
+                            inRText.attr({transform: matrix});
+
                         });
 
                         moveZoomoutBtn.mouseover(function () {
@@ -661,29 +661,29 @@
                             zoomoutButton.attr({stroke: "#000"});
                             $("#shapeDrawing").css({'cursor': 'auto'});
                         });
-                        moveZoomoutBtn.click(function() {
+                        moveZoomoutBtn.click(function () {
                             var w = shapeDraw.attr("width");
                             var h = shapeDraw.attr("height");
                             var vb = shapeDraw.attr("viewBox");
                             //console.log(w+","+h);
                             //console.log(vb);
                             shapeDraw.attr({
-                                viewBox: vb.x+' '+vb.y+' '+vb.w*1.01+' '+vb.h*1.01
+                                viewBox: vb.x + ' ' + vb.y + ' ' + vb.w * 1.01 + ' ' + vb.h * 1.01
                             });
-                            viewScale = viewScale*1.01;
+                            viewScale = viewScale * 1.01;
                             var matrix = new Snap.Matrix();
-                            matrix.translate(horizontalPanStep,verticalPanStep);
+                            matrix.translate(horizontalPanStep, verticalPanStep);
                             matrix.scale(viewScale);
                             //console.log(matrix.toTransformString());
-                            moveUpBtn.attr({transform:matrix});
-                            moveDownBtn.attr({transform:matrix});
-                            moveLeftBtn.attr({transform:matrix});
-                            moveRightBtn.attr({transform:matrix});
-                            moveZoominBtn.attr({transform:matrix});
-                            moveZoomoutBtn.attr({transform:matrix});
-                            outRText.attr({transform:matrix});
-                            inRText.attr({transform:matrix});
-                            
+                            moveUpBtn.attr({transform: matrix});
+                            moveDownBtn.attr({transform: matrix});
+                            moveLeftBtn.attr({transform: matrix});
+                            moveRightBtn.attr({transform: matrix});
+                            moveZoominBtn.attr({transform: matrix});
+                            moveZoomoutBtn.attr({transform: matrix});
+                            outRText.attr({transform: matrix});
+                            inRText.attr({transform: matrix});
+
                         });
 
                         $("#shapeDrawing").mouseover(function () {
@@ -704,8 +704,8 @@
                             moveZoominBtn.animate({opacity: 0}, 500);
                             moveZoomoutBtn.animate({opacity: 0}, 500);
                         });
-                        var outRText = shapeDraw.text(10,350,"");
-                        var inRText = shapeDraw.text(10,380,"");
+                        var outRText = shapeDraw.text(10, 350, "");
+                        var inRText = shapeDraw.text(10, 380, "");
 
 
                         $("#menu").kendoMenu({
@@ -1178,29 +1178,29 @@
                                 outer_circle.attr("stroke", "#000");
                                 //outer_circle.attr("fill","#fff");
                                 shapeDraw.append(g);
-                                outRText.attr({text:"Outer Radius: "+r});
-                                inRText.attr({text:"Inner Radius: "+r_inner});
-                                var mouseMove = function(dx,dy,x,y) {
+                                outRText.attr({text: "Outer Radius: " + r});
+                                inRText.attr({text: "Inner Radius: " + r_inner});
+                                var mouseMove = function (dx, dy, x, y) {
                                     var cx = posX * (1) * (143.95 / r) + (-1) * translateX;
-                                        var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
-                                        var pt = shapeDraw.paper.node.createSVGPoint();
-                                        pt.x = x;
-                                        pt.y = y;
-                                        //console.log(pt);
-                                        var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
-                                        
-                                        var newr = Math.sqrt(Math.pow(cx-(tPT.x),2)+Math.pow(cy-(tPT.y),2));
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
-                                        var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#2E9AFE", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                  
-                                        //console.log(cx-(tPT.x)+", "+cy-(tPT.y));
-                                        outer_circle.attr({r: newr});
-                                        outRText.attr({text:'Outer Radius: '+newr});
+                                    var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
+                                    var pt = shapeDraw.paper.node.createSVGPoint();
+                                    pt.x = x;
+                                    pt.y = y;
+                                    //console.log(pt);
+                                    var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
+
+                                    var newr = Math.sqrt(Math.pow(cx - (tPT.x), 2) + Math.pow(cy - (tPT.y), 2));
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                    var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#2E9AFE", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
+
+                                    //console.log(cx-(tPT.x)+", "+cy-(tPT.y));
+                                    outer_circle.attr({r: newr});
+                                    outRText.attr({text: 'Outer Radius: ' + newr});
                                 }
-                                var dragStart = function(x,y) {
+                                var dragStart = function (x, y) {
                                     outer_circle.attr({stroke: "#2E9AFE", strokeWidth: 3, strokeDasharray: "5 5"});
                                     var pt = shapeDraw.paper.node.createSVGPoint();
                                     pt.x = x;
@@ -1209,22 +1209,22 @@
                                     var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
                                     //console.log(tPT);
                                     var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#2E9AFE", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                                    
+
                                     $("#shapeDrawing").css({'cursor': 'nwse-resize'});
                                     curMouseEvent = "drag";
-                                    
+
                                 }
-                                var dragStop = function() {
+                                var dragStop = function () {
                                     outer_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
-                                        $("#shapeDrawing").css({'cursor': 'auto'});
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
-                                        curMouseEvent = "";
+                                    $("#shapeDrawing").css({'cursor': 'auto'});
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                    curMouseEvent = "";
                                 }
-                                outer_circle.drag(mouseMove,dragStart,dragStop);
-                                outer_circle.mousedown(function(){
+                                outer_circle.drag(mouseMove, dragStart, dragStop);
+                                outer_circle.mousedown(function () {
                                     outer_circle.attr({stroke: "#2E9AFE", strokeWidth: 3, strokeDasharray: "5 5"});
                                     var pt = shapeDraw.paper.node.createSVGPoint();
                                     pt.x = x;
@@ -1233,28 +1233,28 @@
                                     var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
                                     //console.log(tPT);
                                     var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#2E9AFE", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                                    
+
                                     $("#shapeDrawing").css({'cursor': 'nwse-resize'});
                                 });
-                                outer_circle.mouseup(function(){
+                                outer_circle.mouseup(function () {
                                     outer_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
-                                        $("#shapeDrawing").css({'cursor': 'auto'});
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
+                                    $("#shapeDrawing").css({'cursor': 'auto'});
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
                                 });
                                 outer_circle.mouseover(function () {
-                                    if(curMouseEvent!="drag") {
-                                    outer_circle.attr({stroke: "#2E9AFE", strokeWidth: 3});
-                                    $("#shapeDrawing").css({'cursor': 'pointer'});
-                                    //curMouseEvent = "over";
-                                }
-                                    
+                                    if (curMouseEvent != "drag") {
+                                        outer_circle.attr({stroke: "#2E9AFE", strokeWidth: 3});
+                                        $("#shapeDrawing").css({'cursor': 'pointer'});
+                                        //curMouseEvent = "over";
+                                    }
+
                                 });
                                 outer_circle.mouseout(function () {
-                                    if(curMouseEvent!="drag") {
-                                    outer_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
+                                    if (curMouseEvent != "drag") {
+                                        outer_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
                                         $("#shapeDrawing").css({'cursor': 'auto'});
                                         var line = shapeDraw.select("line[id='radiusLine']");
                                         if (line != null) {
@@ -1264,29 +1264,29 @@
                                     //curMouseEvent = "over";
                                     //console.log("over");
                                 });
-                                
-                                
-                                var innerMouseMove = function(dx,dy,x,y) {
+
+
+                                var innerMouseMove = function (dx, dy, x, y) {
                                     var cx = posX * (1) * (143.95 / r) + (-1) * translateX;
-                                        var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
-                                        var pt = shapeDraw.paper.node.createSVGPoint();
-                                        pt.x = x;
-                                        pt.y = y;
-                                        //console.log(pt);
-                                        var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
-                                        
-                                        var newr = Math.sqrt(Math.pow(cx-(tPT.x),2)+Math.pow(cy-(tPT.y),2));
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
-                                        var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#00FF80", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                  
-                                        //console.log(cx-(tPT.x)+", "+cy-(tPT.y));
-                                        inner_circle.attr({r: newr});
-                                        inRText.attr({text:'Inner Radius: '+newr});
+                                    var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
+                                    var pt = shapeDraw.paper.node.createSVGPoint();
+                                    pt.x = x;
+                                    pt.y = y;
+                                    //console.log(pt);
+                                    var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
+
+                                    var newr = Math.sqrt(Math.pow(cx - (tPT.x), 2) + Math.pow(cy - (tPT.y), 2));
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                    var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#00FF80", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
+
+                                    //console.log(cx-(tPT.x)+", "+cy-(tPT.y));
+                                    inner_circle.attr({r: newr});
+                                    inRText.attr({text: 'Inner Radius: ' + newr});
                                 }
-                                var innerDragStart = function(x,y) {
+                                var innerDragStart = function (x, y) {
                                     inner_circle.attr({stroke: "#00FF80", strokeWidth: 3, strokeDasharray: "5 5"});
                                     var pt = shapeDraw.paper.node.createSVGPoint();
                                     pt.x = x;
@@ -1295,21 +1295,21 @@
                                     var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
                                     //console.log(tPT);
                                     var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#00FF80", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                                    
+
                                     $("#shapeDrawing").css({'cursor': 'nwse-resize'});
                                     curMouseEvent = "drag";
                                 }
-                                var innerDragStop = function() {
+                                var innerDragStop = function () {
                                     inner_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
-                                        $("#shapeDrawing").css({'cursor': 'auto'});
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
-                                    curMouseEvent = "";    
+                                    $("#shapeDrawing").css({'cursor': 'auto'});
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                    curMouseEvent = "";
                                 }
-                                inner_circle.drag(innerMouseMove,innerDragStart,innerDragStop);
-                                inner_circle.mousedown(function(){
+                                inner_circle.drag(innerMouseMove, innerDragStart, innerDragStop);
+                                inner_circle.mousedown(function () {
                                     inner_circle.attr({stroke: "#00FF80", strokeWidth: 3, strokeDasharray: "5 5"});
                                     var pt = shapeDraw.paper.node.createSVGPoint();
                                     pt.x = x;
@@ -1318,28 +1318,28 @@
                                     var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
                                     //console.log(tPT);
                                     var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#00FF80", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                                    
+
                                     $("#shapeDrawing").css({'cursor': 'nwse-resize'});
                                 });
-                                inner_circle.mouseup(function(){
+                                inner_circle.mouseup(function () {
                                     inner_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
-                                        $("#shapeDrawing").css({'cursor': 'auto'});
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
+                                    $("#shapeDrawing").css({'cursor': 'auto'});
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
                                 });
                                 inner_circle.mouseover(function () {
-                                    if(curMouseEvent!="drag") {
-                                    inner_circle.attr({stroke: "#00FF80", strokeWidth: 3});
-                                    $("#shapeDrawing").css({'cursor': 'pointer'});
-                                    //curMouseEvent = "over";
-                                }
-                                    
+                                    if (curMouseEvent != "drag") {
+                                        inner_circle.attr({stroke: "#00FF80", strokeWidth: 3});
+                                        $("#shapeDrawing").css({'cursor': 'pointer'});
+                                        //curMouseEvent = "over";
+                                    }
+
                                 });
                                 inner_circle.mouseout(function () {
-                                    if(curMouseEvent!="drag") {
-                                    inner_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
+                                    if (curMouseEvent != "drag") {
+                                        inner_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
                                         $("#shapeDrawing").css({'cursor': 'auto'});
                                         var line = shapeDraw.select("line[id='radiusLine']");
                                         if (line != null) {
@@ -1349,7 +1349,7 @@
                                     //curMouseEvent = "over";
                                     //console.log("over");
                                 });
-                                
+
 
 
                                 // Making croc draggable. Go ahead drag it around!
@@ -1381,14 +1381,14 @@
                                 var outer_circle = g.select("circle[id='ID_8E0']");
                                 var paths = g.selectAll("path");
                                 var inner_g = g.g();
-                                inner_g.attr({fill:'none'});
+                                inner_g.attr({fill: 'none'});
                                 //console.log(paths);
-                                for(var i = 0;i<paths.length;i++) {
+                                for (var i = 0; i < paths.length; i++) {
                                     var tmp_path = paths[i].clone();
                                     inner_g.add(tmp_path);
                                     paths[i].remove();
                                 }
-                                console.log(inner_g);
+                                //console.log(inner_g);
                                 var posX = outer_circle.attr("cx");
                                 var posY = outer_circle.attr("cy");
                                 var r = outer_circle.attr("r");
@@ -1398,30 +1398,30 @@
                                 g.attr("strokeWidth", 2);
                                 outer_circle.attr("stroke", "#000");
                                 shapeDraw.append(g);
-                                
-                                outRText.attr({text:"Outer Radius: "+r});
-                           
-                                var mouseMove = function(dx,dy,x,y) {
+
+                                outRText.attr({text: "Outer Radius: " + r});
+
+                                var mouseMove = function (dx, dy, x, y) {
                                     var cx = posX * (1) * (143.95 / r) + (-1) * translateX;
-                                        var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
-                                        var pt = shapeDraw.paper.node.createSVGPoint();
-                                        pt.x = x;
-                                        pt.y = y;
-                                        //console.log(pt);
-                                        var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
-                                        
-                                        var newr = Math.sqrt(Math.pow(cx-(tPT.x),2)+Math.pow(cy-(tPT.y),2));
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
-                                        var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#2E9AFE", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                  
-                                        //console.log(cx-(tPT.x)+", "+cy-(tPT.y));
-                                        outer_circle.attr({r: newr*r/143.95});
-                                        outRText.attr({text:'Outer Radius: '+newr});
+                                    var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
+                                    var pt = shapeDraw.paper.node.createSVGPoint();
+                                    pt.x = x;
+                                    pt.y = y;
+                                    //console.log(pt);
+                                    var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
+
+                                    var newr = Math.sqrt(Math.pow(cx - (tPT.x), 2) + Math.pow(cy - (tPT.y), 2));
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                    var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#2E9AFE", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
+
+                                    //console.log(cx-(tPT.x)+", "+cy-(tPT.y));
+                                    outer_circle.attr({r: newr * r / 143.95});
+                                    outRText.attr({text: 'Outer Radius: ' + newr});
                                 }
-                                var dragStart = function(x,y) {
+                                var dragStart = function (x, y) {
                                     outer_circle.attr({stroke: "#2E9AFE", strokeWidth: 3, strokeDasharray: "5 5"});
                                     var pt = shapeDraw.paper.node.createSVGPoint();
                                     pt.x = x;
@@ -1430,22 +1430,22 @@
                                     var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
                                     //console.log(tPT);
                                     var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#2E9AFE", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                                    
+
                                     $("#shapeDrawing").css({'cursor': 'nwse-resize'});
                                     curMouseEvent = "drag";
-                                    
+
                                 }
-                                var dragStop = function() {
+                                var dragStop = function () {
                                     outer_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
-                                        $("#shapeDrawing").css({'cursor': 'auto'});
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
-                                        curMouseEvent = "";
+                                    $("#shapeDrawing").css({'cursor': 'auto'});
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                    curMouseEvent = "";
                                 }
-                                outer_circle.drag(mouseMove,dragStart,dragStop);
-                                outer_circle.mousedown(function(){
+                                outer_circle.drag(mouseMove, dragStart, dragStop);
+                                outer_circle.mousedown(function () {
                                     outer_circle.attr({stroke: "#2E9AFE", strokeWidth: 3, strokeDasharray: "5 5"});
                                     var pt = shapeDraw.paper.node.createSVGPoint();
                                     pt.x = x;
@@ -1454,28 +1454,28 @@
                                     var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
                                     //console.log(tPT);
                                     var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#2E9AFE", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                                    
+
                                     $("#shapeDrawing").css({'cursor': 'nwse-resize'});
                                 });
-                                outer_circle.mouseup(function(){
+                                outer_circle.mouseup(function () {
                                     outer_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
-                                        $("#shapeDrawing").css({'cursor': 'auto'});
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
+                                    $("#shapeDrawing").css({'cursor': 'auto'});
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
                                 });
                                 outer_circle.mouseover(function () {
-                                    if(curMouseEvent!="drag") {
-                                    outer_circle.attr({stroke: "#2E9AFE", strokeWidth: 3});
-                                    $("#shapeDrawing").css({'cursor': 'pointer'});
-                                    //curMouseEvent = "over";
-                                }
-                                    
+                                    if (curMouseEvent != "drag") {
+                                        outer_circle.attr({stroke: "#2E9AFE", strokeWidth: 3});
+                                        $("#shapeDrawing").css({'cursor': 'pointer'});
+                                        //curMouseEvent = "over";
+                                    }
+
                                 });
                                 outer_circle.mouseout(function () {
-                                    if(curMouseEvent!="drag") {
-                                    outer_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
+                                    if (curMouseEvent != "drag") {
+                                        outer_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
                                         $("#shapeDrawing").css({'cursor': 'auto'});
                                         var line = shapeDraw.select("line[id='radiusLine']");
                                         if (line != null) {
@@ -1485,30 +1485,33 @@
                                     //curMouseEvent = "over";
                                     //console.log("over");
                                 });
-                                
-                                
-                                var innerMouseMove = function(dx,dy,x,y) {
+
+                                var dragStartRadius = 0;
+                                var innerMouseMove = function (dx, dy, x, y) {
                                     var cx = posX * (1) * (143.95 / r) + (-1) * translateX;
-                                        var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
-                                        var pt = shapeDraw.paper.node.createSVGPoint();
-                                        pt.x = x;
-                                        pt.y = y;
-                                        //console.log(pt);
-                                        var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
-                                        
-                                        var newr = Math.sqrt(Math.pow(cx-(tPT.x),2)+Math.pow(cy-(tPT.y),2));
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
-                                        var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#00FF80", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                  
-                                        //console.log(cx-(tPT.x)+", "+cy-(tPT.y));
-                                        inner_circle.attr({r: newr});
-                                        inRText.attr({text:'Inner Radius: '+newr});
+                                    var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
+                                    var pt = shapeDraw.paper.node.createSVGPoint();
+                                    pt.x = x;
+                                    pt.y = y;
+                                    //console.log(pt);
+                                    var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
+
+                                    var newRadius = Math.sqrt(Math.pow(cx - (tPT.x), 2) + Math.pow(cy - (tPT.y), 2));
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                    var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#00FF80", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
+
+                                    //console.log(cx-(tPT.x)+", "+cy-(tPT.y));
+                                    var scaleRatio = newRadius / dragStartRadius;
+                                    inner_g.transform('S' + scaleRatio + ',' + scaleRatio + ',' + posX + ',' + posY);
+                                    inRText.attr({text: 'Inner Radius: ' + newr});
                                 }
-                                var innerDragStart = function(x,y) {
-                                    inner_circle.attr({stroke: "#00FF80", strokeWidth: 3, strokeDasharray: "5 5"});
+                                var innerDragStart = function (x, y) {
+                                    inner_g.attr({stroke: "#00FF80", strokeWidth: 3, strokeDasharray: "5 5"});
+                                    var cx = posX * (1) * (143.95 / r) + (-1) * translateX;
+                                    var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
                                     var pt = shapeDraw.paper.node.createSVGPoint();
                                     pt.x = x;
                                     pt.y = y;
@@ -1516,22 +1519,27 @@
                                     var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
                                     //console.log(tPT);
                                     var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#00FF80", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                                    
+                                    dragStartRadius = Math.sqrt(Math.pow(cx - (tPT.x), 2) + Math.pow(cy - (tPT.y), 2));
                                     $("#shapeDrawing").css({'cursor': 'nwse-resize'});
                                     curMouseEvent = "drag";
                                 }
-                                var innerDragStop = function() {
-                                    inner_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
-                                        $("#shapeDrawing").css({'cursor': 'auto'});
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
-                                    curMouseEvent = "";    
+                                var innerDragStop = function () {
+                                    inner_g.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
+                                    $("#shapeDrawing").css({'cursor': 'auto'});
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                    curMouseEvent = "";
                                 }
-                                inner_circle.drag(innerMouseMove,innerDragStart,innerDragStop);
-                                inner_circle.mousedown(function(){
-                                    inner_circle.attr({stroke: "#00FF80", strokeWidth: 3, strokeDasharray: "5 5"});
+                                inner_g.drag(innerMouseMove, innerDragStart, innerDragStop);
+                                inner_g.mousedown(function () {
+                                    inner_g.attr({stroke: "#00FF80", strokeWidth: 3, strokeDasharray: "5 5"});
+                                    var paths = inner_g.selectAll("path");
+
+                                    for (var i = 0; i < paths.length; i++) {
+                                        paths[i].attr({stroke: "#00FF80", strokeWidth: 3});
+                                    }
                                     var pt = shapeDraw.paper.node.createSVGPoint();
                                     pt.x = x;
                                     pt.y = y;
@@ -1539,28 +1547,43 @@
                                     var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
                                     //console.log(tPT);
                                     var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#00FF80", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                                    
+
                                     $("#shapeDrawing").css({'cursor': 'nwse-resize'});
                                 });
-                                inner_circle.mouseup(function(){
-                                    inner_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
-                                        $("#shapeDrawing").css({'cursor': 'auto'});
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
+                                inner_g.mouseup(function () {
+                                    inner_g.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
+                                    var paths = inner_g.selectAll("path");
+
+                                    for (var i = 0; i < paths.length; i++) {
+                                        paths[i].attr({stroke: "#000", strokeWidth: 2});
+                                    }
+                                    $("#shapeDrawing").css({'cursor': 'auto'});
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                });
+                                inner_g.mouseover(function () {
+                                    if (curMouseEvent != "drag") {
+                                        inner_g.attr({stroke: "#00FF80", strokeWidth: 3});
+                                        var paths = inner_g.selectAll("path");
+
+                                        for (var i = 0; i < paths.length; i++) {
+                                            paths[i].attr({stroke: "#00FF80", strokeWidth: 3});
                                         }
+                                        $("#shapeDrawing").css({'cursor': 'pointer'});
+                                        //curMouseEvent = "over";
+                                    }
+
                                 });
-                                inner_circle.mouseover(function () {
-                                    if(curMouseEvent!="drag") {
-                                    inner_circle.attr({stroke: "#00FF80", strokeWidth: 3});
-                                    $("#shapeDrawing").css({'cursor': 'pointer'});
-                                    //curMouseEvent = "over";
-                                }
-                                    
-                                });
-                                inner_circle.mouseout(function () {
-                                    if(curMouseEvent!="drag") {
-                                    inner_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
+                                inner_g.mouseout(function () {
+                                    if (curMouseEvent != "drag") {
+                                        inner_g.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
+                                        var paths = inner_g.selectAll("path");
+
+                                        for (var i = 0; i < paths.length; i++) {
+                                            paths[i].attr({stroke: "#000", strokeWidth: 2});
+                                        }
                                         $("#shapeDrawing").css({'cursor': 'auto'});
                                         var line = shapeDraw.select("line[id='radiusLine']");
                                         if (line != null) {
@@ -1593,40 +1616,51 @@
                                 }
                                 var g = f.select("g[id='draft']");
 
+                                //var outer_circle = g.select("circle[id='ID_8E0']");
                                 var outer_circle = g.select("circle[id='ID_8E0']");
-                                var inner_circle = g.select("path[id='ID_8F2']");
+                                var paths = g.selectAll("path");
+                                var inner_g = g.g();
+                                inner_g.attr({fill: 'none'});
+                                //console.log(paths);
+                                for (var i = 0; i < paths.length; i++) {
+                                    var tmp_path = paths[i].clone();
+                                    inner_g.add(tmp_path);
+                                    paths[i].remove();
+                                }
+                                //console.log(inner_g);
                                 var posX = outer_circle.attr("cx");
                                 var posY = outer_circle.attr("cy");
                                 var r = outer_circle.attr("r");
                                 var translateX = posX * 143.95 / r - 250;
                                 var translateY = 200 - (-1) * posY * 143.95 / r;
                                 g.transform("matrix(" + (1) * 143.95 / r + " 0 0 " + (-1) * 143.95 / r + " " + (-1) * translateX + " " + translateY + ")");
-                                g.attr("strokeWidth", 1);
+                                g.attr("strokeWidth", 2);
+                                outer_circle.attr("stroke", "#000");
                                 shapeDraw.append(g);
-                                
-                                                               outRText.attr({text:"Outer Radius: "+r});
-                           
-                                var mouseMove = function(dx,dy,x,y) {
+
+                                outRText.attr({text: "Outer Radius: " + r});
+
+                                var mouseMove = function (dx, dy, x, y) {
                                     var cx = posX * (1) * (143.95 / r) + (-1) * translateX;
-                                        var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
-                                        var pt = shapeDraw.paper.node.createSVGPoint();
-                                        pt.x = x;
-                                        pt.y = y;
-                                        //console.log(pt);
-                                        var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
-                                        
-                                        var newr = Math.sqrt(Math.pow(cx-(tPT.x),2)+Math.pow(cy-(tPT.y),2));
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
-                                        var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#2E9AFE", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                  
-                                        //console.log(cx-(tPT.x)+", "+cy-(tPT.y));
-                                        outer_circle.attr({r: newr*r/143.95});
-                                        outRText.attr({text:'Outer Radius: '+newr});
+                                    var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
+                                    var pt = shapeDraw.paper.node.createSVGPoint();
+                                    pt.x = x;
+                                    pt.y = y;
+                                    //console.log(pt);
+                                    var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
+
+                                    var newr = Math.sqrt(Math.pow(cx - (tPT.x), 2) + Math.pow(cy - (tPT.y), 2));
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                    var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#2E9AFE", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
+
+                                    //console.log(cx-(tPT.x)+", "+cy-(tPT.y));
+                                    outer_circle.attr({r: newr * r / 143.95});
+                                    outRText.attr({text: 'Outer Radius: ' + newr});
                                 }
-                                var dragStart = function(x,y) {
+                                var dragStart = function (x, y) {
                                     outer_circle.attr({stroke: "#2E9AFE", strokeWidth: 3, strokeDasharray: "5 5"});
                                     var pt = shapeDraw.paper.node.createSVGPoint();
                                     pt.x = x;
@@ -1635,22 +1669,22 @@
                                     var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
                                     //console.log(tPT);
                                     var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#2E9AFE", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                                    
+
                                     $("#shapeDrawing").css({'cursor': 'nwse-resize'});
                                     curMouseEvent = "drag";
-                                    
+
                                 }
-                                var dragStop = function() {
+                                var dragStop = function () {
                                     outer_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
-                                        $("#shapeDrawing").css({'cursor': 'auto'});
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
-                                        curMouseEvent = "";
+                                    $("#shapeDrawing").css({'cursor': 'auto'});
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                    curMouseEvent = "";
                                 }
-                                outer_circle.drag(mouseMove,dragStart,dragStop);
-                                outer_circle.mousedown(function(){
+                                outer_circle.drag(mouseMove, dragStart, dragStop);
+                                outer_circle.mousedown(function () {
                                     outer_circle.attr({stroke: "#2E9AFE", strokeWidth: 3, strokeDasharray: "5 5"});
                                     var pt = shapeDraw.paper.node.createSVGPoint();
                                     pt.x = x;
@@ -1659,28 +1693,28 @@
                                     var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
                                     //console.log(tPT);
                                     var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#2E9AFE", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                                    
+
                                     $("#shapeDrawing").css({'cursor': 'nwse-resize'});
                                 });
-                                outer_circle.mouseup(function(){
+                                outer_circle.mouseup(function () {
                                     outer_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
-                                        $("#shapeDrawing").css({'cursor': 'auto'});
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
+                                    $("#shapeDrawing").css({'cursor': 'auto'});
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
                                 });
                                 outer_circle.mouseover(function () {
-                                    if(curMouseEvent!="drag") {
-                                    outer_circle.attr({stroke: "#2E9AFE", strokeWidth: 3});
-                                    $("#shapeDrawing").css({'cursor': 'pointer'});
-                                    //curMouseEvent = "over";
-                                }
-                                    
+                                    if (curMouseEvent != "drag") {
+                                        outer_circle.attr({stroke: "#2E9AFE", strokeWidth: 3});
+                                        $("#shapeDrawing").css({'cursor': 'pointer'});
+                                        //curMouseEvent = "over";
+                                    }
+
                                 });
                                 outer_circle.mouseout(function () {
-                                    if(curMouseEvent!="drag") {
-                                    outer_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
+                                    if (curMouseEvent != "drag") {
+                                        outer_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
                                         $("#shapeDrawing").css({'cursor': 'auto'});
                                         var line = shapeDraw.select("line[id='radiusLine']");
                                         if (line != null) {
@@ -1690,30 +1724,33 @@
                                     //curMouseEvent = "over";
                                     //console.log("over");
                                 });
-                                
-                                
-                                var innerMouseMove = function(dx,dy,x,y) {
+
+                                var dragStartRadius = 0;
+                                var innerMouseMove = function (dx, dy, x, y) {
                                     var cx = posX * (1) * (143.95 / r) + (-1) * translateX;
-                                        var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
-                                        var pt = shapeDraw.paper.node.createSVGPoint();
-                                        pt.x = x;
-                                        pt.y = y;
-                                        //console.log(pt);
-                                        var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
-                                        
-                                        var newr = Math.sqrt(Math.pow(cx-(tPT.x),2)+Math.pow(cy-(tPT.y),2));
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
-                                        var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#00FF80", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                  
-                                        //console.log(cx-(tPT.x)+", "+cy-(tPT.y));
-                                        inner_circle.attr({r: newr});
-                                        inRText.attr({text:'Inner Radius: '+newr});
+                                    var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
+                                    var pt = shapeDraw.paper.node.createSVGPoint();
+                                    pt.x = x;
+                                    pt.y = y;
+                                    //console.log(pt);
+                                    var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
+
+                                    var newRadius = Math.sqrt(Math.pow(cx - (tPT.x), 2) + Math.pow(cy - (tPT.y), 2));
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                    var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#00FF80", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
+
+                                    //console.log(cx-(tPT.x)+", "+cy-(tPT.y));
+                                    var scaleRatio = newRadius / dragStartRadius;
+                                    inner_g.transform('S' + scaleRatio + ',' + scaleRatio + ',' + posX + ',' + posY);
+                                    inRText.attr({text: 'Inner Radius: ' + newr});
                                 }
-                                var innerDragStart = function(x,y) {
-                                    inner_circle.attr({stroke: "#00FF80", strokeWidth: 3, strokeDasharray: "5 5"});
+                                var innerDragStart = function (x, y) {
+                                    inner_g.attr({stroke: "#00FF80", strokeWidth: 3, strokeDasharray: "5 5"});
+                                    var cx = posX * (1) * (143.95 / r) + (-1) * translateX;
+                                    var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
                                     var pt = shapeDraw.paper.node.createSVGPoint();
                                     pt.x = x;
                                     pt.y = y;
@@ -1721,22 +1758,27 @@
                                     var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
                                     //console.log(tPT);
                                     var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#00FF80", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                                    
+                                    dragStartRadius = Math.sqrt(Math.pow(cx - (tPT.x), 2) + Math.pow(cy - (tPT.y), 2));
                                     $("#shapeDrawing").css({'cursor': 'nwse-resize'});
                                     curMouseEvent = "drag";
                                 }
-                                var innerDragStop = function() {
-                                    inner_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
-                                        $("#shapeDrawing").css({'cursor': 'auto'});
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
-                                    curMouseEvent = "";    
+                                var innerDragStop = function () {
+                                    inner_g.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
+                                    $("#shapeDrawing").css({'cursor': 'auto'});
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                    curMouseEvent = "";
                                 }
-                                inner_circle.drag(innerMouseMove,innerDragStart,innerDragStop);
-                                inner_circle.mousedown(function(){
-                                    inner_circle.attr({stroke: "#00FF80", strokeWidth: 3, strokeDasharray: "5 5"});
+                                inner_g.drag(innerMouseMove, innerDragStart, innerDragStop);
+                                inner_g.mousedown(function () {
+                                    inner_g.attr({stroke: "#00FF80", strokeWidth: 3, strokeDasharray: "5 5"});
+                                    var paths = inner_g.selectAll("path");
+
+                                    for (var i = 0; i < paths.length; i++) {
+                                        paths[i].attr({stroke: "#00FF80", strokeWidth: 3});
+                                    }
                                     var pt = shapeDraw.paper.node.createSVGPoint();
                                     pt.x = x;
                                     pt.y = y;
@@ -1744,28 +1786,43 @@
                                     var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
                                     //console.log(tPT);
                                     var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#00FF80", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                                    
+
                                     $("#shapeDrawing").css({'cursor': 'nwse-resize'});
                                 });
-                                inner_circle.mouseup(function(){
-                                    inner_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
-                                        $("#shapeDrawing").css({'cursor': 'auto'});
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
+                                inner_g.mouseup(function () {
+                                    inner_g.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
+                                    var paths = inner_g.selectAll("path");
+
+                                    for (var i = 0; i < paths.length; i++) {
+                                        paths[i].attr({stroke: "#000", strokeWidth: 2});
+                                    }
+                                    $("#shapeDrawing").css({'cursor': 'auto'});
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                });
+                                inner_g.mouseover(function () {
+                                    if (curMouseEvent != "drag") {
+                                        inner_g.attr({stroke: "#00FF80", strokeWidth: 3});
+                                        var paths = inner_g.selectAll("path");
+
+                                        for (var i = 0; i < paths.length; i++) {
+                                            paths[i].attr({stroke: "#00FF80", strokeWidth: 3});
                                         }
+                                        $("#shapeDrawing").css({'cursor': 'pointer'});
+                                        //curMouseEvent = "over";
+                                    }
+
                                 });
-                                inner_circle.mouseover(function () {
-                                    if(curMouseEvent!="drag") {
-                                    inner_circle.attr({stroke: "#00FF80", strokeWidth: 3});
-                                    $("#shapeDrawing").css({'cursor': 'pointer'});
-                                    //curMouseEvent = "over";
-                                }
-                                    
-                                });
-                                inner_circle.mouseout(function () {
-                                    if(curMouseEvent!="drag") {
-                                    inner_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
+                                inner_g.mouseout(function () {
+                                    if (curMouseEvent != "drag") {
+                                        inner_g.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
+                                        var paths = inner_g.selectAll("path");
+
+                                        for (var i = 0; i < paths.length; i++) {
+                                            paths[i].attr({stroke: "#000", strokeWidth: 2});
+                                        }
                                         $("#shapeDrawing").css({'cursor': 'auto'});
                                         var line = shapeDraw.select("line[id='radiusLine']");
                                         if (line != null) {
@@ -1799,39 +1856,49 @@
                                 var g = f.select("g[id='draft']");
 
                                 var outer_circle = g.select("circle[id='ID_8E0']");
-                                var inner_circle = g.select("path[id='ID_8F4']");
+                                var paths = g.selectAll("path");
+                                var inner_g = g.g();
+                                inner_g.attr({fill: 'none'});
+                                //console.log(paths);
+                                for (var i = 0; i < paths.length; i++) {
+                                    var tmp_path = paths[i].clone();
+                                    inner_g.add(tmp_path);
+                                    paths[i].remove();
+                                }
+                                //console.log(inner_g);
                                 var posX = outer_circle.attr("cx");
                                 var posY = outer_circle.attr("cy");
                                 var r = outer_circle.attr("r");
                                 var translateX = posX * 143.95 / r - 250;
                                 var translateY = 200 - (-1) * posY * 143.95 / r;
                                 g.transform("matrix(" + (1) * 143.95 / r + " 0 0 " + (-1) * 143.95 / r + " " + (-1) * translateX + " " + translateY + ")");
-                                g.attr("strokeWidth", 1);
+                                g.attr("strokeWidth", 2);
+                                outer_circle.attr("stroke", "#000");
                                 shapeDraw.append(g);
-                                
-                                                               outRText.attr({text:"Outer Radius: "+r});
-                           
-                                var mouseMove = function(dx,dy,x,y) {
+
+                                outRText.attr({text: "Outer Radius: " + r});
+
+                                var mouseMove = function (dx, dy, x, y) {
                                     var cx = posX * (1) * (143.95 / r) + (-1) * translateX;
-                                        var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
-                                        var pt = shapeDraw.paper.node.createSVGPoint();
-                                        pt.x = x;
-                                        pt.y = y;
-                                        //console.log(pt);
-                                        var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
-                                        
-                                        var newr = Math.sqrt(Math.pow(cx-(tPT.x),2)+Math.pow(cy-(tPT.y),2));
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
-                                        var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#2E9AFE", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                  
-                                        //console.log(cx-(tPT.x)+", "+cy-(tPT.y));
-                                        outer_circle.attr({r: newr*r/143.95});
-                                        outRText.attr({text:'Outer Radius: '+newr});
+                                    var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
+                                    var pt = shapeDraw.paper.node.createSVGPoint();
+                                    pt.x = x;
+                                    pt.y = y;
+                                    //console.log(pt);
+                                    var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
+
+                                    var newr = Math.sqrt(Math.pow(cx - (tPT.x), 2) + Math.pow(cy - (tPT.y), 2));
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                    var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#2E9AFE", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
+
+                                    //console.log(cx-(tPT.x)+", "+cy-(tPT.y));
+                                    outer_circle.attr({r: newr * r / 143.95});
+                                    outRText.attr({text: 'Outer Radius: ' + newr});
                                 }
-                                var dragStart = function(x,y) {
+                                var dragStart = function (x, y) {
                                     outer_circle.attr({stroke: "#2E9AFE", strokeWidth: 3, strokeDasharray: "5 5"});
                                     var pt = shapeDraw.paper.node.createSVGPoint();
                                     pt.x = x;
@@ -1840,22 +1907,22 @@
                                     var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
                                     //console.log(tPT);
                                     var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#2E9AFE", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                                    
+
                                     $("#shapeDrawing").css({'cursor': 'nwse-resize'});
                                     curMouseEvent = "drag";
-                                    
+
                                 }
-                                var dragStop = function() {
+                                var dragStop = function () {
                                     outer_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
-                                        $("#shapeDrawing").css({'cursor': 'auto'});
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
-                                        curMouseEvent = "";
+                                    $("#shapeDrawing").css({'cursor': 'auto'});
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                    curMouseEvent = "";
                                 }
-                                outer_circle.drag(mouseMove,dragStart,dragStop);
-                                outer_circle.mousedown(function(){
+                                outer_circle.drag(mouseMove, dragStart, dragStop);
+                                outer_circle.mousedown(function () {
                                     outer_circle.attr({stroke: "#2E9AFE", strokeWidth: 3, strokeDasharray: "5 5"});
                                     var pt = shapeDraw.paper.node.createSVGPoint();
                                     pt.x = x;
@@ -1864,28 +1931,28 @@
                                     var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
                                     //console.log(tPT);
                                     var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#2E9AFE", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                                    
+
                                     $("#shapeDrawing").css({'cursor': 'nwse-resize'});
                                 });
-                                outer_circle.mouseup(function(){
+                                outer_circle.mouseup(function () {
                                     outer_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
-                                        $("#shapeDrawing").css({'cursor': 'auto'});
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
+                                    $("#shapeDrawing").css({'cursor': 'auto'});
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
                                 });
                                 outer_circle.mouseover(function () {
-                                    if(curMouseEvent!="drag") {
-                                    outer_circle.attr({stroke: "#2E9AFE", strokeWidth: 3});
-                                    $("#shapeDrawing").css({'cursor': 'pointer'});
-                                    //curMouseEvent = "over";
-                                }
-                                    
+                                    if (curMouseEvent != "drag") {
+                                        outer_circle.attr({stroke: "#2E9AFE", strokeWidth: 3});
+                                        $("#shapeDrawing").css({'cursor': 'pointer'});
+                                        //curMouseEvent = "over";
+                                    }
+
                                 });
                                 outer_circle.mouseout(function () {
-                                    if(curMouseEvent!="drag") {
-                                    outer_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
+                                    if (curMouseEvent != "drag") {
+                                        outer_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
                                         $("#shapeDrawing").css({'cursor': 'auto'});
                                         var line = shapeDraw.select("line[id='radiusLine']");
                                         if (line != null) {
@@ -1895,30 +1962,33 @@
                                     //curMouseEvent = "over";
                                     //console.log("over");
                                 });
-                                
-                                
-                                var innerMouseMove = function(dx,dy,x,y) {
+
+                                var dragStartRadius = 0;
+                                var innerMouseMove = function (dx, dy, x, y) {
                                     var cx = posX * (1) * (143.95 / r) + (-1) * translateX;
-                                        var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
-                                        var pt = shapeDraw.paper.node.createSVGPoint();
-                                        pt.x = x;
-                                        pt.y = y;
-                                        //console.log(pt);
-                                        var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
-                                        
-                                        var newr = Math.sqrt(Math.pow(cx-(tPT.x),2)+Math.pow(cy-(tPT.y),2));
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
-                                        var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#00FF80", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                  
-                                        //console.log(cx-(tPT.x)+", "+cy-(tPT.y));
-                                        inner_circle.attr({r: newr});
-                                        inRText.attr({text:'Inner Radius: '+newr});
+                                    var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
+                                    var pt = shapeDraw.paper.node.createSVGPoint();
+                                    pt.x = x;
+                                    pt.y = y;
+                                    //console.log(pt);
+                                    var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
+
+                                    var newRadius = Math.sqrt(Math.pow(cx - (tPT.x), 2) + Math.pow(cy - (tPT.y), 2));
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                    var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#00FF80", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
+
+                                    //console.log(cx-(tPT.x)+", "+cy-(tPT.y));
+                                    var scaleRatio = newRadius / dragStartRadius;
+                                    inner_g.transform('S' + scaleRatio + ',' + scaleRatio + ',' + posX + ',' + posY);
+                                    inRText.attr({text: 'Inner Radius: ' + newr});
                                 }
-                                var innerDragStart = function(x,y) {
-                                    inner_circle.attr({stroke: "#00FF80", strokeWidth: 3, strokeDasharray: "5 5"});
+                                var innerDragStart = function (x, y) {
+                                    inner_g.attr({stroke: "#00FF80", strokeWidth: 3, strokeDasharray: "5 5"});
+                                    var cx = posX * (1) * (143.95 / r) + (-1) * translateX;
+                                    var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
                                     var pt = shapeDraw.paper.node.createSVGPoint();
                                     pt.x = x;
                                     pt.y = y;
@@ -1926,22 +1996,27 @@
                                     var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
                                     //console.log(tPT);
                                     var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#00FF80", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                                    
+                                    dragStartRadius = Math.sqrt(Math.pow(cx - (tPT.x), 2) + Math.pow(cy - (tPT.y), 2));
                                     $("#shapeDrawing").css({'cursor': 'nwse-resize'});
                                     curMouseEvent = "drag";
                                 }
-                                var innerDragStop = function() {
-                                    inner_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
-                                        $("#shapeDrawing").css({'cursor': 'auto'});
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
-                                    curMouseEvent = "";    
+                                var innerDragStop = function () {
+                                    inner_g.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
+                                    $("#shapeDrawing").css({'cursor': 'auto'});
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                    curMouseEvent = "";
                                 }
-                                inner_circle.drag(innerMouseMove,innerDragStart,innerDragStop);
-                                inner_circle.mousedown(function(){
-                                    inner_circle.attr({stroke: "#00FF80", strokeWidth: 3, strokeDasharray: "5 5"});
+                                inner_g.drag(innerMouseMove, innerDragStart, innerDragStop);
+                                inner_g.mousedown(function () {
+                                    inner_g.attr({stroke: "#00FF80", strokeWidth: 3, strokeDasharray: "5 5"});
+                                    var paths = inner_g.selectAll("path");
+
+                                    for (var i = 0; i < paths.length; i++) {
+                                        paths[i].attr({stroke: "#00FF80", strokeWidth: 3});
+                                    }
                                     var pt = shapeDraw.paper.node.createSVGPoint();
                                     pt.x = x;
                                     pt.y = y;
@@ -1949,28 +2024,43 @@
                                     var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
                                     //console.log(tPT);
                                     var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#00FF80", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                                    
+
                                     $("#shapeDrawing").css({'cursor': 'nwse-resize'});
                                 });
-                                inner_circle.mouseup(function(){
-                                    inner_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
-                                        $("#shapeDrawing").css({'cursor': 'auto'});
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
+                                inner_g.mouseup(function () {
+                                    inner_g.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
+                                    var paths = inner_g.selectAll("path");
+
+                                    for (var i = 0; i < paths.length; i++) {
+                                        paths[i].attr({stroke: "#000", strokeWidth: 2});
+                                    }
+                                    $("#shapeDrawing").css({'cursor': 'auto'});
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                });
+                                inner_g.mouseover(function () {
+                                    if (curMouseEvent != "drag") {
+                                        inner_g.attr({stroke: "#00FF80", strokeWidth: 3});
+                                        var paths = inner_g.selectAll("path");
+
+                                        for (var i = 0; i < paths.length; i++) {
+                                            paths[i].attr({stroke: "#00FF80", strokeWidth: 3});
                                         }
+                                        $("#shapeDrawing").css({'cursor': 'pointer'});
+                                        //curMouseEvent = "over";
+                                    }
+
                                 });
-                                inner_circle.mouseover(function () {
-                                    if(curMouseEvent!="drag") {
-                                    inner_circle.attr({stroke: "#00FF80", strokeWidth: 3});
-                                    $("#shapeDrawing").css({'cursor': 'pointer'});
-                                    //curMouseEvent = "over";
-                                }
-                                    
-                                });
-                                inner_circle.mouseout(function () {
-                                    if(curMouseEvent!="drag") {
-                                    inner_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
+                                inner_g.mouseout(function () {
+                                    if (curMouseEvent != "drag") {
+                                        inner_g.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
+                                        var paths = inner_g.selectAll("path");
+
+                                        for (var i = 0; i < paths.length; i++) {
+                                            paths[i].attr({stroke: "#000", strokeWidth: 2});
+                                        }
                                         $("#shapeDrawing").css({'cursor': 'auto'});
                                         var line = shapeDraw.select("line[id='radiusLine']");
                                         if (line != null) {
@@ -2004,39 +2094,49 @@
                                 var g = f.select("g[id='draft']");
 
                                 var outer_circle = g.select("circle[id='ID_8E0']");
+                                var paths = g.selectAll("path");
+                                var inner_g = g.g();
+                                inner_g.attr({fill: 'none'});
+                                //console.log(paths);
+                                for (var i = 0; i < paths.length; i++) {
+                                    var tmp_path = paths[i].clone();
+                                    inner_g.add(tmp_path);
+                                    paths[i].remove();
+                                }
+                                //console.log(inner_g);
                                 var posX = outer_circle.attr("cx");
                                 var posY = outer_circle.attr("cy");
                                 var r = outer_circle.attr("r");
                                 var translateX = posX * 143.95 / r - 250;
                                 var translateY = 200 - (-1) * posY * 143.95 / r;
                                 g.transform("matrix(" + (1) * 143.95 / r + " 0 0 " + (-1) * 143.95 / r + " " + (-1) * translateX + " " + translateY + ")");
-                                //g.transform("r180");
-                                g.attr("strokeWidth", 1);
+                                g.attr("strokeWidth", 2);
+                                outer_circle.attr("stroke", "#000");
                                 shapeDraw.append(g);
-                                
-                                                               outRText.attr({text:"Outer Radius: "+r});
-                           
-                                var mouseMove = function(dx,dy,x,y) {
+
+                                outRText.attr({text: "Outer Radius: " + r});
+
+                                var mouseMove = function (dx, dy, x, y) {
                                     var cx = posX * (1) * (143.95 / r) + (-1) * translateX;
-                                        var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
-                                        var pt = shapeDraw.paper.node.createSVGPoint();
-                                        pt.x = x;
-                                        pt.y = y;
-                                        //console.log(pt);
-                                        var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
-                                        
-                                        var newr = Math.sqrt(Math.pow(cx-(tPT.x),2)+Math.pow(cy-(tPT.y),2));
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
-                                        var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#2E9AFE", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                  
-                                        //console.log(cx-(tPT.x)+", "+cy-(tPT.y));
-                                        outer_circle.attr({r: newr*r/143.95});
-                                        outRText.attr({text:'Outer Radius: '+newr});
+                                    var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
+                                    var pt = shapeDraw.paper.node.createSVGPoint();
+                                    pt.x = x;
+                                    pt.y = y;
+                                    //console.log(pt);
+                                    var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
+
+                                    var newr = Math.sqrt(Math.pow(cx - (tPT.x), 2) + Math.pow(cy - (tPT.y), 2));
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                    var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#2E9AFE", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
+
+                                    //console.log(cx-(tPT.x)+", "+cy-(tPT.y));
+                                    outer_circle.attr({r: newr * r / 143.95});
+                                    outRText.attr({text: 'Outer Radius: ' + newr});
                                 }
-                                var dragStart = function(x,y) {
+                                var dragStart = function (x, y) {
                                     outer_circle.attr({stroke: "#2E9AFE", strokeWidth: 3, strokeDasharray: "5 5"});
                                     var pt = shapeDraw.paper.node.createSVGPoint();
                                     pt.x = x;
@@ -2045,22 +2145,22 @@
                                     var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
                                     //console.log(tPT);
                                     var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#2E9AFE", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                                    
+
                                     $("#shapeDrawing").css({'cursor': 'nwse-resize'});
                                     curMouseEvent = "drag";
-                                    
+
                                 }
-                                var dragStop = function() {
+                                var dragStop = function () {
                                     outer_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
-                                        $("#shapeDrawing").css({'cursor': 'auto'});
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
-                                        curMouseEvent = "";
+                                    $("#shapeDrawing").css({'cursor': 'auto'});
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                    curMouseEvent = "";
                                 }
-                                outer_circle.drag(mouseMove,dragStart,dragStop);
-                                outer_circle.mousedown(function(){
+                                outer_circle.drag(mouseMove, dragStart, dragStop);
+                                outer_circle.mousedown(function () {
                                     outer_circle.attr({stroke: "#2E9AFE", strokeWidth: 3, strokeDasharray: "5 5"});
                                     var pt = shapeDraw.paper.node.createSVGPoint();
                                     pt.x = x;
@@ -2069,28 +2169,28 @@
                                     var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
                                     //console.log(tPT);
                                     var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#2E9AFE", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                                    
+
                                     $("#shapeDrawing").css({'cursor': 'nwse-resize'});
                                 });
-                                outer_circle.mouseup(function(){
+                                outer_circle.mouseup(function () {
                                     outer_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
-                                        $("#shapeDrawing").css({'cursor': 'auto'});
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
+                                    $("#shapeDrawing").css({'cursor': 'auto'});
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
                                 });
                                 outer_circle.mouseover(function () {
-                                    if(curMouseEvent!="drag") {
-                                    outer_circle.attr({stroke: "#2E9AFE", strokeWidth: 3});
-                                    $("#shapeDrawing").css({'cursor': 'pointer'});
-                                    //curMouseEvent = "over";
-                                }
-                                    
+                                    if (curMouseEvent != "drag") {
+                                        outer_circle.attr({stroke: "#2E9AFE", strokeWidth: 3});
+                                        $("#shapeDrawing").css({'cursor': 'pointer'});
+                                        //curMouseEvent = "over";
+                                    }
+
                                 });
                                 outer_circle.mouseout(function () {
-                                    if(curMouseEvent!="drag") {
-                                    outer_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
+                                    if (curMouseEvent != "drag") {
+                                        outer_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
                                         $("#shapeDrawing").css({'cursor': 'auto'});
                                         var line = shapeDraw.select("line[id='radiusLine']");
                                         if (line != null) {
@@ -2100,30 +2200,33 @@
                                     //curMouseEvent = "over";
                                     //console.log("over");
                                 });
-                                
-                                
-                                var innerMouseMove = function(dx,dy,x,y) {
+
+                                var dragStartRadius = 0;
+                                var innerMouseMove = function (dx, dy, x, y) {
                                     var cx = posX * (1) * (143.95 / r) + (-1) * translateX;
-                                        var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
-                                        var pt = shapeDraw.paper.node.createSVGPoint();
-                                        pt.x = x;
-                                        pt.y = y;
-                                        //console.log(pt);
-                                        var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
-                                        
-                                        var newr = Math.sqrt(Math.pow(cx-(tPT.x),2)+Math.pow(cy-(tPT.y),2));
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
-                                        var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#00FF80", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                  
-                                        //console.log(cx-(tPT.x)+", "+cy-(tPT.y));
-                                        inner_circle.attr({r: newr});
-                                        inRText.attr({text:'Inner Radius: '+newr});
+                                    var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
+                                    var pt = shapeDraw.paper.node.createSVGPoint();
+                                    pt.x = x;
+                                    pt.y = y;
+                                    //console.log(pt);
+                                    var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
+
+                                    var newRadius = Math.sqrt(Math.pow(cx - (tPT.x), 2) + Math.pow(cy - (tPT.y), 2));
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                    var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#00FF80", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
+
+                                    //console.log(cx-(tPT.x)+", "+cy-(tPT.y));
+                                    var scaleRatio = newRadius / dragStartRadius;
+                                    inner_g.transform('S' + scaleRatio + ',' + scaleRatio + ',' + posX + ',' + posY);
+                                    inRText.attr({text: 'Inner Radius: ' + newr});
                                 }
-                                var innerDragStart = function(x,y) {
-                                    inner_circle.attr({stroke: "#00FF80", strokeWidth: 3, strokeDasharray: "5 5"});
+                                var innerDragStart = function (x, y) {
+                                    inner_g.attr({stroke: "#00FF80", strokeWidth: 3, strokeDasharray: "5 5"});
+                                    var cx = posX * (1) * (143.95 / r) + (-1) * translateX;
+                                    var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
                                     var pt = shapeDraw.paper.node.createSVGPoint();
                                     pt.x = x;
                                     pt.y = y;
@@ -2131,22 +2234,27 @@
                                     var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
                                     //console.log(tPT);
                                     var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#00FF80", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                                    
+                                    dragStartRadius = Math.sqrt(Math.pow(cx - (tPT.x), 2) + Math.pow(cy - (tPT.y), 2));
                                     $("#shapeDrawing").css({'cursor': 'nwse-resize'});
                                     curMouseEvent = "drag";
                                 }
-                                var innerDragStop = function() {
-                                    inner_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
-                                        $("#shapeDrawing").css({'cursor': 'auto'});
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
-                                    curMouseEvent = "";    
+                                var innerDragStop = function () {
+                                    inner_g.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
+                                    $("#shapeDrawing").css({'cursor': 'auto'});
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                    curMouseEvent = "";
                                 }
-                                inner_circle.drag(innerMouseMove,innerDragStart,innerDragStop);
-                                inner_circle.mousedown(function(){
-                                    inner_circle.attr({stroke: "#00FF80", strokeWidth: 3, strokeDasharray: "5 5"});
+                                inner_g.drag(innerMouseMove, innerDragStart, innerDragStop);
+                                inner_g.mousedown(function () {
+                                    inner_g.attr({stroke: "#00FF80", strokeWidth: 3, strokeDasharray: "5 5"});
+                                    var paths = inner_g.selectAll("path");
+
+                                    for (var i = 0; i < paths.length; i++) {
+                                        paths[i].attr({stroke: "#00FF80", strokeWidth: 3});
+                                    }
                                     var pt = shapeDraw.paper.node.createSVGPoint();
                                     pt.x = x;
                                     pt.y = y;
@@ -2154,28 +2262,43 @@
                                     var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
                                     //console.log(tPT);
                                     var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#00FF80", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                                    
+
                                     $("#shapeDrawing").css({'cursor': 'nwse-resize'});
                                 });
-                                inner_circle.mouseup(function(){
-                                    inner_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
-                                        $("#shapeDrawing").css({'cursor': 'auto'});
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
+                                inner_g.mouseup(function () {
+                                    inner_g.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
+                                    var paths = inner_g.selectAll("path");
+
+                                    for (var i = 0; i < paths.length; i++) {
+                                        paths[i].attr({stroke: "#000", strokeWidth: 2});
+                                    }
+                                    $("#shapeDrawing").css({'cursor': 'auto'});
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                });
+                                inner_g.mouseover(function () {
+                                    if (curMouseEvent != "drag") {
+                                        inner_g.attr({stroke: "#00FF80", strokeWidth: 3});
+                                        var paths = inner_g.selectAll("path");
+
+                                        for (var i = 0; i < paths.length; i++) {
+                                            paths[i].attr({stroke: "#00FF80", strokeWidth: 3});
                                         }
+                                        $("#shapeDrawing").css({'cursor': 'pointer'});
+                                        //curMouseEvent = "over";
+                                    }
+
                                 });
-                                inner_circle.mouseover(function () {
-                                    if(curMouseEvent!="drag") {
-                                    inner_circle.attr({stroke: "#00FF80", strokeWidth: 3});
-                                    $("#shapeDrawing").css({'cursor': 'pointer'});
-                                    //curMouseEvent = "over";
-                                }
-                                    
-                                });
-                                inner_circle.mouseout(function () {
-                                    if(curMouseEvent!="drag") {
-                                    inner_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
+                                inner_g.mouseout(function () {
+                                    if (curMouseEvent != "drag") {
+                                        inner_g.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
+                                        var paths = inner_g.selectAll("path");
+
+                                        for (var i = 0; i < paths.length; i++) {
+                                            paths[i].attr({stroke: "#000", strokeWidth: 2});
+                                        }
                                         $("#shapeDrawing").css({'cursor': 'auto'});
                                         var line = shapeDraw.select("line[id='radiusLine']");
                                         if (line != null) {
@@ -2209,39 +2332,49 @@
                                 var g = f.select("g[id='draft']");
 
                                 var outer_circle = g.select("circle[id='ID_8E0']");
-                                var inner_circle = g.select("path[id='ID_8E1']");
+                                var paths = g.selectAll("path");
+                                var inner_g = g.g();
+                                inner_g.attr({fill: 'none'});
+                                //console.log(paths);
+                                for (var i = 0; i < paths.length; i++) {
+                                    var tmp_path = paths[i].clone();
+                                    inner_g.add(tmp_path);
+                                    paths[i].remove();
+                                }
+                                //console.log(inner_g);
                                 var posX = outer_circle.attr("cx");
                                 var posY = outer_circle.attr("cy");
                                 var r = outer_circle.attr("r");
                                 var translateX = posX * 143.95 / r - 250;
                                 var translateY = 200 - (-1) * posY * 143.95 / r;
                                 g.transform("matrix(" + (1) * 143.95 / r + " 0 0 " + (-1) * 143.95 / r + " " + (-1) * translateX + " " + translateY + ")");
-                                g.attr("strokeWidth", 1);
+                                g.attr("strokeWidth", 2);
+                                outer_circle.attr("stroke", "#000");
                                 shapeDraw.append(g);
-                                
-                                                               outRText.attr({text:"Outer Radius: "+r});
-                           
-                                var mouseMove = function(dx,dy,x,y) {
+
+                                outRText.attr({text: "Outer Radius: " + r});
+
+                                var mouseMove = function (dx, dy, x, y) {
                                     var cx = posX * (1) * (143.95 / r) + (-1) * translateX;
-                                        var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
-                                        var pt = shapeDraw.paper.node.createSVGPoint();
-                                        pt.x = x;
-                                        pt.y = y;
-                                        //console.log(pt);
-                                        var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
-                                        
-                                        var newr = Math.sqrt(Math.pow(cx-(tPT.x),2)+Math.pow(cy-(tPT.y),2));
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
-                                        var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#2E9AFE", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                  
-                                        //console.log(cx-(tPT.x)+", "+cy-(tPT.y));
-                                        outer_circle.attr({r: newr*r/143.95});
-                                        outRText.attr({text:'Outer Radius: '+newr});
+                                    var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
+                                    var pt = shapeDraw.paper.node.createSVGPoint();
+                                    pt.x = x;
+                                    pt.y = y;
+                                    //console.log(pt);
+                                    var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
+
+                                    var newr = Math.sqrt(Math.pow(cx - (tPT.x), 2) + Math.pow(cy - (tPT.y), 2));
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                    var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#2E9AFE", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
+
+                                    //console.log(cx-(tPT.x)+", "+cy-(tPT.y));
+                                    outer_circle.attr({r: newr * r / 143.95});
+                                    outRText.attr({text: 'Outer Radius: ' + newr});
                                 }
-                                var dragStart = function(x,y) {
+                                var dragStart = function (x, y) {
                                     outer_circle.attr({stroke: "#2E9AFE", strokeWidth: 3, strokeDasharray: "5 5"});
                                     var pt = shapeDraw.paper.node.createSVGPoint();
                                     pt.x = x;
@@ -2250,22 +2383,22 @@
                                     var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
                                     //console.log(tPT);
                                     var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#2E9AFE", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                                    
+
                                     $("#shapeDrawing").css({'cursor': 'nwse-resize'});
                                     curMouseEvent = "drag";
-                                    
+
                                 }
-                                var dragStop = function() {
+                                var dragStop = function () {
                                     outer_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
-                                        $("#shapeDrawing").css({'cursor': 'auto'});
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
-                                        curMouseEvent = "";
+                                    $("#shapeDrawing").css({'cursor': 'auto'});
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                    curMouseEvent = "";
                                 }
-                                outer_circle.drag(mouseMove,dragStart,dragStop);
-                                outer_circle.mousedown(function(){
+                                outer_circle.drag(mouseMove, dragStart, dragStop);
+                                outer_circle.mousedown(function () {
                                     outer_circle.attr({stroke: "#2E9AFE", strokeWidth: 3, strokeDasharray: "5 5"});
                                     var pt = shapeDraw.paper.node.createSVGPoint();
                                     pt.x = x;
@@ -2274,28 +2407,28 @@
                                     var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
                                     //console.log(tPT);
                                     var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#2E9AFE", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                                    
+
                                     $("#shapeDrawing").css({'cursor': 'nwse-resize'});
                                 });
-                                outer_circle.mouseup(function(){
+                                outer_circle.mouseup(function () {
                                     outer_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
-                                        $("#shapeDrawing").css({'cursor': 'auto'});
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
+                                    $("#shapeDrawing").css({'cursor': 'auto'});
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
                                 });
                                 outer_circle.mouseover(function () {
-                                    if(curMouseEvent!="drag") {
-                                    outer_circle.attr({stroke: "#2E9AFE", strokeWidth: 3});
-                                    $("#shapeDrawing").css({'cursor': 'pointer'});
-                                    //curMouseEvent = "over";
-                                }
-                                    
+                                    if (curMouseEvent != "drag") {
+                                        outer_circle.attr({stroke: "#2E9AFE", strokeWidth: 3});
+                                        $("#shapeDrawing").css({'cursor': 'pointer'});
+                                        //curMouseEvent = "over";
+                                    }
+
                                 });
                                 outer_circle.mouseout(function () {
-                                    if(curMouseEvent!="drag") {
-                                    outer_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
+                                    if (curMouseEvent != "drag") {
+                                        outer_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
                                         $("#shapeDrawing").css({'cursor': 'auto'});
                                         var line = shapeDraw.select("line[id='radiusLine']");
                                         if (line != null) {
@@ -2305,30 +2438,33 @@
                                     //curMouseEvent = "over";
                                     //console.log("over");
                                 });
-                                
-                                
-                                var innerMouseMove = function(dx,dy,x,y) {
+
+                                var dragStartRadius = 0;
+                                var innerMouseMove = function (dx, dy, x, y) {
                                     var cx = posX * (1) * (143.95 / r) + (-1) * translateX;
-                                        var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
-                                        var pt = shapeDraw.paper.node.createSVGPoint();
-                                        pt.x = x;
-                                        pt.y = y;
-                                        //console.log(pt);
-                                        var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
-                                        
-                                        var newr = Math.sqrt(Math.pow(cx-(tPT.x),2)+Math.pow(cy-(tPT.y),2));
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
-                                        var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#00FF80", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                  
-                                        //console.log(cx-(tPT.x)+", "+cy-(tPT.y));
-                                        inner_circle.attr({r: newr});
-                                        inRText.attr({text:'Inner Radius: '+newr});
+                                    var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
+                                    var pt = shapeDraw.paper.node.createSVGPoint();
+                                    pt.x = x;
+                                    pt.y = y;
+                                    //console.log(pt);
+                                    var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
+
+                                    var newRadius = Math.sqrt(Math.pow(cx - (tPT.x), 2) + Math.pow(cy - (tPT.y), 2));
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                    var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#00FF80", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
+
+                                    //console.log(cx-(tPT.x)+", "+cy-(tPT.y));
+                                    var scaleRatio = newRadius / dragStartRadius;
+                                    inner_g.transform('S' + scaleRatio + ',' + scaleRatio + ',' + posX + ',' + posY);
+                                    inRText.attr({text: 'Inner Radius: ' + newr});
                                 }
-                                var innerDragStart = function(x,y) {
-                                    inner_circle.attr({stroke: "#00FF80", strokeWidth: 3, strokeDasharray: "5 5"});
+                                var innerDragStart = function (x, y) {
+                                    inner_g.attr({stroke: "#00FF80", strokeWidth: 3, strokeDasharray: "5 5"});
+                                    var cx = posX * (1) * (143.95 / r) + (-1) * translateX;
+                                    var cy = posY * (-1) * (143.95 / r) + (1) * translateY;
                                     var pt = shapeDraw.paper.node.createSVGPoint();
                                     pt.x = x;
                                     pt.y = y;
@@ -2336,22 +2472,27 @@
                                     var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
                                     //console.log(tPT);
                                     var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#00FF80", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                                    
+                                    dragStartRadius = Math.sqrt(Math.pow(cx - (tPT.x), 2) + Math.pow(cy - (tPT.y), 2));
                                     $("#shapeDrawing").css({'cursor': 'nwse-resize'});
                                     curMouseEvent = "drag";
                                 }
-                                var innerDragStop = function() {
-                                    inner_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
-                                        $("#shapeDrawing").css({'cursor': 'auto'});
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
-                                        }
-                                    curMouseEvent = "";    
+                                var innerDragStop = function () {
+                                    inner_g.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
+                                    $("#shapeDrawing").css({'cursor': 'auto'});
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                    curMouseEvent = "";
                                 }
-                                inner_circle.drag(innerMouseMove,innerDragStart,innerDragStop);
-                                inner_circle.mousedown(function(){
-                                    inner_circle.attr({stroke: "#00FF80", strokeWidth: 3, strokeDasharray: "5 5"});
+                                inner_g.drag(innerMouseMove, innerDragStart, innerDragStop);
+                                inner_g.mousedown(function () {
+                                    inner_g.attr({stroke: "#00FF80", strokeWidth: 3, strokeDasharray: "5 5"});
+                                    var paths = inner_g.selectAll("path");
+
+                                    for (var i = 0; i < paths.length; i++) {
+                                        paths[i].attr({stroke: "#00FF80", strokeWidth: 3});
+                                    }
                                     var pt = shapeDraw.paper.node.createSVGPoint();
                                     pt.x = x;
                                     pt.y = y;
@@ -2359,28 +2500,43 @@
                                     var tPT = pt.matrixTransform(shapeDraw.paper.node.getScreenCTM().inverse());
                                     //console.log(tPT);
                                     var line = shapeDraw.line(posX * (1) * (143.95 / r) + (-1) * translateX, posY * (-1) * (143.95 / r) + (1) * translateY, tPT.x, tPT.y).attr({id: "radiusLine", stroke: "#00FF80", strokeWidth: 2, strokeDasharray: "5 5", opacity: 1});
-                                    
+
                                     $("#shapeDrawing").css({'cursor': 'nwse-resize'});
                                 });
-                                inner_circle.mouseup(function(){
-                                    inner_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
-                                        $("#shapeDrawing").css({'cursor': 'auto'});
-                                        var line = shapeDraw.select("line[id='radiusLine']");
-                                        if (line != null) {
-                                            line.remove();
+                                inner_g.mouseup(function () {
+                                    inner_g.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
+                                    var paths = inner_g.selectAll("path");
+
+                                    for (var i = 0; i < paths.length; i++) {
+                                        paths[i].attr({stroke: "#000", strokeWidth: 2});
+                                    }
+                                    $("#shapeDrawing").css({'cursor': 'auto'});
+                                    var line = shapeDraw.select("line[id='radiusLine']");
+                                    if (line != null) {
+                                        line.remove();
+                                    }
+                                });
+                                inner_g.mouseover(function () {
+                                    if (curMouseEvent != "drag") {
+                                        inner_g.attr({stroke: "#00FF80", strokeWidth: 3});
+                                        var paths = inner_g.selectAll("path");
+
+                                        for (var i = 0; i < paths.length; i++) {
+                                            paths[i].attr({stroke: "#00FF80", strokeWidth: 3});
                                         }
+                                        $("#shapeDrawing").css({'cursor': 'pointer'});
+                                        //curMouseEvent = "over";
+                                    }
+
                                 });
-                                inner_circle.mouseover(function () {
-                                    if(curMouseEvent!="drag") {
-                                    inner_circle.attr({stroke: "#00FF80", strokeWidth: 3});
-                                    $("#shapeDrawing").css({'cursor': 'pointer'});
-                                    //curMouseEvent = "over";
-                                }
-                                    
-                                });
-                                inner_circle.mouseout(function () {
-                                    if(curMouseEvent!="drag") {
-                                    inner_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
+                                inner_g.mouseout(function () {
+                                    if (curMouseEvent != "drag") {
+                                        inner_g.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
+                                        var paths = inner_g.selectAll("path");
+
+                                        for (var i = 0; i < paths.length; i++) {
+                                            paths[i].attr({stroke: "#000", strokeWidth: 2});
+                                        }
                                         $("#shapeDrawing").css({'cursor': 'auto'});
                                         var line = shapeDraw.select("line[id='radiusLine']");
                                         if (line != null) {
