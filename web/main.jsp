@@ -443,6 +443,8 @@
                         zoomoutText.attr({
                             "font-size": "56px"
                         });
+                        
+                        var selectIcon = shapeDraw.image("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMC8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvVFIvMjAwMS9SRUMtU1ZHLTIwMDEwOTA0L0RURC9zdmcxMC5kdGQnPjxzdmcgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjQgMjQiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+PHBhdGggZD0iTTcsMmwxMiwxMS4ybC01LjgsMC41bDMuMyw3LjNsLTIuMiwxbC0zLjItNy40TDcsMTguNVYyIi8+PC9zdmc+",0,0,32,32);
 
                         var moveUpBtn = shapeDraw.group(upButton, triangleUp);
                         var moveDownBtn = shapeDraw.group(downButton, triangleDown);
@@ -1264,6 +1266,7 @@
                                     //curMouseEvent = "over";
                                     //console.log("over");
                                 });
+                                
 
 
                                 var innerMouseMove = function (dx, dy, x, y) {
@@ -1321,14 +1324,7 @@
 
                                     $("#shapeDrawing").css({'cursor': 'nwse-resize'});
                                 });
-                                inner_circle.mouseup(function () {
-                                    inner_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
-                                    $("#shapeDrawing").css({'cursor': 'auto'});
-                                    var line = shapeDraw.select("line[id='radiusLine']");
-                                    if (line != null) {
-                                        line.remove();
-                                    }
-                                });
+                                
                                 inner_circle.mouseover(function () {
                                     if (curMouseEvent != "drag") {
                                         inner_circle.attr({stroke: "#00FF80", strokeWidth: 3});
@@ -1338,7 +1334,7 @@
 
                                 });
                                 inner_circle.mouseout(function () {
-                                    if (curMouseEvent != "drag") {
+                                    if (curMouseEvent != "drag" && curMouseEvent != "dblclick") {
                                         inner_circle.attr({stroke: "#000", strokeWidth: 2, strokeDasharray: "0 0"});
                                         $("#shapeDrawing").css({'cursor': 'auto'});
                                         var line = shapeDraw.select("line[id='radiusLine']");
@@ -1349,6 +1345,7 @@
                                     //curMouseEvent = "over";
                                     //console.log("over");
                                 });
+                                
 
 
 
