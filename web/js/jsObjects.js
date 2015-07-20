@@ -5,6 +5,9 @@
  */
 var motorObj = function motorObj() {
     this.motorSections = new Array();
+    this.motorDiameter = 50;
+    this.motorLength = 100;
+    this.throatDiameter = 50;
 };
 
 motorObj.prototype.getSections = function() {
