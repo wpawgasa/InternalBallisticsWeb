@@ -439,15 +439,15 @@ $(document).ready(function () {
         stroke: "#000",
         strokeWidth: 2
     });
-    var zoominText = shapeDraw.text(467, 37, "+");
-    zoominText.attr({
-        "font-size": "45px"
-    });
+//    var zoominText = shapeDraw.text(467, 37, "+");
+//    zoominText.attr({
+//        "font-size": "45px"
+//    });
 
-    var zoomoutText = shapeDraw.text(471, 86, "-");
-    zoomoutText.attr({
-        "font-size": "56px"
-    });
+//    var zoomoutText = shapeDraw.text(471, 86, "-");
+//    zoomoutText.attr({
+//        "font-size": "56px"
+//    });
     
      var pointerButton = shapeDraw.circle(480, 115, 17);
     pointerButton.attr({
@@ -480,16 +480,20 @@ $(document).ready(function () {
     
     
 
-    var selectIcon = shapeDraw.image("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMC8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvVFIvMjAwMS9SRUMtU1ZHLTIwMDEwOTA0L0RURC9zdmcxMC5kdGQnPjxzdmcgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjQgMjQiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+PHBhdGggZD0iTTcsMmwxMiwxMS4ybC01LjgsMC41bDMuMyw3LjNsLTIuMiwxbC0zLjItNy40TDcsMTguNVYyIi8+PC9zdmc+", 466, 99, 30, 30);
+    var selectIcon = shapeDraw.image("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABmElEQVRYR9WX8TFEMRCHv6uAEqjAqQAd0AEdnApQASpABajA6YAOqIAOmN/MhsyT9152MzfP7T83l8lmv7fZ/DaZEbMXYAksYu6/XrPgAl/AM7Af9P9xW1uAT9uCw6kyMAcE8TYVgIrvA7hbJcAmcAPoV6bKPwWU9nsb27UslOZVsQ0V4ZYF3bCV3gGNnQNnNnZkcwSX5r0C2qIqi5yCHODCgKqClSatPcCj1cRkGWhWw9YtkA5shz8faAVQ7MgaTb0gPwX/AkCSLLFSe34AVJjVEh1JXzcDpRIQgGAk1RKpXlsVQB5QAAfWvP6AjAGo6ejycZ151mSgG0g95MqrhMfWjOSXS24EoFeyhzKQdz1BnAC3nWZUKwEhAC2uCk9dTv9TdasreiwMEEl3CSwMoPOtr86z4PnyNDcMoAV0Ei4jUTOfVD/uY5gcpHJ7DRC6uhUFaUwHUsyWrRhs2bUAAtE9T5nw1oNUUH5F8wAkCM9jRAUs7eg1L4C2YsdRC7pJD3ZGL4Aeo08OgNFbsxeg+1YYY+ltQsnxGzNKUyGmWbACAAAAAElFTkSuQmCC", 466, 101, 28, 28);
     var pathIcon = shapeDraw.image("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABrElEQVRYR+2W21ECQRBFLxlgBGoEagRqBhCBZIBGgGYAEagRaAZCBEoEaASagdaxuqlma8diH87+bFfxszPTfeb27SkG6jgGHddXD9ArUFeBWcK8d1VNXQfgQtKLpLWkLys4lHQi6VLSsgoEABNJUzt4s8dhB4jFyr79lepe0qmkBQCfdpvzPYrHLWUAVVKsUA2AN5OPw4sgqyfjdhHuQ9JhQW5XwNf8LEWKLaFdKE6sAeDDtW2Mm/mO2Vgj8a3tOTIPAB49gKSo8i4JIPYDOpeEOX0vhVnnN0+ZkGQYjXUSkcQDsOeE1qNCIeA5T5vHpvbO0TIAL86tMSg3bRLkewht28lXBIjFkSjK1gQC1Wive2cLEQHY5LK3WTy2Dohv88rv5SIAfcadZy3InlILhV9t2vDHFgBnbyTxEEXDNZE9dRZTMl3HTIwrgElwMG3476AGo8okTfwdYEyYVehyhKtwAAA3f3JJclSX5C0fA4D8uJ6POYM2LAFgNBgJlMgZeGAIAO5/zNh/vyQ+uAKAhyGnASPADAAeBOSgJzkDz43q/CVrFbIH6BXoXIEfpmFdXon0m0UAAAAASUVORK5CYII=", 466, 146, 27, 27);
     var trashIcon = shapeDraw.image("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABp0lEQVRYR+2X2zEFQRRF140AESACRIAMZIAIEAEiQASEQASIABEgAkRALdVHtb4zd8xoP2rOT1dNP2af3eexe8IwWwJOgI20/QY4AJ76HjfpuwFYBe7Svoc0rqRxDbjvc+YQAHo5D2wBeq7JxHViYLkWAGleLA7z2wVwCZwWc0cJyE7DVTy3XU8TA3p2nrzs40zX2ldgN4H/WlsCCCrf0sLeQdWCQuZ0bA7YzK6OEoB3ug54j7V+HpgE8QjcZtkzBUCajOJIry5a+87roBmzEBtLBvx5LBBMTTNzXroYMIINQIEY6TXNGLCGGIhm0qc1ZYHptVfzz9lZZ8B+fnZbIYpgNGJrmEXqW/DNYsC5ADCkUjYBfh8B/AsGzGOr5FV2ybkeiM/RJfM6UiUG7HaHQN7z83YsgNAKx4Drw6oCyJtJCSCa2QhgZGBkYGTgTxiwxKpkrHYhWEM1OacpPFVTKqtcUfWuhKGKaqjjUMNTaqhNkvk9tKFAfHT+xmRtu9SCXYrI+VDIjkMVsh3UK/MR6zhlsySXm2XABlO+EX/KiG9CG5ZCtNGJD1I5pyH7tEx4AAAAAElFTkSuQmCC",468,237,25,25);
     var shapeIcon = shapeDraw.image("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABEklEQVRYR+2X4REBMRCFv6uADihBB3RAKTpAB0pQAh3QgRKUcCpg3k3WxEk4kcGP7M/LJvv2vc3cSwVsgSnhWAHLyFrXz9q/iCRvK+ACnIFjK2kMHIBJ10qRvD1gZ/kpI6BnAEKFBCwnANXyowH2CsCHzd9tTwIQkuZdUA3VQBKAr0kQ6yongGAN0bIBhm5V0+rTrkH59BrOgZk73+RQY4q6rUuuyY8xalfyVrcAKAwUBgoDhYHCQGHgLxiQIRm4H7gseO1Z9B2wftcEtvJlSOzdIUPSB+QLFCdzxT+1ZDEXlMsdPbgg122nd4EvR6oSRnuSLU8tGtqXBCCnLX8KIES1bkROADb5xk4jjVD98nl+uAJQNILTD7VUmAAAAABJRU5ErkJggg==",470,194,21,21);
-    var moveUpBtn = shapeDraw.group(upButton, triangleUp);
+    //var zoominIcon = shapeDraw.image("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACfUlEQVRYR72X4VGUQQyGXyoAKxAqQCsQKkAqACoQKwArUCoAKhAqUCoAKlAqACvQeZgNE3PJ7t6PIzM3d3y7X/bZvEl2WVPfNiR9kPRR0qaknTb9tyQ+d5Iu2/fAVT681nnrRNKxJCBGBsyRpJ+jiXE8A3gn6VwS38vahaTPkp5mX4wALPqj2PVDC7v5Zu56shCy7M5CeIBqcTT+VuhMbiATeeINiPczUfAAtyHsf1rS4Wxkh002P++swXXfNYBTSSSdGYuT9VFLInHQdEZvbxnEVpBtAcYAHoPuhC/unBIkPzDA3iRbixtBPsBKAwAdv7sZ1UsegOlZBVGygL91/nql/uyEUBJWs2z3jM0AMA+ZPjl/+5KuqhAAQPOwLKbU0N6MRf+2P6gSnPsx+03OmGQR9IskpEkNgF9u0RvXbmNkelIy5ndq0DwfAvjJHoD26rUcAfiFvM/rlmdlBAjddhv1AGQvoZuBuG/Zji8kJKpmwwj4HOAlyivr5bNJGKuKs8Hnzn+RIAdi7VZZOwsQc4dzoTwlASC7acNmVR+fAYjhj1W1kAfWJKIMWdi888pxPE+6+kNjAHF3jHHBiP0efYkYz6kSb9whfNutzpOFHLAHWd2TPOyid8EgMrTy7AKTbaIEYMCXpE1kceBop3YpYTFKl8h1D5tWAUha9gE/wGHCYnujrrPkeHlVq06qWJpLrpdOT69qvaMSbQEh8bK7n62CLOwQqb4OSElc+szLXaN7Vjtnlv08QiYW40P5+otLdiuKTLwHxHNzmgVYRoIZiJcyXwUAzqchVgUwC3G3SoAZiIdVA4wgzl4DoILgErPzWgAGQV+hjGnr/Ev39A8ZXZPQQkKeAgAAAABJRU5ErkJggg==",470,11,23,23);
+    var zoominIcon = shapeDraw.image("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACYklEQVRYR72WizEEQRCG/8uACBABIkAEiICLABEgAjJwIkAETgSIABFwEVCf6lZdU/PaU3ddtbXszUx//Z6R2rIl6UgSb2RF0pc995KeJL23j8mvGFU2ovRC0nrH4VNJ43lAcgBY+BgsRv+rJKzF8hdJu+aJA0lrAfBa0lkH8N+SFAA3oxwI5Na8UHMxMHhqx/YAijeAbUoEiMpnZiXW9goQ57Z4YhDNvRHg2dz+Ye8uCxINx5Ju7BuhICRVcQCnn8fyVAHWk8AYsNEKhQN8WtwvLZ4larL923IDRTkhfwgdydk6TwCQyXd20mqDGOVI6+BTSVd2FmcWBQB32YPB1Nb3AuAFvIpsm0ey5wLgydeyigN6AVhLuCjN6rkA+KF7timSksWb4QM1j9AXYm+gX6Q5QT/Y/y+AW9EopqyVXlndHji0dhuVUddxFnijYQAB58Lf8X++d3ugK1amaUgOeG7Rlksl+1uGxPnExqrHuOTyXgC89maH0IyKsyTtA9XFA6rAjaKtV8e5d0II6VxkM3EvCYnlJZbG3PfQA7Ced9X9bHCAOERy5diqgvg745xQMlewvjrU4jT0ZGQDEENGsQPQfmnD3ivogt0AuAwIGg+bGKfF7E1cwl6Up+HDCIwpQqQ3IlxG/Xr3A4hGUos33Y6k81tUGq4qROlOSLJRmi5YAISHBWXcoGLZEnN+96tZBClC1G7FKAAEC2uCYjzAA6hP1y5P1ABiWXFnIDz+YJF7JReebogegCElGNd2QSwSAJgmxKIBmhDLAKhBTJcFUIKYLRMgBzFeNgAQ9BbKmr4x+QF2badAWiGzGQAAAABJRU5ErkJggg==",470,11,23,23);
+    var zoomoutIcon = shapeDraw.image("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACWUlEQVRYR72WQS5tQRCGfztgYiTxxAKwAqzgsQKsAAsQJGKKseS9a2yAWABWwAIkWAFWQD6pkk7r013nJm4lNyehuuurv7qrekxtm5f0V9JS5vom6VLSnaTn9jZlj7HKwjVJe5L+BDa/lbQxDEgJYFzSjSQydyNLgpD1g6mB34qk6cTvWNJ2APjbJQcgKMHZHDsxFQjcZZQGpRbNgbKgRm1NESAN/m5Zkm3UgNg154FBNNemCtyb7C/2DWWQRViX9N/+RikoSdUcwOmHyTwPQPYcYBKYaZXCAV6t7vtWzxZ47f+cH0rH4WzuB0Aq20SLOEi2JenI9mLPTgPAJbuyaxWMUXVDBVTFFkyR4gIA/PA15epJRt/galb3BeDDNl611prGOZc0FQj8T9Jp5kc/oIWHAZat26X7PEqaDQAcSNrJ/PxmhQFKChxKmgwAXEviDKUWViBUqwBE7uJni7bMQe88hH4LGDj5yB0i7tcSJuiTLaYZdY5rDiET7SLi3IPG609br45z74QQ0rnOrDH1iPXDlR5A9nyr8rPSAdJuWLoNfYAY55SSuUL21aGWTkM/jCwAos8odkDaL20YQ1W6YBgAyYCYs0WM087Tm0nCWoKjZGokQTKdEPmLCMm4v0BgANFI+JaMwHQ75r6/onK/KkTXm5BTvJnshJxApNeJOqfXlpoTzJ9mISVqr2I2p55kWDMCowA/pPa+ElKiBuAb+OuX8vgPJVyVUnnCEBGAPlcw9Q1B/CYAME2I3wZoQowCoAZxOyqALoiXUQKUIDZGDQAETY4ewwEdfAK525EwRwmr7wAAAABJRU5ErkJggg==",470,56,23,23);
+
+var moveUpBtn = shapeDraw.group(upButton, triangleUp);
     var moveDownBtn = shapeDraw.group(downButton, triangleDown);
     var moveLeftBtn = shapeDraw.group(leftButton, triangleLeft);
     var moveRightBtn = shapeDraw.group(rightButton, triangleRight);
-    var moveZoominBtn = shapeDraw.group(zoominButton, zoominText);
-    var moveZoomoutBtn = shapeDraw.group(zoomoutButton, zoomoutText);
+    var moveZoominBtn = shapeDraw.group(zoominButton, zoominIcon);
+    var moveZoomoutBtn = shapeDraw.group(zoomoutButton, zoomoutIcon);
     var movePointerBtn = shapeDraw.group(pointerButton, selectIcon);
     var moveLineBtn = shapeDraw.group(lineButton, pathIcon);
     var moveShapeBtn = shapeDraw.group(shapeButton, shapeIcon);
@@ -502,6 +506,9 @@ $(document).ready(function () {
     moveZoominBtn.attr({opacity: 0});
     moveZoomoutBtn.attr({opacity: 0});
     movePointerBtn.attr({opacity: 0});
+     moveLineBtn.attr({opacity: 0});
+    moveShapeBtn.attr({opacity: 0});
+    moveDelBtn.attr({opacity: 0});
 
     var verticalPanStep = 0;
     var horizontalPanStep = 0;
@@ -659,13 +666,13 @@ $(document).ready(function () {
 
     moveZoominBtn.mouseover(function () {
 
-        zoominText.attr({fill: "#2E9AFE"});
+        zoominIcon.attr({fill: "#2E9AFE"});
         zoominButton.attr({stroke: "#2E9AFE"});
         $("#shapeDrawing").css({'cursor': 'zoom-in'});
     });
     moveZoominBtn.mouseout(function () {
 
-        zoominText.attr({fill: "#000"});
+        zoominIcon.attr({fill: "#000"});
         zoominButton.attr({stroke: "#000"});
         $("#shapeDrawing").css({'cursor': 'auto'});
     });
@@ -696,13 +703,13 @@ $(document).ready(function () {
 
     moveZoomoutBtn.mouseover(function () {
 
-        zoomoutText.attr({fill: "#2E9AFE"});
+        zoomoutIcon.attr({fill: "#2E9AFE"});
         zoomoutButton.attr({stroke: "#2E9AFE"});
         $("#shapeDrawing").css({'cursor': 'zoom-out'});
     });
     moveZoomoutBtn.mouseout(function () {
 
-        zoomoutText.attr({fill: "#000"});
+        zoomoutIcon.attr({fill: "#000"});
         zoomoutButton.attr({stroke: "#000"});
         $("#shapeDrawing").css({'cursor': 'auto'});
     });
