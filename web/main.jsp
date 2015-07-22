@@ -448,15 +448,52 @@ $(document).ready(function () {
     zoomoutText.attr({
         "font-size": "56px"
     });
+    
+     var pointerButton = shapeDraw.circle(480, 115, 17);
+    pointerButton.attr({
+        fill: "#FFFFFF",
+        stroke: "#000",
+        strokeWidth: 2
+    });
 
-    var selectIcon = shapeDraw.image("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMC8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvVFIvMjAwMS9SRUMtU1ZHLTIwMDEwOTA0L0RURC9zdmcxMC5kdGQnPjxzdmcgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjQgMjQiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+PHBhdGggZD0iTTcsMmwxMiwxMS4ybC01LjgsMC41bDMuMyw3LjNsLTIuMiwxbC0zLjItNy40TDcsMTguNVYyIi8+PC9zdmc+", 0, 0, 32, 32);
+    var lineButton = shapeDraw.circle(480, 160, 17);
+    lineButton.attr({
+        fill: "#FFFFFF",
+        stroke: "#000",
+        strokeWidth: 2
+    });
+    
 
+    var shapeButton = shapeDraw.circle(480, 205, 17);
+    shapeButton.attr({
+        fill: "#FFFFFF",
+        stroke: "#000",
+        strokeWidth: 2
+    });
+    
+     var delButton = shapeDraw.circle(480, 250, 17);
+    delButton.attr({
+        fill: "#FFFFFF",
+        stroke: "#000",
+        strokeWidth: 2
+    });
+    
+    
+
+    var selectIcon = shapeDraw.image("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMC8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvVFIvMjAwMS9SRUMtU1ZHLTIwMDEwOTA0L0RURC9zdmcxMC5kdGQnPjxzdmcgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjQgMjQiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+PHBhdGggZD0iTTcsMmwxMiwxMS4ybC01LjgsMC41bDMuMyw3LjNsLTIuMiwxbC0zLjItNy40TDcsMTguNVYyIi8+PC9zdmc+", 466, 99, 30, 30);
+    var pathIcon = shapeDraw.image("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABrElEQVRYR+2W21ECQRBFLxlgBGoEagRqBhCBZIBGgGYAEagRaAZCBEoEaASagdaxuqlma8diH87+bFfxszPTfeb27SkG6jgGHddXD9ArUFeBWcK8d1VNXQfgQtKLpLWkLys4lHQi6VLSsgoEABNJUzt4s8dhB4jFyr79lepe0qmkBQCfdpvzPYrHLWUAVVKsUA2AN5OPw4sgqyfjdhHuQ9JhQW5XwNf8LEWKLaFdKE6sAeDDtW2Mm/mO2Vgj8a3tOTIPAB49gKSo8i4JIPYDOpeEOX0vhVnnN0+ZkGQYjXUSkcQDsOeE1qNCIeA5T5vHpvbO0TIAL86tMSg3bRLkewht28lXBIjFkSjK1gQC1Wive2cLEQHY5LK3WTy2Dohv88rv5SIAfcadZy3InlILhV9t2vDHFgBnbyTxEEXDNZE9dRZTMl3HTIwrgElwMG3476AGo8okTfwdYEyYVehyhKtwAAA3f3JJclSX5C0fA4D8uJ6POYM2LAFgNBgJlMgZeGAIAO5/zNh/vyQ+uAKAhyGnASPADAAeBOSgJzkDz43q/CVrFbIH6BXoXIEfpmFdXon0m0UAAAAASUVORK5CYII=", 466, 146, 27, 27);
+    var trashIcon = shapeDraw.image("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABp0lEQVRYR+2X2zEFQRRF140AESACRIAMZIAIEAEiQASEQASIABEgAkRALdVHtb4zd8xoP2rOT1dNP2af3eexe8IwWwJOgI20/QY4AJ76HjfpuwFYBe7Svoc0rqRxDbjvc+YQAHo5D2wBeq7JxHViYLkWAGleLA7z2wVwCZwWc0cJyE7DVTy3XU8TA3p2nrzs40zX2ldgN4H/WlsCCCrf0sLeQdWCQuZ0bA7YzK6OEoB3ug54j7V+HpgE8QjcZtkzBUCajOJIry5a+87roBmzEBtLBvx5LBBMTTNzXroYMIINQIEY6TXNGLCGGIhm0qc1ZYHptVfzz9lZZ8B+fnZbIYpgNGJrmEXqW/DNYsC5ADCkUjYBfh8B/AsGzGOr5FV2ybkeiM/RJfM6UiUG7HaHQN7z83YsgNAKx4Drw6oCyJtJCSCa2QhgZGBkYGTgTxiwxKpkrHYhWEM1OacpPFVTKqtcUfWuhKGKaqjjUMNTaqhNkvk9tKFAfHT+xmRtu9SCXYrI+VDIjkMVsh3UK/MR6zhlsySXm2XABlO+EX/KiG9CG5ZCtNGJD1I5pyH7tEx4AAAAAElFTkSuQmCC",468,237,25,25);
+    var shapeIcon = shapeDraw.image("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABEklEQVRYR+2X4REBMRCFv6uADihBB3RAKTpAB0pQAh3QgRKUcCpg3k3WxEk4kcGP7M/LJvv2vc3cSwVsgSnhWAHLyFrXz9q/iCRvK+ACnIFjK2kMHIBJ10qRvD1gZ/kpI6BnAEKFBCwnANXyowH2CsCHzd9tTwIQkuZdUA3VQBKAr0kQ6yongGAN0bIBhm5V0+rTrkH59BrOgZk73+RQY4q6rUuuyY8xalfyVrcAKAwUBgoDhYHCQGHgLxiQIRm4H7gseO1Z9B2wftcEtvJlSOzdIUPSB+QLFCdzxT+1ZDEXlMsdPbgg122nd4EvR6oSRnuSLU8tGtqXBCCnLX8KIES1bkROADb5xk4jjVD98nl+uAJQNILTD7VUmAAAAABJRU5ErkJggg==",470,194,21,21);
     var moveUpBtn = shapeDraw.group(upButton, triangleUp);
     var moveDownBtn = shapeDraw.group(downButton, triangleDown);
     var moveLeftBtn = shapeDraw.group(leftButton, triangleLeft);
     var moveRightBtn = shapeDraw.group(rightButton, triangleRight);
     var moveZoominBtn = shapeDraw.group(zoominButton, zoominText);
     var moveZoomoutBtn = shapeDraw.group(zoomoutButton, zoomoutText);
+    var movePointerBtn = shapeDraw.group(pointerButton, selectIcon);
+    var moveLineBtn = shapeDraw.group(lineButton, pathIcon);
+    var moveShapeBtn = shapeDraw.group(shapeButton, shapeIcon);
+    var moveDelBtn = shapeDraw.group(delButton, trashIcon);
 
     moveUpBtn.attr({opacity: 0});
     moveDownBtn.attr({opacity: 0});
@@ -464,6 +501,7 @@ $(document).ready(function () {
     moveRightBtn.attr({opacity: 0});
     moveZoominBtn.attr({opacity: 0});
     moveZoomoutBtn.attr({opacity: 0});
+    movePointerBtn.attr({opacity: 0});
 
     var verticalPanStep = 0;
     var horizontalPanStep = 0;
@@ -692,6 +730,94 @@ $(document).ready(function () {
         inRText.attr({transform: matrix});
 
     });
+    
+    movePointerBtn.mouseover(function () {
+
+        selectIcon.attr({fill: "#2E9AFE"});
+        pointerButton.attr({stroke: "#2E9AFE"});
+        $("#shapeDrawing").css({'cursor': 'zoom-out'});
+    });
+    movePointerBtn.mouseout(function () {
+
+        selectIcon.attr({fill: "#000"});
+        pointerButton.attr({stroke: "#000"});
+        $("#shapeDrawing").css({'cursor': 'auto'});
+    });
+    movePointerBtn.click(function () {
+        var w = shapeDraw.attr("width");
+        var h = shapeDraw.attr("height");
+        var vb = shapeDraw.attr("viewBox");
+        //console.log(w+","+h);
+        //console.log(vb);
+        
+
+    });
+    
+    moveLineBtn.mouseover(function () {
+
+        pathIcon.attr({fill: "#2E9AFE"});
+        lineButton.attr({stroke: "#2E9AFE"});
+        $("#shapeDrawing").css({'cursor': 'zoom-out'});
+    });
+    moveLineBtn.mouseout(function () {
+
+        pathIcon.attr({fill: "#000"});
+        lineButton.attr({stroke: "#000"});
+        $("#shapeDrawing").css({'cursor': 'auto'});
+    });
+    moveLineBtn.click(function () {
+        var w = shapeDraw.attr("width");
+        var h = shapeDraw.attr("height");
+        var vb = shapeDraw.attr("viewBox");
+        //console.log(w+","+h);
+        //console.log(vb);
+        
+
+    });
+    
+       moveShapeBtn.mouseover(function () {
+
+        shapeIcon.attr({fill: "#2E9AFE"});
+        shapeButton.attr({stroke: "#2E9AFE"});
+        $("#shapeDrawing").css({'cursor': 'zoom-out'});
+    });
+    moveShapeBtn.mouseout(function () {
+
+        shapeIcon.attr({fill: "#000"});
+        shapeButton.attr({stroke: "#000"});
+        $("#shapeDrawing").css({'cursor': 'auto'});
+    });
+    moveShapeBtn.click(function () {
+        var w = shapeDraw.attr("width");
+        var h = shapeDraw.attr("height");
+        var vb = shapeDraw.attr("viewBox");
+        //console.log(w+","+h);
+        //console.log(vb);
+        
+
+    });
+    
+       moveDelBtn.mouseover(function () {
+
+        trashIcon.attr({fill: "#2E9AFE"});
+        delButton.attr({stroke: "#2E9AFE"});
+        $("#shapeDrawing").css({'cursor': 'zoom-out'});
+    });
+    moveDelBtn.mouseout(function () {
+
+        trashIcon.attr({fill: "#000"});
+        delButton.attr({stroke: "#000"});
+        $("#shapeDrawing").css({'cursor': 'auto'});
+    });
+    moveDelBtn.click(function () {
+        var w = shapeDraw.attr("width");
+        var h = shapeDraw.attr("height");
+        var vb = shapeDraw.attr("viewBox");
+        //console.log(w+","+h);
+        //console.log(vb);
+        
+
+    });
 
     $("#shapeDrawing").mouseover(function () {
         //console.log("abc");
@@ -701,6 +827,10 @@ $(document).ready(function () {
         moveRightBtn.animate({opacity: 1}, 500);
         moveZoominBtn.animate({opacity: 1}, 500);
         moveZoomoutBtn.animate({opacity: 1}, 500);
+        movePointerBtn.animate({opacity: 1}, 500);
+        moveLineBtn.animate({opacity: 1}, 500);
+        moveShapeBtn.animate({opacity: 1}, 500);
+        moveDelBtn.animate({opacity: 1}, 500);
     });
     $("#shapeDrawing").mouseout(function () {
         //console.log("abc");
@@ -710,6 +840,10 @@ $(document).ready(function () {
         moveRightBtn.animate({opacity: 0}, 500);
         moveZoominBtn.animate({opacity: 0}, 500);
         moveZoomoutBtn.animate({opacity: 0}, 500);
+        movePointerBtn.animate({opacity: 0}, 500);
+        moveLineBtn.animate({opacity: 0}, 500);
+        moveShapeBtn.animate({opacity: 0}, 500);
+        moveDelBtn.animate({opacity: 0}, 500);
     });
     var outRText = shapeDraw.text(10, 350, "");
     var inRText = shapeDraw.text(10, 380, "");
