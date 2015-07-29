@@ -135,19 +135,20 @@ sectionObj.prototype.getLayer = function(id) {
     //console.log(layers);
     for(var i=0;i < layers.length;i++) {
         var ilayer = layers[i];
-        if(ilayer.layerId===id) {
+        if(ilayer.layerId==id) {
             return ilayer;
         }
     }
     return null;
 }
-sectionObj.prototype.setLayer = function(layer,id) {
+sectionObj.prototype.setLayer = function(layer) {
     var layers = this.getLayers();
-    
+    //console.log(layers);
+    //console.log(layer);
     for(var i=0;i < layers.length;i++) {
-        var ilayer = layers[i];
-        if(ilayer.getId()===id) {
-            ilayer = layer;
+        if(layers[i].layerId==layer.layerId) {
+            layers[i] = layer;
+            //console.log(layers[i]);
             return;
         }
     }
@@ -155,7 +156,7 @@ sectionObj.prototype.setLayer = function(layer,id) {
 }
 
 sectionObj.prototype.addLayer = function(layer) {
-    
+    console.log(layer);
     this.getLayers().push(layer);
     
     return;

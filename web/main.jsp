@@ -207,6 +207,23 @@
                         <div>
                             <h4>Simulation Parameters</h4>
                         </div>
+                        <div>
+                            <h4>Number of Segments: <input id="simNumSegments" type="number" value="50" min="1" max="1000" step="1" /></h4>
+                            <h4>Guess Pressure: <input id="simGuessPressure" type="number" value="1000" min="50" max="10000" step="1" /> PSI </h4>
+                            <h4>Specific Impulse: <input id="simISP" type="number" value="250" min="100" max="500" step="1" /></h4>
+                        </div>
+                        <div>
+                            <a id="simulateInCurrentTabButton">Run Simulation in Current Tab</a>
+                            <a id="simulateInNewTabButton">Run Simulation in New Tab</a>
+                        </div>
+                        <div id="simResultTabs">
+                            <ul>
+                                <li class="k-state-active">Result</li>
+                            </ul>
+                            <div>
+                                <div id="resultGraph"></div>
+                            </div>
+                        </div>
                     </div>
 
 
@@ -882,6 +899,13 @@ var moveUpBtn = shapeDraw.group(upButton, triangleUp);
             }
         }
     });
+    $("#simResultTabs").kendoTabStrip({
+        animation: {
+            open: {
+                effects: "fadeIn"
+            }
+        }
+    });
     $("#sectionTB").kendoToolBar({
         items: [
             {type: "button", text: "Add Section", click: onAddSectionClick},
@@ -1086,14 +1110,14 @@ var moveUpBtn = shapeDraw.group(upButton, triangleUp);
             buttonCount: 5
         },
         columns: [{
-                field: "Layer",
+                field: "layerId",
                 title: "Layer",
                 width: 80
             }, {
-                field: "Name",
+                field: "layerName",
                 title: "Name"
             }, {
-                field: "Material",
+                field: "layerMaterial",
                 title: "Material"
             }],
         editable: true
@@ -2901,7 +2925,7 @@ var moveUpBtn = shapeDraw.group(upButton, triangleUp);
             jQuery.data(sectionG,"id",newSection.sectionId);
             jQuery.data(sectionG,"massColor",section.attr("fill"));
             jQuery.data(sectionG,"innerColor",innerPort.attr("fill"));
-            
+            jQuery.data(sectionG,"selected",false);
             //newSection.sectionGraphicObj = section;
             //newSection.innerPortGraphicObj = innerPort;
             //motor.addSection(newSection);
@@ -2914,13 +2938,13 @@ var moveUpBtn = shapeDraw.group(upButton, triangleUp);
             sectionLayers.push(sectionLayer);
 
             newSection.setLayers(sectionLayers);
-            console.log(newSection);
+            //console.log(newSection);
 
-            selectedSection = newSection;
-            var grid = $("#propellantPropertiesGrid").data("kendoGrid");
-            grid.setDataSource(new kendo.data.DataSource({
-                data: Array.prototype.slice.call(sectionLayer)
-            }));
+//            selectedSection = newSection;
+//            var grid = $("#propellantPropertiesGrid").data("kendoGrid");
+//            grid.setDataSource(new kendo.data.DataSource({
+//                data: Array.prototype.slice.call(sectionLayer)
+//            }));
             motor.addSection(newSection);
             console.log(motor);
             jQuery.data(sectionG,"prop",newSection);
@@ -2956,6 +2980,7 @@ var moveUpBtn = shapeDraw.group(upButton, triangleUp);
         
         //alert('Section ' + section.sectionId + ' clicked');
         var svgSection = e.data.section;
+        jQuery.data(svgSection,"selected",true);
         $("#elm_selected_indicator").text('Section ' + jQuery.data(svgSection,"id") + ' selected');
         var pt = SVGdraw.circle(1.5,1.5,1).attr({
             fill: jQuery.data(svgSection,"massColor"),
@@ -2968,7 +2993,7 @@ var moveUpBtn = shapeDraw.group(upButton, triangleUp);
             stroke: jQuery.data(svgSection,"innerColor")
         });
         pt2 = pt2.pattern(0, 0, 3, 3);
-        
+        console.log(motor);
         var motorSections = motor.getSections();
         for(var i=0;i<motorSections.length;i++) {
             var section = motorSections[i];
@@ -2976,15 +3001,48 @@ var moveUpBtn = shapeDraw.group(upButton, triangleUp);
                 var sectionG = SVGdraw.select('g[id=G_'+section.sectionId+']');
                 sectionG.select('rect[id=section_'+jQuery.data(sectionG,"id")+']').attr({fill: jQuery.data(sectionG,"massColor"), stroke: "#000"});
                 sectionG.select('rect[id=section_inner_'+jQuery.data(sectionG,"id")+']').attr({fill: jQuery.data(sectionG,"innerColor"), stroke: "none"});
-        
+                jQuery.data(sectionG,"selected",false);
+            } else {
+                selectedSection = section;
             }
         }
         
         svgSection.select('rect[id=section_'+jQuery.data(svgSection,"id")+']').attr({fill: pt, stroke: jQuery.data(svgSection,"massColor")});
         svgSection.select('rect[id=section_inner_'+jQuery.data(svgSection,"id")+']').attr({fill: jQuery.data(svgSection,"innerColor"), stroke: jQuery.data(svgSection,"innerColor")});
         
+        var grid = $("#propellantPropertiesGrid").data('kendoGrid');
+        var array = selectedSection.getLayers();
+        //var arrString = JSON.stringify(array);
+        //console.log(array);
+        //console.log(Array.prototype.slice.call(array));
+        var dataSource = new kendo.data.DataSource({
+            data: array,
+            
+            change: function(e) {
+                //console.log(e);
+                //console.log(e.items[0].layerId);
+                //console.log(this.data());
+                
+                var layer = e.items[0];
+                //console.log(layer);
+                //console.log(layer.layerId);
+                if(e.action=='add') {
+                    selectedSection.addLayer(layer);
+                }
+                if(e.action=='itemchange') {
+                    selectedSection.setLayer(layer);
+                }
+                motor.setSection(selectedSection,selectedSection.sectionId);
+                console.log(selectedSection);
+                console.log(motor);
+                //selectedSection.setLayers(layers);
+            }
+        });
+        grid.setDataSource(dataSource);
+        
         
         //var layerGrid = $("#propellantPropertiesGrid").data("kendoGrid");
+        
 
     }
 
@@ -2992,15 +3050,17 @@ var moveUpBtn = shapeDraw.group(upButton, triangleUp);
         //console.log(selectedSection);
         if (selectedSection.getId() != null && selectedSection.getId() != "") {
 
-            console.log('Add layer');
+            //console.log('Add layer');
             var grid = $("#propellantPropertiesGrid").data('kendoGrid');
             var count = grid.dataSource.total();
-            grid.dataSource.add({Layer: count + 1, Name: 'Not Set', Material: 'Not Set'});
+            //grid.dataSource.add({layerId: count + 1, layerName: 'Not Set', layerMaterial: 'Not Set'});
             var sectionLayer = new layerObj();
             sectionLayer.setId(count + 1);
             sectionLayer.setName('Not Set');
             sectionLayer.setMaterial('Not Set');
-            selectedSection.getLayers().push(sectionLayer);
+            grid.dataSource.add(sectionLayer);
+            //selectedSection.getLayers().push(sectionLayer);
+            //motor.setSection(selectedSection,selectedSection.sectionId);
         } else {
             alert('No section is selected!');
         }
@@ -3012,7 +3072,7 @@ var moveUpBtn = shapeDraw.group(upButton, triangleUp);
             var grid = $("#propellantPropertiesGrid").data('kendoGrid');
             var selectedItem = grid.dataItem(grid.select());
 
-            var selectedLayer = selectedSection.getLayer(selectedItem.Layer);
+            var selectedLayer = selectedSection.getLayer(selectedItem.layerId);
             console.log(selectedSection);
             console.log(selectedItem);
             console.log(selectedLayer);
@@ -3024,6 +3084,7 @@ var moveUpBtn = shapeDraw.group(upButton, triangleUp);
             $("#gasConst").val(selectedLayer.layerGasConst);
             $("#heatCap").val(selectedLayer.layerHeatCapacity);
             propPropertiesWindow.data("kendoWindow").open();
+            propPropertiesWindow.data("kendoWindow").center();
         } else {
             alert('No section is selected!');
         }
@@ -3035,7 +3096,7 @@ var moveUpBtn = shapeDraw.group(upButton, triangleUp);
             var grid = $("#propellantPropertiesGrid").data('kendoGrid');
             var selectedItem = grid.dataItem(grid.select());
 
-            var selectedLayer = selectedSection.getLayer(selectedItem.Layer);
+            var selectedLayer = selectedSection.getLayer(selectedItem.layerId);
             //console.log(selectedSection);
             //console.log(selectedItem);
             selectedLayer.layerBurningRate = $("#propBurnRate").val();
@@ -3045,7 +3106,7 @@ var moveUpBtn = shapeDraw.group(upButton, triangleUp);
             selectedLayer.layerGasTemp = $("#gasTemp").val();
             selectedLayer.layerGasConst = $("#gasConst").val();
             selectedLayer.layerHeatCapacity = $("#heatCap").val();
-
+            motor.setSection(selectedSection,selectedSection.sectionId);
             console.log(selectedLayer);
             propPropertiesWindow.data("kendoWindow").close();
         } else {
@@ -3223,13 +3284,22 @@ var moveUpBtn = shapeDraw.group(upButton, triangleUp);
             }
         }
     });
-
+    $("#simulateInCurrentTabButton").kendoButton({
+        click: function () {
+            
+        }
+    });
+    $("#simulateInNewTabButton").kendoButton({
+        click: function () {
+            
+        }
+    });
     function onExtractAndGenerateGeomSuccess(data) {
-        console.log(data);
+        //console.log(data);
         //generatedBurningDistanceGrid
         var grid = $("#generatedBurningDistanceGrid").data("kendoGrid");
         var dataObj = JSON.parse(data.msg_content);
-        var dataObj = JSON.parse(data.msg_content);
+        //var dataObj = JSON.parse(data.msg_content);
         var dataSource = new kendo.data.DataSource({
             data: dataObj.genGeom,
             schema: {
@@ -3244,6 +3314,17 @@ var moveUpBtn = shapeDraw.group(upButton, triangleUp);
             pageSize: 10
         });
         grid.setDataSource(dataSource);
+        
+        var motorSections = motor.getSections();
+        for(var i=0;i<motorSections.length;i++) {
+            //var section = motorSections[i];
+            if(motorSections[i].sectionId!=jQuery.data(svgSection,"id")) {
+                var sectionG = SVGdraw.select('g[id=G_'+section.sectionId+']');
+                sectionG.select('rect[id=section_'+jQuery.data(sectionG,"id")+']').attr({fill: jQuery.data(sectionG,"massColor"), stroke: "#000"});
+                sectionG.select('rect[id=section_inner_'+jQuery.data(sectionG,"id")+']').attr({fill: jQuery.data(sectionG,"innerColor"), stroke: "none"});
+                jQuery.data(sectionG,"selected",false);
+            }
+        }
     }
 
     function onExtractGeomSuccess(data) {
@@ -3274,7 +3355,43 @@ var moveUpBtn = shapeDraw.group(upButton, triangleUp);
     var nozzle = SVGdraw.polygon(rocketX + rocketLengthValue, rockety,rocketX + rocketLengthValue + 50, rockety - 30,rocketX + rocketLengthValue + 50, rockety + 30 + rocketDiameterValue,rocketX + rocketLengthValue, rockety + rocketDiameterValue).attr({id:'nozzle',fill:'none',strokeWidth: 1, stroke: '#000'});
     //nozzle.plot([[rocketX + rocketLengthValue, rockety], [rocketX + rocketLengthValue + 50, rockety - 30], [rocketX + rocketLengthValue + 50, rockety + 30 + rocketDiameterValue], [rocketX + rocketLengthValue, rockety + rocketDiameterValue]]);
 
-
+    $("#resultGraph").kendoChart({
+        title: {
+                    text: "Analog signal"
+                },
+                legend: {
+                    visible: false
+                },
+                series: [{
+                    type: "line",
+                    data: [20, 1, 18, 3, 15, 5, 10, 6, 9, 6, 10, 5, 13, 3, 16, 1, 19, 1, 20, 2, 18, 5, 12, 7, 10, 8],
+                    style: "smooth",
+                    markers: {
+                        visible: false
+                    }
+                }],
+                categoryAxis: {
+                    title: {
+                        text: "time"
+                    },
+                    majorGridLines: {
+                        visible: false
+                    },
+                    majorTicks: {
+                        visible: false
+                    }
+                },
+                valueAxis: {
+                    max: 22,
+                    title: {
+                        text: "voltage"
+                    },
+                    majorGridLines: {
+                        visible: false
+                    },
+                    visible: false
+                }
+    });
 
 
 });
