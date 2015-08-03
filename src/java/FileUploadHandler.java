@@ -39,8 +39,8 @@ import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 public class FileUploadHandler extends HttpServlet {
 
     private boolean isMultipart;
-    private String filePath = "/var/lib/tomcat7/webapps/InternalBallisticsWeb/upload/";
-    //private String filePath = "/Users/wpawgasa/github/InternalBallisticsWeb/upload/";
+    //private String filePath = "/var/lib/tomcat7/webapps/InternalBallisticsWeb/upload/";
+    private String filePath = "/Users/wpawgasa/github/InternalBallisticsWeb/upload/";
     //private String filePath = "/Users/roongtawan/NetbeansProjects/InternalBallisticsWeb/upload/";
     private int maxFileSize = 5000 * 1024;
     private int maxMemSize = 32 * 1024;

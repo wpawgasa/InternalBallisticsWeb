@@ -3286,7 +3286,14 @@ var moveUpBtn = shapeDraw.group(upButton, triangleUp);
     });
     $("#simulateInCurrentTabButton").kendoButton({
         click: function () {
-            
+            console.log(JSON.stringify(motor));
+            $.ajax({
+                        url: 'CalculateThrust',
+                        method: 'post',
+                        data: {motor: JSON.stringify(motor),numSegments: $('#simNumSegments').val(),Pg: $('#simGuessPressure').val(),Isp: $('#simISP').val()},
+                        success: onCalculationCompleted,
+                        dataType: 'json'
+                    });
         }
     });
     $("#simulateInNewTabButton").kendoButton({
@@ -3301,7 +3308,7 @@ var moveUpBtn = shapeDraw.group(upButton, triangleUp);
         var dataObj = JSON.parse(data.msg_content);
         //var dataObj = JSON.parse(data.msg_content);
         var dataSource = new kendo.data.DataSource({
-            data: dataObj.genGeom,
+            data: dataObj.generatedGeom,
             schema: {
                 model: {
                     fields: {
@@ -3318,11 +3325,8 @@ var moveUpBtn = shapeDraw.group(upButton, triangleUp);
         var motorSections = motor.getSections();
         for(var i=0;i<motorSections.length;i++) {
             //var section = motorSections[i];
-            if(motorSections[i].sectionId!=jQuery.data(svgSection,"id")) {
-                var sectionG = SVGdraw.select('g[id=G_'+section.sectionId+']');
-                sectionG.select('rect[id=section_'+jQuery.data(sectionG,"id")+']').attr({fill: jQuery.data(sectionG,"massColor"), stroke: "#000"});
-                sectionG.select('rect[id=section_inner_'+jQuery.data(sectionG,"id")+']').attr({fill: jQuery.data(sectionG,"innerColor"), stroke: "none"});
-                jQuery.data(sectionG,"selected",false);
+            if(motorSections[i].sectionId==selectedSection.sectionId) {
+                motorSections[i].generatedGeom = dataObj.genGeom;
             }
         }
     }
@@ -3349,6 +3353,10 @@ var moveUpBtn = shapeDraw.group(upButton, triangleUp);
         window.center();
         window.open();
     }
+    
+    function onCalculationCompleted(data) {
+        console.log(data);
+    }
 
     var rocketMotor = SVGdraw.rect(rocketX,rockety,rocketLengthValue, rocketDiameterValue).attr({id: 'motorCase',fill: 'none',strokeWidth: 1,stroke: '#000'});
     var igniter = SVGdraw.rect(rocketX, rockety + (rocketDiameterValue / 2) - 10,30, 20).attr({id: 'igniter',fill:'red',strokeWidth: 1,stroke: '#000'});
@@ -3372,7 +3380,7 @@ var moveUpBtn = shapeDraw.group(upButton, triangleUp);
                 }],
                 categoryAxis: {
                     title: {
-                        text: "time"
+                        text: "time (s)"
                     },
                     majorGridLines: {
                         visible: false
@@ -3384,7 +3392,7 @@ var moveUpBtn = shapeDraw.group(upButton, triangleUp);
                 valueAxis: {
                     max: 22,
                     title: {
-                        text: "voltage"
+                        text: "Thrust (N)"
                     },
                     majorGridLines: {
                         visible: false

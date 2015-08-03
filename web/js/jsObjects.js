@@ -70,8 +70,8 @@ var sectionObj = function sectionObj(){
     this.sectionInnerDiameter = 10;
     this.sectionLayers = new Array();
     this.sectionPortShapeId = 0; 
-    this.sectionGraphicObj = null;
-    this.innerPortGraphicObj = null;
+    //this.sectionGraphicObj = null;
+    //this.innerPortGraphicObj = null;
     this.generatedGeom = null;
 };
 

@@ -163,7 +163,7 @@ public class ExtractPropellantGEOMFromFile extends HttpServlet {
             pg.setDistance(cur_distance);
             pg.setPort_area(cur_portArea);
             pg.setPerimeter(cur_perimeter);
-            section.getGenGeom().add(pg);
+            section.getGeneratedGeom().add(pg);
             cur_distance = cur_distance + step;
             
             

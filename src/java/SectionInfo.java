@@ -22,29 +22,35 @@ public class SectionInfo {
 
     
 
-    private List<PropellantLayer> layers = new ArrayList<PropellantLayer>();
+    private List<PropellantLayer> sectionLayers = new ArrayList<PropellantLayer>();
     private List<PropellantGeom> geom = new ArrayList<PropellantGeom>();
-    private List<PropellantGeom> genGeom = new ArrayList<PropellantGeom>();
+    private List<PropellantGeom> generatedGeom = new ArrayList<PropellantGeom>();
   
-    private String section_id;
+    private String sectionId;
+    private String sectionName;
+    private double sectionLength;
+    private double sectionInnerDiameter;
+    private double sectionOuterDiameter;
+    private int sectionPortShapeId;
+    
 
     public SectionInfo() {
     }
 
     public List<PropellantLayer> getLayers() {
-        return layers;
+        return sectionLayers;
     }
 
     public void setLayers(List<PropellantLayer> layers) {
-        this.layers = layers;
+        this.sectionLayers = layers;
     }
 
-    public String getSection_id() {
-        return section_id;
+    public String getSectionId() {
+        return sectionId;
     }
 
-    public void setSection_id(String section_id) {
-        this.section_id = section_id;
+    public void setSection_id(String sectionId) {
+        this.sectionId = sectionId;
     }
 
     public List<PropellantGeom> getGeom() {
@@ -55,12 +61,60 @@ public class SectionInfo {
         this.geom = geom;
     }
 
-    public List<PropellantGeom> getGenGeom() {
-        return genGeom;
+    public List<PropellantGeom> getGeneratedGeom() {
+        return generatedGeom;
     }
 
-    public void setGenGeom(List<PropellantGeom> genGeom) {
-        this.genGeom = genGeom;
+    public void setGeneratedGeom(List<PropellantGeom> genGeom) {
+        this.generatedGeom = genGeom;
+    }
+
+    public List<PropellantLayer> getSectionLayers() {
+        return sectionLayers;
+    }
+
+    public void setSectionLayers(List<PropellantLayer> sectionLayers) {
+        this.sectionLayers = sectionLayers;
+    }
+
+    public String getSectionName() {
+        return sectionName;
+    }
+
+    public void setSectionName(String sectionName) {
+        this.sectionName = sectionName;
+    }
+
+    public double getSectionLength() {
+        return sectionLength;
+    }
+
+    public void setSectionLength(double sectionLength) {
+        this.sectionLength = sectionLength;
+    }
+
+    public double getSectionInnerDiameter() {
+        return sectionInnerDiameter;
+    }
+
+    public void setSectionInnerDiameter(double sectionInnerDiameter) {
+        this.sectionInnerDiameter = sectionInnerDiameter;
+    }
+
+    public double getSectionOuterDiameter() {
+        return sectionOuterDiameter;
+    }
+
+    public void setSectionOuterDiameter(double sectionOuterDiameter) {
+        this.sectionOuterDiameter = sectionOuterDiameter;
+    }
+
+    public int getSectionPortShapeId() {
+        return sectionPortShapeId;
+    }
+
+    public void setSectionPortShapeId(int sectionPortShapeId) {
+        this.sectionPortShapeId = sectionPortShapeId;
     }
     
     

@@ -18,15 +18,15 @@ public class PropellantLayer {
     private int layerId;
     private String layerName;
     private String layerMaterial;
-    private double burningRate;
-    private double pressureExponent;
-    private double density;
-    private double burningConst;
-    private double gasTemp;
-    private double gasConst;
-    private double heatRatio;
-    private double maxBurningDistance;
-    private double burningStartDistance;
+    private double layerBurningRate;
+    private double layerPressureExponent;
+    private double layerDensity;
+    private double layerAlpErosive;
+    private double layerGasTemp;
+    private double layerGasConst;
+    private double layerHeatCapacity;
+    private double layerMaxBurningDistance;
+    private double layerStartBurningDistance;
     private double rb; //burnining rate at time t
     private double rb_m0; //burnining rate at time t
     private double x;  //burning distance at time t
@@ -44,15 +44,15 @@ public class PropellantLayer {
         this.layerId = a.layerId;
         this.layerName = a.layerName;
         this.layerMaterial = a.layerMaterial;
-        this.burningRate = a.burningRate;
-        this.pressureExponent = a.pressureExponent;
-        this.density = a.density;
-        this.burningConst = a.burningConst;
-        this.gasTemp = a.gasTemp;
-        this.gasConst = a.gasConst;
-        this.heatRatio = a.heatRatio;
-        this.maxBurningDistance = a.maxBurningDistance;
-        this.burningStartDistance = a.burningStartDistance;
+        this.layerBurningRate = a.layerBurningRate;
+        this.layerPressureExponent = a.layerPressureExponent;
+        this.layerDensity = a.layerDensity;
+        this.layerAlpErosive = a.layerAlpErosive;
+        this.layerGasTemp = a.layerGasTemp;
+        this.layerGasConst = a.layerGasConst;
+        this.layerHeatCapacity = a.layerHeatCapacity;
+        this.layerMaxBurningDistance = a.layerMaxBurningDistance;
+        this.layerStartBurningDistance = a.layerStartBurningDistance;
         this.rb = a.rb; //burnining rate at time t
         this.rb_m0 = a.rb_m0; //burnining rate at time t
         this.x = a.x;  //burning distance at time t
@@ -88,76 +88,76 @@ public class PropellantLayer {
         this.layerMaterial = layerMaterial;
     }
 
-    public double getBurningRate() {
-        return burningRate;
+    public double getLayerBurningRate() {
+        return layerBurningRate;
     }
 
-    public void setBurningRate(double burningRate) {
-        this.burningRate = burningRate;
+    public void setLayerBurningRate(double burningRate) {
+        this.layerBurningRate = burningRate;
     }
 
-    public double getPressureExponent() {
-        return pressureExponent;
+    public double getLayerPressureExponent() {
+        return layerPressureExponent;
     }
 
-    public void setPressureExponent(double pressureExponent) {
-        this.pressureExponent = pressureExponent;
+    public void setLayerPressureExponent(double layerPressureExponent) {
+        this.layerPressureExponent = layerPressureExponent;
     }
 
-    public double getDensity() {
-        return density;
+    public double getLayerDensity() {
+        return layerDensity;
     }
 
-    public void setDensity(double density) {
-        this.density = density;
+    public void setLayerDensity(double layerDensity) {
+        this.layerDensity = layerDensity;
     }
 
-    public double getBurningConst() {
-        return burningConst;
+    public double getLayerAlpErosive() {
+        return layerAlpErosive;
     }
 
-    public void setBurningConst(double burningConst) {
-        this.burningConst = burningConst;
+    public void setLayerAlpErosive(double layerAlpErosive) {
+        this.layerAlpErosive = layerAlpErosive;
     }
 
-    public double getGasTemp() {
-        return gasTemp;
+    public double getLayerGasTemp() {
+        return layerGasTemp;
     }
 
-    public void setGasTemp(double gasTemp) {
-        this.gasTemp = gasTemp;
+    public void setLayerGasTemp(double layerGasTemp) {
+        this.layerGasTemp = layerGasTemp;
     }
 
-    public double getGasConst() {
-        return gasConst;
+    public double getLayerGasConst() {
+        return layerGasConst;
     }
 
-    public void setGasConst(double gasConst) {
-        this.gasConst = gasConst;
+    public void setLayerGasConst(double layerGasConst) {
+        this.layerGasConst = layerGasConst;
     }
 
-    public double getHeatRatio() {
-        return heatRatio;
+    public double getLayerHeatCapacity() {
+        return layerHeatCapacity;
     }
 
-    public void setHeatRatio(double heatRatio) {
-        this.heatRatio = heatRatio;
+    public void setLayerHeatCapacity(double layerHeatCapacity) {
+        this.layerHeatCapacity = layerHeatCapacity;
     }
 
-    public double getMaxBurningDistance() {
-        return maxBurningDistance;
+    public double getLayerMaxBurningDistance() {
+        return layerMaxBurningDistance;
     }
 
-    public void setMaxBurningDistance(double maxBurningDistance) {
-        this.maxBurningDistance = maxBurningDistance;
+    public void setLayerMaxBurningDistance(double layerMaxBurningDistance) {
+        this.layerMaxBurningDistance = layerMaxBurningDistance;
     }
 
-    public double getBurningStartDistance() {
-        return burningStartDistance;
+    public double getLayerStartBurningDistance() {
+        return layerStartBurningDistance;
     }
 
-    public void setBurningStartDistance(double burningStartDistance) {
-        this.burningStartDistance = burningStartDistance;
+    public void setLayerStartBurningDistance(double layerStartBurningDistance) {
+        this.layerStartBurningDistance = layerStartBurningDistance;
     }
 
     public double getRb() {
@@ -230,9 +230,7 @@ public class PropellantLayer {
 
     public void setGasFrac(double gasFrac) {
         this.gasFrac = gasFrac;
-        
     }
-
     
     
     
