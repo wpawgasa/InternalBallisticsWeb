@@ -37,13 +37,6 @@ public class SectionInfo {
     public SectionInfo() {
     }
 
-    public List<PropellantLayer> getLayers() {
-        return sectionLayers;
-    }
-
-    public void setLayers(List<PropellantLayer> layers) {
-        this.sectionLayers = layers;
-    }
 
     public String getSectionId() {
         return sectionId;
