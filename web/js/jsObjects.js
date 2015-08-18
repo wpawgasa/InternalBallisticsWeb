@@ -115,14 +115,6 @@ sectionObj.prototype.setInnerDiameter = function(name) {
     return;
 }
 
-sectionObj.prototype.getInnerDiameter = function() {
-    return this.sectionLength;
-}
-sectionObj.prototype.setInnerDiameter = function(name) {
-    this.sectionLength = name;
-    return;
-}
-
 sectionObj.prototype.getLayers = function() {
     return this.sectionLayers;
 }
