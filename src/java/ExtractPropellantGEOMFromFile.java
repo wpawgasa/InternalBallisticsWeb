@@ -29,8 +29,8 @@ import javax.servlet.http.HttpSession;
 @WebServlet(urlPatterns = {"/ExtractPropellantGEOMFromFile"})
 public class ExtractPropellantGEOMFromFile extends HttpServlet {
 
-    private String filePath = "/Users/wpawgasa/github/InternalBallisticsWeb/upload/";
-    //private String filePath = "/Users/roongtawan/NetbeansProjects/InternalBallisticsWeb/upload/";
+    //private String filePath = "/Users/wpawgasa/github/InternalBallisticsWeb/upload/";
+    private String filePath = "/Users/roongtawan/NetbeansProjects/InternalBallisticsWeb/upload/";
     private File file;
     private PrintWriter out;
     private ServerMessage msg = new ServerMessage();

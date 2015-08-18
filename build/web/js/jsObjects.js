@@ -5,6 +5,9 @@
  */
 var motorObj = function motorObj() {
     this.motorSections = new Array();
+    this.motorDiameter = 50;
+    this.motorLength = 100;
+    this.throatDiameter = 50;
 };
 
 motorObj.prototype.getSections = function() {
@@ -67,8 +70,8 @@ var sectionObj = function sectionObj(){
     this.sectionInnerDiameter = 10;
     this.sectionLayers = new Array();
     this.sectionPortShapeId = 0; 
-    this.sectionGraphicObj = null;
-    this.innerPortGraphicObj = null;
+    //this.sectionGraphicObj = null;
+    //this.innerPortGraphicObj = null;
     this.generatedGeom = null;
 };
 
@@ -112,14 +115,6 @@ sectionObj.prototype.setInnerDiameter = function(name) {
     return;
 }
 
-sectionObj.prototype.getInnerDiameter = function() {
-    return this.sectionLength;
-}
-sectionObj.prototype.setInnerDiameter = function(name) {
-    this.sectionLength = name;
-    return;
-}
-
 sectionObj.prototype.getLayers = function() {
     return this.sectionLayers;
 }
@@ -132,19 +127,20 @@ sectionObj.prototype.getLayer = function(id) {
     //console.log(layers);
     for(var i=0;i < layers.length;i++) {
         var ilayer = layers[i];
-        if(ilayer.layerId===id) {
+        if(ilayer.layerId==id) {
             return ilayer;
         }
     }
     return null;
 }
-sectionObj.prototype.setLayer = function(layer,id) {
+sectionObj.prototype.setLayer = function(layer) {
     var layers = this.getLayers();
-    
+    //console.log(layers);
+    //console.log(layer);
     for(var i=0;i < layers.length;i++) {
-        var ilayer = layers[i];
-        if(ilayer.getId()===id) {
-            ilayer = layer;
+        if(layers[i].layerId==layer.layerId) {
+            layers[i] = layer;
+            //console.log(layers[i]);
             return;
         }
     }
@@ -152,7 +148,7 @@ sectionObj.prototype.setLayer = function(layer,id) {
 }
 
 sectionObj.prototype.addLayer = function(layer) {
-    
+    console.log(layer);
     this.getLayers().push(layer);
     
     return;

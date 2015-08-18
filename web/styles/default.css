@@ -48,6 +48,7 @@ span.k-tooltip {
     float:left;
     padding-top: 30px;
     padding-left: 60px;
+    vertical-align: middle;
 }
 .vertical-propellant-properties{
     display:block;
@@ -87,6 +88,7 @@ span.k-tooltip {
 .topPane{
     height: 200px;
     padding-left: 10px;
+    float: top;
 }
 
 #treeview-employee-right,
