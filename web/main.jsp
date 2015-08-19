@@ -59,7 +59,7 @@
 
                                             </div>
                                             <div>
-                                                <h4>Rocket Length <input id="rocketLength_Spinner" type="number" value="0" min="0" max="500" /> mm</h4>
+                                                <h4>Rocket Length <input id="rocketLength_Spinner" type="number" value="0" min="0" max="5000" /> mm</h4>
                                                 <input id="rocketLength_Slider" class="balSlider" />
 
                                             </div>
@@ -71,294 +71,296 @@
                                         </div>
                                     </div>
 
-                                    <div id="bottom-pane">
+                                    <div id="bottom-pane" style="overflow: hidden;">
                                         <div class="pane-content">
                                             <div id="graphicTab">
-                                                <div id="sectionTB"></div>
+                                                <div id="sectionTB" width="100%"></div>
                                                 <div><span id="elm_selected_indicator">No element is selected</span></div>
-                                                <svg id="svgDrawing" width="500" height="800"></svg>
+                                                <div style="overflow:auto;">
+                                                    <svg id="svgDrawing" width="1000" height="800"></svg>
+                                                </div>
                                             </div>
                                         </div>
-                                   
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pane-content">
-                        <div id="propellantTab">
-                            <ul>
-                                <li class="k-state-active">
-                                    Propellant Properties
-                                </li>
-                                <li>
-                                    Propellant Geometric
-                                </li>
-                                <li>
-                                    Burning Distance
-                                </li>
-                            </ul>
-                            <div>
-                                <div id="propellantPropertiesGrid"></div>
-                                <div class="vertical-propellant-properties">
-                                    <button type="button" id="addPropellantPropertiesButton">Add</button>
-                                    <button type="button" id="editPropellantPropertiesButton">Edit</button>
-                                    <button type="button" id="removePropellantPropertiesButton">Remove</button>
 
+                                    </div>
                                 </div>
                             </div>
-                            <div>
-                                <div id="geometryTab">
+                            <div class="pane-content">
+                                <div id="propellantTab">
                                     <ul>
                                         <li class="k-state-active">
-                                            Design Propellant
+                                            Propellant Properties
                                         </li>
                                         <li>
-                                            Load from files
+                                            Propellant Geometric
+                                        </li>
+                                        <li>
+                                            Burning Distance
                                         </li>
                                     </ul>
                                     <div>
-                                        <div id="designTB"></div>
-                                        <!--
-                                    <div class="vertical-propellant-properties">
-                                        <table>
-                                            <tr>
-                                                <td>
-                                                    <h4>Outer Diameter <input id="outerDiameter_Spinner" type="number" value="0" min="0" max="500" style="width: 80px" /> mm</h4>
-                                                    <input id="outerDiameter_Slider" class="balShortSlider" />
-                                                </td>
-                                                <td></td>
-                                                <td>
-                                                    <h4>Inner Diameter<input id="innerDiameter_Spinner" type="number" value="0" min="0" max="500" style="width: 80px" /> mm</h4>
-                                                    <input id="innerDiameter_Slider" class="balShortSlider" />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h4>Length <input id="length_Spinner" type="number" value="0" min="0" max="500" style="width: 80px" /> mm</h4>
-                                                    <input id="length_Slider" class="balShortSlider" />
-                                                </td>
-
-                                            </tr>
-                                        </table>
-                                    </div>
-                                        -->
+                                        <div id="propellantPropertiesGrid"></div>
                                         <div class="vertical-propellant-properties">
-                                            <button type="button" id="circleToggleButton"></button>
-                                            <button type="button" id="eightStarToggleButton"></button>
-                                            <button type="button" id="hexagonToggleButton"></button>
-                                            <button type="button" id="pentagonToggleButton"></button>
-                                            <button type="button" id="starToggleButton"></button>
-                                            <button type="button" id="wheelToggleButton"></button>
+                                            <button type="button" id="addPropellantPropertiesButton">Add</button>
+                                            <button type="button" id="editPropellantPropertiesButton">Edit</button>
+                                            <button type="button" id="removePropellantPropertiesButton">Remove</button>
+
                                         </div>
-                                        <svg id="shapeDrawing" width="500" height="400" viewBox="0 0 500 400"></svg>
                                     </div>
                                     <div>
-                                        <div id="loadGeom">
-                                            <input type="file" name="propellantGEOMFiles" id="propellantGEOMFiles" />
+                                        <div id="geometryTab">
+                                            <ul>
+                                                <li class="k-state-active">
+                                                    Design Propellant
+                                                </li>
+                                                <li>
+                                                    Load from files
+                                                </li>
+                                            </ul>
+                                            <div>
+                                                <div id="designTB"></div>
+                                                <!--
+                                            <div class="vertical-propellant-properties">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <h4>Outer Diameter <input id="outerDiameter_Spinner" type="number" value="0" min="0" max="500" style="width: 80px" /> mm</h4>
+                                                            <input id="outerDiameter_Slider" class="balShortSlider" />
+                                                        </td>
+                                                        <td></td>
+                                                        <td>
+                                                            <h4>Inner Diameter<input id="innerDiameter_Spinner" type="number" value="0" min="0" max="500" style="width: 80px" /> mm</h4>
+                                                            <input id="innerDiameter_Slider" class="balShortSlider" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <h4>Length <input id="length_Spinner" type="number" value="0" min="0" max="500" style="width: 80px" /> mm</h4>
+                                                            <input id="length_Slider" class="balShortSlider" />
+                                                        </td>
+        
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                                -->
+                                                <div class="vertical-propellant-properties">
+                                                    <button type="button" id="circleToggleButton"></button>
+                                                    <button type="button" id="eightStarToggleButton"></button>
+                                                    <button type="button" id="hexagonToggleButton"></button>
+                                                    <button type="button" id="pentagonToggleButton"></button>
+                                                    <button type="button" id="starToggleButton"></button>
+                                                    <button type="button" id="wheelToggleButton"></button>
+                                                </div>
+                                                <svg id="shapeDrawing" width="500" height="400" viewBox="0 0 500 400"></svg>
+                                            </div>
+                                            <div>
+                                                <div id="loadGeom">
+                                                    <input type="file" name="propellantGEOMFiles" id="propellantGEOMFiles" />
+                                                </div>
+                                                <a id="viewPropellantGEOMFileContent">View Burning Geometric Data</a>
+                                            </div>
                                         </div>
-                                        <a id="viewPropellantGEOMFileContent">View Burning Geometric Data</a>
                                     </div>
+                                    <div>
+                                        <ul class="ul-form">
+                                            <li>
+                                                <input type="radio" name="geom_src" value="1" /><span>Calculate from design</span>
+                                            </li>
+                                            <li>
+                                                <input type="radio" name="geom_src" value="2" checked="true" /><span>Calculate from selected file</span>
+                                            </li>
+                                            <li>
+
+                                                <h4>Define burning distance step<input id="definedDistanceStep" type="number" value="1" min="0" max="5" step="0.1" /> mm</h4>
+
+
+                                            </li>
+                                            <li>
+                                                <a id="generateBurningDistance">Generate Burning Distances</a>
+                                            </li>
+                                        </ul>
+                                        <div id="generatedBurningDistanceGrid"></div>
+                                    </div>
+
                                 </div>
                             </div>
-                            <div>
-                                <ul class="ul-form">
-                                    <li>
-                                        <input type="radio" name="geom_src" value="1" /><span>Calculate from design</span>
-                                    </li>
-                                    <li>
-                                        <input type="radio" name="geom_src" value="2" checked="true" /><span>Calculate from selected file</span>
-                                    </li>
-                                    <li>
-
-                                        <h4>Define burning distance step<input id="definedDistanceStep" type="number" value="1" min="0" max="5" step="0.1" /> mm</h4>
+                        </div>
 
 
-                                    </li>
-                                    <li>
-                                        <a id="generateBurningDistance">Generate Burning Distances</a>
-                                    </li>
-                                </ul>
-                                <div id="generatedBurningDistanceGrid"></div>
+
+
+                    </div>
+                    <div>
+                        <div>
+                            <h4>Simulation Parameters</h4>
+                        </div>
+                        <div >
+                            <div style="width: 30%; height: 150px; float: left;display: block;">
+                                <h4>Number of Segments: <input id="simNumSegments" type="number" value="50" min="1" max="1000" step="1" /></h4>
+                                <h4>Guess Pressure: <input id="simGuessPressure" type="number" value="1000" min="50" max="10000" step="1" /> PSI </h4>
+                                <h4>Specific Impulse: <input id="simISP" type="number" value="250" min="100" max="500" step="1" /></h4>
                             </div>
+                            <div style="width: 60%; display: block;">
+                                <h4>Igniter Mass <input id="igniterMass_Spinner" type="number" value="0" min="0" max="500" /> kg</h4>
+                                <input id="igniterMass_Slider" class="balSlider" />
+                                <h4>Igniter Burn Time <input id="igniterBurnTime_Spinner" type="number" value="0" min="0" max="500" /> s</h4>
+                                <input id="igniterBurnTime_Slider" class="balSlider" />
 
+                            </div>
+                        </div>
+
+
+                        <div style="text-align: left;">
+                            <a id="simulateInCurrentTabButton">Run Simulation in Current Tab</a>
+                            <a id="simulateInNewTabButton">Run Simulation in New Tab</a>
+                        </div>
+                        <div id="simResultTabs">
+                            <ul>
+                                <li class="k-state-active">Result</li>
+                            </ul>
+                            <div>
+                                <div id="resultGraph_00000000"></div>
+                            </div>
                         </div>
                     </div>
+
+
                 </div>
-
-
-
+            </div>
+            <div id="addSectionWindow">
 
             </div>
-            <div>
-                <div>
-                    <h4>Simulation Parameters</h4>
-                </div>
-                <div >
-                    <div style="width: 30%; height: 150px; float: left;display: block;">
-                        <h4>Number of Segments: <input id="simNumSegments" type="number" value="50" min="1" max="1000" step="1" /></h4>
-                        <h4>Guess Pressure: <input id="simGuessPressure" type="number" value="1000" min="50" max="10000" step="1" /> PSI </h4>
-                        <h4>Specific Impulse: <input id="simISP" type="number" value="250" min="100" max="500" step="1" /></h4>
-                    </div>
-                    <div style="width: 60%; display: block;">
-                        <h4>Igniter Mass <input id="igniterMass_Spinner" type="number" value="0" min="0" max="500" /> kg</h4>
-                        <input id="igniterMass_Slider" class="balSlider" />
-                        <h4>Igniter Burn Time <input id="igniterBurnTime_Spinner" type="number" value="0" min="0" max="500" /> s</h4>
-                        <input id="igniterBurnTime_Slider" class="balSlider" />
-
-                    </div>
-                </div>
-
-
-                <div style="text-align: left;">
-                    <a id="simulateInCurrentTabButton">Run Simulation in Current Tab</a>
-                    <a id="simulateInNewTabButton">Run Simulation in New Tab</a>
-                </div>
-                <div id="simResultTabs">
-                    <ul>
-                        <li class="k-state-active">Result</li>
-                    </ul>
+            <div id="loadConfigWindow">
+                <input name="files" id="files" type="file" itemtype=".txt" />
+            </div>
+            <div id="addNewSectionWindow">
+                <div class="pane-content">
                     <div>
-                        <div id="resultGraph_00000000"></div>
+                        <h4>Diameter <input id="sectionDiameter_Spinner" type="number" value="0" min="0" max="500"  /> mm</h4>
+                        <input id="sectionDiameter_Slider" class="balSlider" />
+
                     </div>
+                    <div>
+                        <h4>Length <input id="sectionLength_Spinner" type="number" value="0" min="0" max="500" /> mm</h4>
+                        <input id="sectionLength_Slider" class="balSlider" />
+
+                    </div>
+                    <div>
+                        <h4>Inner Port Diameter <input id="innerPortDiameter_Spinner" type="number" value="0" min="0" max="500" /> mm</h4>
+                        <input id="innerPortDiameter_Slider" class="balSlider" />
+
+                    </div>
+                </div>
+                <div class="vertical-content">
+
+                    <a id="okNewSectionButton" class="k-primary">OK</a> 
+
+
+                    <a id="cancelNewSectionButton" class="k-primary">Cancel</a> 
+
                 </div>
             </div>
 
+            <div id="editSectionWindow">
+                <div class="pane-content">
+                    <div>
+                        <h4>Diameter <input id="sectionDiameter_Spinner_edit" type="number" value="0" min="0" max="500"  /> mm</h4>
+                        <input id="sectionDiameter_Slider_edit" class="balSlider" />
 
-        </div>
-    </div>
-    <div id="addSectionWindow">
+                    </div>
+                    <div>
+                        <h4>Length <input id="sectionLength_Spinner_edit" type="number" value="0" min="0" max="5000" /> mm</h4>
+                        <input id="sectionLength_Slider_edit" class="balSlider" />
 
-    </div>
-    <div id="loadConfigWindow">
-        <input name="files" id="files" type="file" itemtype=".txt" />
-    </div>
-    <div id="addNewSectionWindow">
-        <div class="pane-content">
-            <div>
-                <h4>Diameter <input id="sectionDiameter_Spinner" type="number" value="0" min="0" max="500"  /> mm</h4>
-                <input id="sectionDiameter_Slider" class="balSlider" />
+                    </div>
+                    <div>
+                        <h4>Inner Port Diameter <input id="innerPortDiameter_Spinner_edit" type="number" value="0" min="0" max="500" /> mm</h4>
+                        <input id="innerPortDiameter_Slider_edit" class="balSlider" />
+
+                    </div>
+                </div>
+                <div class="vertical-content">
+
+                    <a id="okEditSectionButton" class="k-primary">OK</a> 
+
+
+                    <a id="cancelEditSectionButton" class="k-primary">Cancel</a> 
+
+                </div>
+            </div>
+            <div id="propellantPropertiesWindow">
+                <div class="pane-content" style="width: 250px;">
+                    <div>
+                        <h4>Burning Rate <input id="propBurnRate" type="number" value="11" min="0" max="100" style="width: 70px;"  /> mm/s</h4>
+
+                    </div>
+                    <div>
+                        <h4>Pressure Exponent <input id="propPE" type="number" value="0.48" min="0" max="5" style="width: 70px;" /> </h4>
+
+                    </div>
+                    <div>
+                        <h4>Density <input id="propDensity" type="number" value="1.795" min="0" max="500" style="width: 70px;" /> *1000 kg/m^3</h4>
+
+                    </div>
+                    <div>
+                        <h4>Alpha Erosive Burning Const. <input id="propAlpha" type="number" value="60" min="0" max="100" /> /10^7</h4>
+
+                    </div>
+                    <div>
+                        <h4>Gas Temp. <input id="gasTemp" type="number" value="3500" min="0" max="10000" style="width: 70px;" /> K</h4>
+
+                    </div>
+                    <div>
+                        <h4>Gas Const. <input id="gasConst" type="number" value="308" min="0" max="1000" style="width: 70px;" /> J/(kg*K)</h4>
+
+                    </div>
+                    <div>
+                        <h4>Heat Capacity Ratio <input id="heatCap" type="number" value="1.2" min="0" max="5" style="width: 70px;" /> </h4>
+
+                    </div>
+                </div>
+                <div class="vertical-content">
+
+                    <a id="okEditLayerButton" class="k-primary">OK</a> 
+
+
+
+
+                </div>
+            </div>
+            <div id="viewPropellantGeomWindow">
+                <div class="pane-content">
+                    <div id="propellantGEOMGrid">
+
+                    </div>
+
+                </div>
 
             </div>
-            <div>
-                <h4>Length <input id="sectionLength_Spinner" type="number" value="0" min="0" max="500" /> mm</h4>
-                <input id="sectionLength_Slider" class="balSlider" />
-
-            </div>
-            <div>
-                <h4>Inner Port Diameter <input id="innerPortDiameter_Spinner" type="number" value="0" min="0" max="500" /> mm</h4>
-                <input id="innerPortDiameter_Slider" class="balSlider" />
-
-            </div>
-        </div>
-        <div class="vertical-content">
-
-            <a id="okNewSectionButton" class="k-primary">OK</a> 
-
-
-            <a id="cancelNewSectionButton" class="k-primary">Cancel</a> 
-
-        </div>
-    </div>
-
-    <div id="editSectionWindow">
-        <div class="pane-content">
-            <div>
-                <h4>Diameter <input id="sectionDiameter_Spinner_edit" type="number" value="0" min="0" max="500"  /> mm</h4>
-                <input id="sectionDiameter_Slider_edit" class="balSlider" />
-
-            </div>
-            <div>
-                <h4>Length <input id="sectionLength_Spinner_edit" type="number" value="0" min="0" max="500" /> mm</h4>
-                <input id="sectionLength_Slider_edit" class="balSlider" />
-
-            </div>
-            <div>
-                <h4>Inner Port Diameter <input id="innerPortDiameter_Spinner_edit" type="number" value="0" min="0" max="500" /> mm</h4>
-                <input id="innerPortDiameter_Slider_edit" class="balSlider" />
-
-            </div>
-        </div>
-        <div class="vertical-content">
-
-            <a id="okEditSectionButton" class="k-primary">OK</a> 
-
-
-            <a id="cancelEditSectionButton" class="k-primary">Cancel</a> 
-
-        </div>
-    </div>
-    <div id="propellantPropertiesWindow">
-        <div class="pane-content" style="width: 250px;">
-            <div>
-                <h4>Burning Rate <input id="propBurnRate" type="number" value="11" min="0" max="100" style="width: 70px;"  /> mm/s</h4>
-
-            </div>
-            <div>
-                <h4>Pressure Exponent <input id="propPE" type="number" value="0.48" min="0" max="5" style="width: 70px;" /> </h4>
-
-            </div>
-            <div>
-                <h4>Density <input id="propDensity" type="number" value="1.795" min="0" max="500" style="width: 70px;" /> *1000 kg/m^3</h4>
-
-            </div>
-            <div>
-                <h4>Alpha Erosive Burning Const. <input id="propAlpha" type="number" value="60" min="0" max="100" /> /10^7</h4>
-
-            </div>
-            <div>
-                <h4>Gas Temp. <input id="gasTemp" type="number" value="3500" min="0" max="10000" style="width: 70px;" /> K</h4>
-
-            </div>
-            <div>
-                <h4>Gas Const. <input id="gasConst" type="number" value="308" min="0" max="1000" style="width: 70px;" /> J/(kg*K)</h4>
-
-            </div>
-            <div>
-                <h4>Heat Capacity Ratio <input id="heatCap" type="number" value="1.2" min="0" max="5" style="width: 70px;" /> </h4>
-
-            </div>
-        </div>
-        <div class="vertical-content">
-
-            <a id="okEditLayerButton" class="k-primary">OK</a> 
+            <span class="k-pr"></span>
+            <script id="fileTemplate" type="text/x-kendo-template">
 
 
 
-
-        </div>
-    </div>
-    <div id="viewPropellantGeomWindow">
-        <div class="pane-content">
-            <div id="propellantGEOMGrid">
-
-            </div>
-
-        </div>
-
-    </div>
-    <span class="k-pr"></span>
-    <script id="fileTemplate" type="text/x-kendo-template">
+                <span class='k-progress'></span>
+                <span class="file-icon k-tool-icon k-insertFile" title="icon"></span>
+                <span class="k-filename" title="#=name#">#=name#</span>
+                <span class="k-filename" title="#=files[0].extension#">#=files[0].extension#</span>
+                <span class="k-filename" title="#=size#">#=size# bytes</span>
+                <strong class="k-upload-status">
+                <span class="k-upload-pct"></span>
+                <button type='button' class='k-upload-action'></button>
+                </strong>
 
 
 
-            <span class='k-progress'></span>
-            <span class="file-icon k-tool-icon k-insertFile" title="icon"></span>
-            <span class="k-filename" title="#=name#">#=name#</span>
-            <span class="k-filename" title="#=files[0].extension#">#=files[0].extension#</span>
-            <span class="k-filename" title="#=size#">#=size# bytes</span>
-            <strong class="k-upload-status">
-            <span class="k-upload-pct"></span>
-            <button type='button' class='k-upload-action'></button>
-            </strong>
-
-
-
-    </script>
-    <script>
+            </script>
+            <script>
 function log(t) {
     console.log(t);
 }
 function adjustScreen() {
-//alert(window.innerHeight);
+    //alert(window.innerHeight);
     $(".weather").css("height", window.innerHeight - 100 + 'px');
     $(".weather").css("width", window.innerWidth - 35 + 'px');
     $("#splitter").css("height", window.innerHeight - 110 + 'px');
@@ -393,12 +395,12 @@ $(document).ready(function () {
     var outerDiameterValue = 0;
     var lengthValue = 0;
     var innerDiameterValue = 0;
-//var section;
-//var innerPort;
+    //var section;
+    //var innerPort;
     var motor = new motorObj();
     var selectedSection = null;
     var SVGdraw = Snap("#svgDrawing");
-//var shapeDraw = SVG('shapeDrawing').size(500, 400);
+    //var shapeDraw = SVG('shapeDrawing').size(500, 400);
     var shapeDraw = Snap("#shapeDrawing");
     var curMouseEvent;
     var view = shapeDraw.attr("viewBox");
@@ -452,15 +454,15 @@ $(document).ready(function () {
         stroke: "#000",
         strokeWidth: 2
     });
-//    var zoominText = shapeDraw.text(467, 37, "+");
-//    zoominText.attr({
-//        "font-size": "45px"
-//    });
+    //    var zoominText = shapeDraw.text(467, 37, "+");
+    //    zoominText.attr({
+    //        "font-size": "45px"
+    //    });
 
-//    var zoomoutText = shapeDraw.text(471, 86, "-");
-//    zoomoutText.attr({
-//        "font-size": "56px"
-//    });
+    //    var zoomoutText = shapeDraw.text(471, 86, "-");
+    //    zoomoutText.attr({
+    //        "font-size": "56px"
+    //    });
 
     var pointerButton = shapeDraw.circle(480, 115, 17);
     pointerButton.attr({
@@ -497,7 +499,7 @@ $(document).ready(function () {
     var pathIcon = shapeDraw.image("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABrElEQVRYR+2W21ECQRBFLxlgBGoEagRqBhCBZIBGgGYAEagRaAZCBEoEaASagdaxuqlma8diH87+bFfxszPTfeb27SkG6jgGHddXD9ArUFeBWcK8d1VNXQfgQtKLpLWkLys4lHQi6VLSsgoEABNJUzt4s8dhB4jFyr79lepe0qmkBQCfdpvzPYrHLWUAVVKsUA2AN5OPw4sgqyfjdhHuQ9JhQW5XwNf8LEWKLaFdKE6sAeDDtW2Mm/mO2Vgj8a3tOTIPAB49gKSo8i4JIPYDOpeEOX0vhVnnN0+ZkGQYjXUSkcQDsOeE1qNCIeA5T5vHpvbO0TIAL86tMSg3bRLkewht28lXBIjFkSjK1gQC1Wive2cLEQHY5LK3WTy2Dohv88rv5SIAfcadZy3InlILhV9t2vDHFgBnbyTxEEXDNZE9dRZTMl3HTIwrgElwMG3476AGo8okTfwdYEyYVehyhKtwAAA3f3JJclSX5C0fA4D8uJ6POYM2LAFgNBgJlMgZeGAIAO5/zNh/vyQ+uAKAhyGnASPADAAeBOSgJzkDz43q/CVrFbIH6BXoXIEfpmFdXon0m0UAAAAASUVORK5CYII=", 466, 146, 27, 27);
     var trashIcon = shapeDraw.image("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABp0lEQVRYR+2X2zEFQRRF140AESACRIAMZIAIEAEiQASEQASIABEgAkRALdVHtb4zd8xoP2rOT1dNP2af3eexe8IwWwJOgI20/QY4AJ76HjfpuwFYBe7Svoc0rqRxDbjvc+YQAHo5D2wBeq7JxHViYLkWAGleLA7z2wVwCZwWc0cJyE7DVTy3XU8TA3p2nrzs40zX2ldgN4H/WlsCCCrf0sLeQdWCQuZ0bA7YzK6OEoB3ug54j7V+HpgE8QjcZtkzBUCajOJIry5a+87roBmzEBtLBvx5LBBMTTNzXroYMIINQIEY6TXNGLCGGIhm0qc1ZYHptVfzz9lZZ8B+fnZbIYpgNGJrmEXqW/DNYsC5ADCkUjYBfh8B/AsGzGOr5FV2ybkeiM/RJfM6UiUG7HaHQN7z83YsgNAKx4Drw6oCyJtJCSCa2QhgZGBkYGTgTxiwxKpkrHYhWEM1OacpPFVTKqtcUfWuhKGKaqjjUMNTaqhNkvk9tKFAfHT+xmRtu9SCXYrI+VDIjkMVsh3UK/MR6zhlsySXm2XABlO+EX/KiG9CG5ZCtNGJD1I5pyH7tEx4AAAAAElFTkSuQmCC", 468, 237, 25, 25);
     var shapeIcon = shapeDraw.image("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABEklEQVRYR+2X4REBMRCFv6uADihBB3RAKTpAB0pQAh3QgRKUcCpg3k3WxEk4kcGP7M/LJvv2vc3cSwVsgSnhWAHLyFrXz9q/iCRvK+ACnIFjK2kMHIBJ10qRvD1gZ/kpI6BnAEKFBCwnANXyowH2CsCHzd9tTwIQkuZdUA3VQBKAr0kQ6yongGAN0bIBhm5V0+rTrkH59BrOgZk73+RQY4q6rUuuyY8xalfyVrcAKAwUBgoDhYHCQGHgLxiQIRm4H7gseO1Z9B2wftcEtvJlSOzdIUPSB+QLFCdzxT+1ZDEXlMsdPbgg122nd4EvR6oSRnuSLU8tGtqXBCCnLX8KIES1bkROADb5xk4jjVD98nl+uAJQNILTD7VUmAAAAABJRU5ErkJggg==", 470, 194, 21, 21);
-//var zoominIcon = shapeDraw.image("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACfUlEQVRYR72X4VGUQQyGXyoAKxAqQCsQKkAqACoQKwArUCoAKhAqUCoAKlAqACvQeZgNE3PJ7t6PIzM3d3y7X/bZvEl2WVPfNiR9kPRR0qaknTb9tyQ+d5Iu2/fAVT681nnrRNKxJCBGBsyRpJ+jiXE8A3gn6VwS38vahaTPkp5mX4wALPqj2PVDC7v5Zu56shCy7M5CeIBqcTT+VuhMbiATeeINiPczUfAAtyHsf1rS4Wxkh002P++swXXfNYBTSSSdGYuT9VFLInHQdEZvbxnEVpBtAcYAHoPuhC/unBIkPzDA3iRbixtBPsBKAwAdv7sZ1UsegOlZBVGygL91/nql/uyEUBJWs2z3jM0AMA+ZPjl/+5KuqhAAQPOwLKbU0N6MRf+2P6gSnPsx+03OmGQR9IskpEkNgF9u0RvXbmNkelIy5ndq0DwfAvjJHoD26rUcAfiFvM/rlmdlBAjddhv1AGQvoZuBuG/Zji8kJKpmwwj4HOAlyivr5bNJGKuKs8Hnzn+RIAdi7VZZOwsQc4dzoTwlASC7acNmVR+fAYjhj1W1kAfWJKIMWdi888pxPE+6+kNjAHF3jHHBiP0efYkYz6kSb9whfNutzpOFHLAHWd2TPOyid8EgMrTy7AKTbaIEYMCXpE1kceBop3YpYTFKl8h1D5tWAUha9gE/wGHCYnujrrPkeHlVq06qWJpLrpdOT69qvaMSbQEh8bK7n62CLOwQqb4OSElc+szLXaN7Vjtnlv08QiYW40P5+otLdiuKTLwHxHNzmgVYRoIZiJcyXwUAzqchVgUwC3G3SoAZiIdVA4wgzl4DoILgErPzWgAGQV+hjGnr/Ev39A8ZXZPQQkKeAgAAAABJRU5ErkJggg==",470,11,23,23);
+    //var zoominIcon = shapeDraw.image("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACfUlEQVRYR72X4VGUQQyGXyoAKxAqQCsQKkAqACoQKwArUCoAKhAqUCoAKlAqACvQeZgNE3PJ7t6PIzM3d3y7X/bZvEl2WVPfNiR9kPRR0qaknTb9tyQ+d5Iu2/fAVT681nnrRNKxJCBGBsyRpJ+jiXE8A3gn6VwS38vahaTPkp5mX4wALPqj2PVDC7v5Zu56shCy7M5CeIBqcTT+VuhMbiATeeINiPczUfAAtyHsf1rS4Wxkh002P++swXXfNYBTSSSdGYuT9VFLInHQdEZvbxnEVpBtAcYAHoPuhC/unBIkPzDA3iRbixtBPsBKAwAdv7sZ1UsegOlZBVGygL91/nql/uyEUBJWs2z3jM0AMA+ZPjl/+5KuqhAAQPOwLKbU0N6MRf+2P6gSnPsx+03OmGQR9IskpEkNgF9u0RvXbmNkelIy5ndq0DwfAvjJHoD26rUcAfiFvM/rlmdlBAjddhv1AGQvoZuBuG/Zji8kJKpmwwj4HOAlyivr5bNJGKuKs8Hnzn+RIAdi7VZZOwsQc4dzoTwlASC7acNmVR+fAYjhj1W1kAfWJKIMWdi888pxPE+6+kNjAHF3jHHBiP0efYkYz6kSb9whfNutzpOFHLAHWd2TPOyid8EgMrTy7AKTbaIEYMCXpE1kceBop3YpYTFKl8h1D5tWAUha9gE/wGHCYnujrrPkeHlVq06qWJpLrpdOT69qvaMSbQEh8bK7n62CLOwQqb4OSElc+szLXaN7Vjtnlv08QiYW40P5+otLdiuKTLwHxHNzmgVYRoIZiJcyXwUAzqchVgUwC3G3SoAZiIdVA4wgzl4DoILgErPzWgAGQV+hjGnr/Ev39A8ZXZPQQkKeAgAAAABJRU5ErkJggg==",470,11,23,23);
     var zoominIcon = shapeDraw.image("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACYklEQVRYR72WizEEQRCG/8uACBABIkAEiICLABEgAjJwIkAETgSIABFwEVCf6lZdU/PaU3ddtbXszUx//Z6R2rIl6UgSb2RF0pc995KeJL23j8mvGFU2ovRC0nrH4VNJ43lAcgBY+BgsRv+rJKzF8hdJu+aJA0lrAfBa0lkH8N+SFAA3oxwI5Na8UHMxMHhqx/YAijeAbUoEiMpnZiXW9goQ57Z4YhDNvRHg2dz+Ye8uCxINx5Ju7BuhICRVcQCnn8fyVAHWk8AYsNEKhQN8WtwvLZ4larL923IDRTkhfwgdydk6TwCQyXd20mqDGOVI6+BTSVd2FmcWBQB32YPB1Nb3AuAFvIpsm0ey5wLgydeyigN6AVhLuCjN6rkA+KF7timSksWb4QM1j9AXYm+gX6Q5QT/Y/y+AW9EopqyVXlndHji0dhuVUddxFnijYQAB58Lf8X++d3ugK1amaUgOeG7Rlksl+1uGxPnExqrHuOTyXgC89maH0IyKsyTtA9XFA6rAjaKtV8e5d0II6VxkM3EvCYnlJZbG3PfQA7Ced9X9bHCAOERy5diqgvg745xQMlewvjrU4jT0ZGQDEENGsQPQfmnD3ivogt0AuAwIGg+bGKfF7E1cwl6Up+HDCIwpQqQ3IlxG/Xr3A4hGUos33Y6k81tUGq4qROlOSLJRmi5YAISHBWXcoGLZEnN+96tZBClC1G7FKAAEC2uCYjzAA6hP1y5P1ABiWXFnIDz+YJF7JReebogegCElGNd2QSwSAJgmxKIBmhDLAKhBTJcFUIKYLRMgBzFeNgAQ9BbKmr4x+QF2badAWiGzGQAAAABJRU5ErkJggg==", 470, 11, 23, 23);
     var zoomoutIcon = shapeDraw.image("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACWUlEQVRYR72WQS5tQRCGfztgYiTxxAKwAqzgsQKsAAsQJGKKseS9a2yAWABWwAIkWAFWQD6pkk7r013nJm4lNyehuuurv7qrekxtm5f0V9JS5vom6VLSnaTn9jZlj7HKwjVJe5L+BDa/lbQxDEgJYFzSjSQydyNLgpD1g6mB34qk6cTvWNJ2APjbJQcgKMHZHDsxFQjcZZQGpRbNgbKgRm1NESAN/m5Zkm3UgNg154FBNNemCtyb7C/2DWWQRViX9N/+RikoSdUcwOmHyTwPQPYcYBKYaZXCAV6t7vtWzxZ47f+cH0rH4WzuB0Aq20SLOEi2JenI9mLPTgPAJbuyaxWMUXVDBVTFFkyR4gIA/PA15epJRt/galb3BeDDNl611prGOZc0FQj8T9Jp5kc/oIWHAZat26X7PEqaDQAcSNrJ/PxmhQFKChxKmgwAXEviDKUWViBUqwBE7uJni7bMQe88hH4LGDj5yB0i7tcSJuiTLaYZdY5rDiET7SLi3IPG609br45z74QQ0rnOrDH1iPXDlR5A9nyr8rPSAdJuWLoNfYAY55SSuUL21aGWTkM/jCwAos8odkDaL20YQ1W6YBgAyYCYs0WM087Tm0nCWoKjZGokQTKdEPmLCMm4v0BgANFI+JaMwHQ75r6/onK/KkTXm5BTvJnshJxApNeJOqfXlpoTzJ9mISVqr2I2p55kWDMCowA/pPa+ElKiBuAb+OuX8vgPJVyVUnnCEBGAPlcw9Q1B/CYAME2I3wZoQowCoAZxOyqALoiXUQKUIDZGDQAETY4ewwEdfAK525EwRwmr7wAAAABJRU5ErkJggg==", 470, 56, 23, 23);
 
@@ -872,7 +874,7 @@ $(document).ready(function () {
     $("#menu").kendoMenu({
         select: onSelectMenu
     });
-//shapeDraw.add(tr)
+    //shapeDraw.add(tr)
     $("#mainTab").kendoTabStrip({
         animation: {
             open: {
@@ -903,6 +905,7 @@ $(document).ready(function () {
         }
     });
     $("#sectionTB").kendoToolBar({
+        width: "100%",
         items: [
             {type: "button", text: "Add Section", click: onAddSectionClick},
             {type: "button", text: "Edit Section", click: onEditSectionClick},
@@ -932,7 +935,7 @@ $(document).ready(function () {
         increaseButtonTitle: "Right",
         decreaseButtonTitle: "Left",
         min: 0,
-        max: 500,
+        max: 5000,
         smallStep: 2,
         largeStep: 1,
         change: onSliderChange,
@@ -1027,6 +1030,36 @@ $(document).ready(function () {
         largeStep: 1,
         change: onSliderChange,
         value: innerDiameterValue
+    }).data("kendoSlider");
+    var sectionDiameterSliderEdit = $("#sectionDiameter_Slider_edit").kendoSlider({
+        increaseButtonTitle: "Right",
+        decreaseButtonTitle: "Left",
+        min: 0,
+        max: 500,
+        smallStep: 2,
+        largeStep: 1,
+        change: onSliderChange,
+        value: sectionDiameterValue
+    }).data("kendoSlider");
+    var sectionLengthSliderEdit = $("#sectionLength_Slider_edit").kendoSlider({
+        increaseButtonTitle: "Right",
+        decreaseButtonTitle: "Left",
+        min: 0,
+        max: 500,
+        smallStep: 2,
+        largeStep: 1,
+        change: onSliderChange,
+        value: sectionLengthValue
+    }).data("kendoSlider");
+    var innerPortDiameterSliderEdit = $("#innerPortDiameter_Slider_edit").kendoSlider({
+        increaseButtonTitle: "Right",
+        decreaseButtonTitle: "Left",
+        min: 0,
+        max: 500,
+        smallStep: 2,
+        largeStep: 1,
+        change: onSliderChange,
+        value: innerPortDiameterValue
     }).data("kendoSlider");
     var addSectionWindow = $("#addNewSectionWindow");
     var editSectionWindow = $("#editSectionWindow");
@@ -1196,10 +1229,10 @@ $(document).ready(function () {
         select: onUploadSelect,
         template: kendo.template($('#fileTemplate').html())
     });
-//                        var uploadGEOMFile = $("#propellantGEOMFiles").data("kendoUpload");
-//                        uploadGEOMFile._onFileProgress = function(t,n) {
-//                            console.log(n);
-//                        }
+    //                        var uploadGEOMFile = $("#propellantGEOMFiles").data("kendoUpload");
+    //                        uploadGEOMFile._onFileProgress = function(t,n) {
+    //                            console.log(n);
+    //                        }
     function onUploadSelect(e) {
         $.each(e.files, function (index, value) {
             if (value.extension != '.csv' &&
@@ -2814,50 +2847,50 @@ $(document).ready(function () {
         //kendoConsole.log("event :: click (" + $(e.event.target).closest(".k-button").attr("id") + ")" );
         editSectionWindow.data("kendoWindow").close();
     }
-//                        function onOKNewSectionWindowClick(e) {
-//                            sectionDiameterValue = $("#sectionDiameter_Spinner").data("kendoNumericTextBox").value();
-//                            sectionLengthValue = $("#sectionLength_Spinner").data("kendoNumericTextBox").value();
-//                            innerPortDiameterValue = $("#innerPortDiameter_Spinner").data("kendoNumericTextBox").value();
-//                            console.log(sectionDiameterValue);
-//                            section = SVGdraw.rect(sectionLengthValue, sectionDiameterValue).fill({color: getRandomColor(), opacity: 0.6}).stroke({width: 1.2}).move(rocketX, rockety + 0.5 * Math.abs(rocketDiameterValue - sectionDiameterValue)).click(onSectionClicked);
-//                            innerPort = SVGdraw.rect(sectionLengthValue, innerPortDiameterValue).fill({color: getRandomColor(), opacity: 0.6}).stroke({width: 1.2}).move(rocketX, rockety + 0.5 * Math.abs(rocketDiameterValue - innerPortDiameterValue));
-//                            var newSection = new sectionObj();
-//                            newSection.sectionId = guid();
-//                            selectedSection = newSection.sectionId;
-//                            //motor.addSection(newSection);
-//                            var sectionLayers = new Array();
-//                            var sectionLayer = new layerObj();
-//                            //sectionLayers.push({Layer:1,Name:'Not set',Material:'Not set'});
-//                            sectionLayer.setId(1);
-//                            sectionLayer.setName('Not Set');
-//                            sectionLayer.setMaterial('Not Set');
-//                            sectionLayers.push(sectionLayer);
-//
-//                            var sectionLayer = new layerObj();
-//                            //sectionLayers.push({Layer:1,Name:'Not set',Material:'Not set'});
-//                            sectionLayer.setId(2);
-//                            sectionLayer.setName('Not Set');
-//                            sectionLayer.setMaterial('Not Set');
-//                            sectionLayers.push(sectionLayer);
-//
-//                            newSection.setLayers(sectionLayers);
-//                            console.log(newSection);
-//                            console.log(Array.prototype.slice.call(sectionLayer));
-//                            var grid = $("#propellantPropertiesGrid").data("kendoGrid");
-//                            grid.setDataSource(new kendo.data.DataSource({
-//                                data: Array.prototype.slice.call(sectionLayer)
-//                            }));
-//                            motor.addSection(newSection);
-//                            console.log(motor);
-//                            addSectionWindow.data("kendoWindow").close();
-//                        }
+    //                        function onOKNewSectionWindowClick(e) {
+    //                            sectionDiameterValue = $("#sectionDiameter_Spinner").data("kendoNumericTextBox").value();
+    //                            sectionLengthValue = $("#sectionLength_Spinner").data("kendoNumericTextBox").value();
+    //                            innerPortDiameterValue = $("#innerPortDiameter_Spinner").data("kendoNumericTextBox").value();
+    //                            console.log(sectionDiameterValue);
+    //                            section = SVGdraw.rect(sectionLengthValue, sectionDiameterValue).fill({color: getRandomColor(), opacity: 0.6}).stroke({width: 1.2}).move(rocketX, rockety + 0.5 * Math.abs(rocketDiameterValue - sectionDiameterValue)).click(onSectionClicked);
+    //                            innerPort = SVGdraw.rect(sectionLengthValue, innerPortDiameterValue).fill({color: getRandomColor(), opacity: 0.6}).stroke({width: 1.2}).move(rocketX, rockety + 0.5 * Math.abs(rocketDiameterValue - innerPortDiameterValue));
+    //                            var newSection = new sectionObj();
+    //                            newSection.sectionId = guid();
+    //                            selectedSection = newSection.sectionId;
+    //                            //motor.addSection(newSection);
+    //                            var sectionLayers = new Array();
+    //                            var sectionLayer = new layerObj();
+    //                            //sectionLayers.push({Layer:1,Name:'Not set',Material:'Not set'});
+    //                            sectionLayer.setId(1);
+    //                            sectionLayer.setName('Not Set');
+    //                            sectionLayer.setMaterial('Not Set');
+    //                            sectionLayers.push(sectionLayer);
+    //
+    //                            var sectionLayer = new layerObj();
+    //                            //sectionLayers.push({Layer:1,Name:'Not set',Material:'Not set'});
+    //                            sectionLayer.setId(2);
+    //                            sectionLayer.setName('Not Set');
+    //                            sectionLayer.setMaterial('Not Set');
+    //                            sectionLayers.push(sectionLayer);
+    //
+    //                            newSection.setLayers(sectionLayers);
+    //                            console.log(newSection);
+    //                            console.log(Array.prototype.slice.call(sectionLayer));
+    //                            var grid = $("#propellantPropertiesGrid").data("kendoGrid");
+    //                            grid.setDataSource(new kendo.data.DataSource({
+    //                                data: Array.prototype.slice.call(sectionLayer)
+    //                            }));
+    //                            motor.addSection(newSection);
+    //                            console.log(motor);
+    //                            addSectionWindow.data("kendoWindow").close();
+    //                        }
 
 
-//                        function onSectionClicked() {
-//                            $("#elm_selected_indicator").text('Section 1 selected');
-//                            alert('Section 1 clicked');
-//
-//                    }
+    //                        function onSectionClicked() {
+    //                            $("#elm_selected_indicator").text('Section 1 selected');
+    //                            alert('Section 1 clicked');
+    //
+    //                    }
 
 
     function onAddSectionClick(e) {
@@ -2870,18 +2903,39 @@ $(document).ready(function () {
     function onEditSectionClick(e) {
         //kendoConsole.log("event :: click (" + $(e.event.target).closest(".k-button").attr("id") + ")" );
         if (selectedSection != null) {
+            var sectionDiameterSpinnerEdit = $("#sectionDiameter_Spinner_edit").data("kendoNumericTextBox");
+            //var sectionDiameterSpinnerEditValue = sectionDiameterSpinnerEdit.value();
+            sectionDiameterSpinnerEdit.value(selectedSection.sectionOuterDiameter);
+            
+            var sectionDiameterSliderEdit = $("#sectionDiameter_Slider_edit").data("kendoSlider");
+            //var sectionDiameterSliderEditValue = sectionDiameterSliderEdit.value();
+            sectionDiameterSliderEdit.value(selectedSection.sectionOuterDiameter);
+            
+            var sectionLengthSpinnerEdit = $("#sectionLength_Spinner_edit").data("kendoNumericTextBox");
+            sectionLengthSpinnerEdit.value(selectedSection.sectionLength);
+            
+            var sectionLengthSliderEdit = $("#sectionLength_Slider_edit").data("kendoSlider");
+            sectionLengthSliderEdit.value(selectedSection.sectionLength);
+            
+            var innerPortDiameterSpinnerEdit = $("#innerPortDiameter_Spinner_edit").data("kendoNumericTextBox");
+            innerPortDiameterSpinnerEdit.value(selectedSection.sectionInnerDiameter);
+            
+            var innerPortDiameterSliderEdit = $("#innerPortDiameter_Slider_edit").data("kendoSlider");
+            innerPortDiameterSliderEdit.value(selectedSection.sectionInnerDiameter);
 
             editSectionWindow.data("kendoWindow").open();
             editSectionWindow.data("kendoWindow").center();
+
+
         } else {
             alert("No section is selected");
         }
     }
 
-//                    function onCloseNewSectionWindowClick(e) {
-//                        //kendoConsole.log("event :: click (" + $(e.event.target).closest(".k-button").attr("id") + ")" );
-//                        addSectionWindow.data("kendoWindow").close();
-//                    }
+    //                    function onCloseNewSectionWindowClick(e) {
+    //                        //kendoConsole.log("event :: click (" + $(e.event.target).closest(".k-button").attr("id") + ")" );
+    //                        addSectionWindow.data("kendoWindow").close();
+    //                    }
     function onOKNewSectionWindowClick(e) {
         sectionDiameterValue = $("#sectionDiameter_Spinner").data("kendoNumericTextBox").value();
         sectionLengthValue = $("#sectionLength_Spinner").data("kendoNumericTextBox").value();
@@ -2937,11 +2991,11 @@ $(document).ready(function () {
             newSection.setLayers(sectionLayers);
             //console.log(newSection);
 
-//            selectedSection = newSection;
-//            var grid = $("#propellantPropertiesGrid").data("kendoGrid");
-//            grid.setDataSource(new kendo.data.DataSource({
-//                data: Array.prototype.slice.call(sectionLayer)
-//            }));
+            //            selectedSection = newSection;
+            //            var grid = $("#propellantPropertiesGrid").data("kendoGrid");
+            //            grid.setDataSource(new kendo.data.DataSource({
+            //                data: Array.prototype.slice.call(sectionLayer)
+            //            }));
             motor.addSection(newSection);
             console.log(motor);
             jQuery.data(sectionG, "prop", newSection);
@@ -2958,13 +3012,26 @@ $(document).ready(function () {
     }
 
     function onOKEditSectionWindowClick(e) {
-        sectionDiameterValue = $("#sectionDiameter_Spinner_edit").data("kendoNumericTextBox").value();
-        sectionLengthValue = $("#sectionLength_Spinner_edit").data("kendoNumericTextBox").value();
-        innerPortDiameterValue = $("#innerPortDiameter_Spinner_edit").data("kendoNumericTextBox").value();
+        var sectionDiameterValue = $("#sectionDiameter_Spinner_edit").data("kendoNumericTextBox").value();
+        var sectionLengthValue = $("#sectionLength_Spinner_edit").data("kendoNumericTextBox").value();
+        var innerPortDiameterValue = $("#innerPortDiameter_Spinner_edit").data("kendoNumericTextBox").value();
+        selectedSection.sectionOuterDiameter = sectionDiameterValue;
+        selectedSection.sectionInnerDiameter = innerPortDiameterValue;
+        selectedSection.sectionLength = sectionLengthValue;
 
         if (sectionDiameterValue != 0 && sectionLengthValue != 0 && innerPortDiameterValue != 0 && innerPortDiameterValue < sectionDiameterValue) {
 
-
+            var motorSections = motor.getSections();
+            
+            for (var i = 0; i < motorSections.length; i++) {
+                var section = motorSections[i];
+                if(section.sectionId==selectedSection.sectionId) {
+                    motor.setSection(selectedSection,selectedSection.sectionId);
+                }
+            }
+            editSectionWindow.data("kendoWindow").close();
+        } else {
+            alert("Invalid parameters");
         }
 
 
@@ -3131,13 +3198,13 @@ $(document).ready(function () {
     }
     $("#splitter").kendoSplitter({
         orientation: "horizontal",
-        panes: [{size: "50%", max: "280px", min: "100px", collapsible: true},
+        panes: [{size: "50%", max: "1200px", min: "200px", collapsible: true},
             {size: "400px"}, {size: "35%", max: "600px", min: "300px", collapsible: true}]
     });
     $("#splitter-horizontal").kendoSplitter({
         orientation: "vertical",
         panes: [
-            {size: "42%",collapsible: true},
+            {size: "42%", collapsible: true},
             {collapsible: false}
         ]
     });
@@ -3177,6 +3244,21 @@ $(document).ready(function () {
         value: sectionLengthValue
     });
     $("#innerPortDiameter_Spinner").kendoNumericTextBox({
+        change: onSpinnerChange,
+        spin: onSpinnerSpin,
+        value: innerPortDiameterValue
+    });
+    $("#sectionDiameter_Spinner_edit").kendoNumericTextBox({
+        change: onSpinnerChange,
+        spin: onSpinnerSpin,
+        value: sectionLengthValue
+    });
+    $("#sectionLength_Spinner_edit").kendoNumericTextBox({
+        change: onSpinnerChange,
+        spin: onSpinnerSpin,
+        value: sectionLengthValue
+    });
+    $("#innerPortDiameter_Spinner_edit").kendoNumericTextBox({
         change: onSpinnerChange,
         spin: onSpinnerSpin,
         value: innerPortDiameterValue
@@ -3383,7 +3465,7 @@ $(document).ready(function () {
     var rocketMotor = SVGdraw.rect(rocketX, rockety, rocketLengthValue, rocketDiameterValue).attr({id: 'motorCase', fill: 'none', strokeWidth: 1, stroke: '#000'});
     var igniter = SVGdraw.rect(rocketX, rockety + (rocketDiameterValue / 2) - 10, 30, 20).attr({id: 'igniter', fill: 'red', strokeWidth: 1, stroke: '#000'});
     var nozzle = SVGdraw.polygon(rocketX + rocketLengthValue, rockety, rocketX + rocketLengthValue + 50, rockety - 30, rocketX + rocketLengthValue + 50, rockety + 30 + rocketDiameterValue, rocketX + rocketLengthValue, rockety + rocketDiameterValue).attr({id: 'nozzle', fill: 'none', strokeWidth: 1, stroke: '#000'});
-//nozzle.plot([[rocketX + rocketLengthValue, rockety], [rocketX + rocketLengthValue + 50, rockety - 30], [rocketX + rocketLengthValue + 50, rockety + 30 + rocketDiameterValue], [rocketX + rocketLengthValue, rockety + rocketDiameterValue]]);
+    //nozzle.plot([[rocketX + rocketLengthValue, rockety], [rocketX + rocketLengthValue + 50, rockety - 30], [rocketX + rocketLengthValue + 50, rockety + 30 + rocketDiameterValue], [rocketX + rocketLengthValue, rockety + rocketDiameterValue]]);
 
     $("#resultGraph_00000000").kendoChart({
         title: {
@@ -3437,9 +3519,9 @@ $(document).ready(function () {
 
 
 });
-    </script>
+            </script>
 
 
 
-</body>
+    </body>
 </html>
